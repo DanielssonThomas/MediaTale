@@ -107,6 +107,8 @@ export interface Database {
       posts: {
         Row: {
           created_at: string
+          created_by_username: string | null
+          created_by_uuid: string | null
           description: string | null
           id: number
           image: string | null
@@ -116,6 +118,8 @@ export interface Database {
         }
         Insert: {
           created_at?: string
+          created_by_username?: string | null
+          created_by_uuid?: string | null
           description?: string | null
           id?: number
           image?: string | null
@@ -125,6 +129,8 @@ export interface Database {
         }
         Update: {
           created_at?: string
+          created_by_username?: string | null
+          created_by_uuid?: string | null
           description?: string | null
           id?: number
           image?: string | null
@@ -133,6 +139,12 @@ export interface Database {
           video?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "posts_created_by_uuid_fkey"
+            columns: ["created_by_uuid"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "posts_image_fkey"
             columns: ["image"]
