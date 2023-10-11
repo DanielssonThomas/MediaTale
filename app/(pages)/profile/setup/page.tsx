@@ -1,4 +1,4 @@
-const CreateProfile = () => {
+const SetupProfile = () => {
   return <div></div>;
 };
-export default CreateProfile;
+export default SetupProfile;
