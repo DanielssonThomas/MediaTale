@@ -1,5 +1,10 @@
+import LogoutButton from "@/components/LogoutButton";
 const Home = () => {
-  return <>Welcome back user!</>;
+  return (
+    <>
+      <LogoutButton />
+    </>
+  );
 };
 
 export default Home;

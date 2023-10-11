@@ -15,7 +15,7 @@ export default async function Index() {
   return (
     <div className="bg-white dark:bg-black w-screen h-screen">
       <Nav isLoggedIn={isLoggedIn} path="/" />
-      {isLoggedIn ? <LandingPage /> : <HomePage />}
+      {!isLoggedIn ? <LandingPage /> : <HomePage />}
     </div>
   );
 }

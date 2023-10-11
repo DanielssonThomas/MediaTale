@@ -4,7 +4,7 @@ import Link from "next/link";
 
 type NavProps = {
   isLoggedIn: boolean;
-  path: string;
+  path?: string;
   profileImage?: string;
 };
 
@@ -31,7 +31,7 @@ const Nav = ({ isLoggedIn, path, profileImage }: NavProps) => {
           ) : (
             <></>
           )}
-          <h1>MediaTale</h1>
+          <h1 className="text-2xl">MediaTale</h1>
           {path !== "/login" ? (
             <div className="absolute flex flex-col justify-center items-center top-[15px] right-[15px] w-[100px] h-[30px] border-solid border-[1px] rounded-md border-black">
               <Link href="/login">Sign in/up</Link>
