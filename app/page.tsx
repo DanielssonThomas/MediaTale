@@ -1,7 +1,7 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-import LandingPage from "./(pages)/main/landingPage";
-import HomePage from "./(pages)/main/homePage";
+import LandingPage from "./(pages)/main/landing";
+import HomePage from "./(pages)/main/home";
 import Nav from "@/components/Nav/navigation";
 export const dynamic = "force-dynamic";
 
