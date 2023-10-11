@@ -1,12 +1,13 @@
 import React from "react";
 
-function Icon() {
+function MTLogo() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="none">
       <circle
         cx="32"
         cy="32"
         r="32"
+        fill="none"
         className="fill-black dark:fill-white"
       ></circle>
       <path
@@ -17,4 +18,4 @@ function Icon() {
   );
 }
 
-export default Icon;
+export default MTLogo;
