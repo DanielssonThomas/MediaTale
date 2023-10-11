@@ -14,6 +14,6 @@ export default meta;
 
 export const Button: StoryObj<typeof Nav> = {
   args: {
-    text: "click to increment the number",
+    isLoggedIn: false,
   },
 };
