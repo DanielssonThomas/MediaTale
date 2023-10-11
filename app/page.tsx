@@ -11,10 +11,10 @@ export default async function Index() {
     data: { session },
   } = await supabase.auth.getSession();
 
-  const isLoggedIn = session === null ?? false;
+  const isLoggedIn = session === null ? false : true;
   return (
     <div className="bg-white dark:bg-black w-screen h-screen">
-      <Nav isLoggedIn={isLoggedIn} />
+      <Nav isLoggedIn={isLoggedIn} path="/" />
       {isLoggedIn ? <LandingPage /> : <HomePage />}
     </div>
   );
