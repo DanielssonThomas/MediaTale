@@ -1,7 +1,6 @@
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
-
 export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
@@ -15,30 +14,25 @@ export async function POST(request: Request) {
   const contact_email = String(formData.get("contact_email"));
 
   const supabase = createRouteHandlerClient({ cookies });
-  console.log("HANDELING REQUEST");
   const {
     data: { user },
     error,
   } = await supabase.auth.getUser();
 
   if (user) {
-    console.log("FOUND USER: ", user);
-    console.log("RUNNING INSERT");
-    const user_id = user?.id;
-    const user_email = user?.email;
-    const { data, error } = await supabase.from("profiles").insert({
+    const { error } = await supabase.from("profiles").insert({
       first_name,
       last_name,
-      user_id: user_id,
-      email: user_email,
+      user_id: user.id,
+      email: user.email,
       username,
       about,
       country,
       contact_email,
     });
-    console.log("DATA RETRIVAL: ", data);
+
     if (error) {
-      console.log(error);
+      console.log("Profile insertion error: ", error);
       return NextResponse.redirect(`${requestUrl.origin}/profile/setup`, {
         status: 301,
       });

@@ -2,7 +2,7 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import LandingPage from "./(pages)/main/landing";
 import HomePage from "./(pages)/main/home";
-import Nav from "@/components/Nav/navigation";
+import Navigation from "@/components/Navigation/Navigation";
 export const dynamic = "force-dynamic";
 
 export default async function Index() {
@@ -13,8 +13,8 @@ export default async function Index() {
 
   const isLoggedIn = session === null ? false : true;
   return (
-    <div className="bg-white dark:bg-black w-screen h-screen">
-      <Nav isLoggedIn={isLoggedIn} path="/" />
+    <div className="bg-white dark:bg-black w-screen h-screen ">
+      <Navigation isLoggedIn={isLoggedIn} path="/" />
       {!isLoggedIn ? <LandingPage /> : <HomePage />}
     </div>
   );

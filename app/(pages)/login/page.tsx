@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Nav from "@/components/Nav/navigation";
+import Nav from "@/components/Navigation/Navigation";
 
 export default function Login() {
   return (
