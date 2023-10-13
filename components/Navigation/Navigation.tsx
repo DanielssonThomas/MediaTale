@@ -41,17 +41,22 @@ const Navigation = ({ isLoggedIn, path, profileImage }: NavProps) => {
       ) : (
         <div className="flex justify-center items-center w-screen h-full relative">
           {path === "/login" && (
-            <div className="absolute flex flex-col justify-center items-center left-[15px] top-[15px] w-[100px] h-[30px] border-solid border-[1px] rounded-md border-black">
-              <Link href="/" scroll={false}>
-                Back
-              </Link>
-            </div>
+            <Link
+              href="/"
+              scroll={false}
+              className="absolute flex flex-col justify-center items-center left-[15px] top-[15px] w-[100px] h-[30px] border-solid border-[1px] rounded-md border-black"
+            >
+              Back
+            </Link>
           )}
           <h1 className="text-2xl">MediaTale</h1>
           {path !== "/login" && (
-            <div className="absolute flex flex-col justify-center items-center top-[15px] right-[15px] w-[100px] h-[30px] border-solid border-[1px] rounded-md border-black">
-              <Link href="/login">Sign in/up</Link>
-            </div>
+            <Link
+              href="/login"
+              className="absolute flex flex-col justify-center items-center top-[15px] right-[15px] w-[100px] h-[30px] border-solid border-[1px] rounded-md border-black"
+            >
+              Sign in/up
+            </Link>
           )}
         </div>
       )}
