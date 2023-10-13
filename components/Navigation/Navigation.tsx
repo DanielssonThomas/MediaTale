@@ -2,6 +2,8 @@
 import MTLogo from "@/public/icons/MediaTale";
 import Link from "next/link";
 import Image from "next/image";
+import NavMenu from "./NavMenu/NavMenu";
+import { useState } from "react";
 
 type NavProps = {
   isLoggedIn: boolean;
@@ -10,6 +12,7 @@ type NavProps = {
 };
 
 const Navigation = ({ isLoggedIn, path, profileImage }: NavProps) => {
+  const [navMenuActive, setNavMenuActive] = useState<boolean>(false);
   return (
     <div className="flex flex-col border-solid border-b-2 border-black dark:border-white w-full h-[60px] relative">
       {isLoggedIn ? (
@@ -21,7 +24,10 @@ const Navigation = ({ isLoggedIn, path, profileImage }: NavProps) => {
             <div className="flex flex-col justify-center items-center mt-[5px] w-[120px] h-[40px] border-solid border-[1px] rounded-xl border-black dark:border-white cursor-pointer  ">
               + New post
             </div>
-            <div className="border-solid border-[1px] rounded-full border-black overflow-hidden w-[50px] h-[50px] z-50">
+            <div
+              className="border-solid border-[1px] rounded-full border-black overflow-hidden w-[50px] h-[50px] z-50 cursor-pointer"
+              onClick={() => setNavMenuActive(!navMenuActive)}
+            >
               <Image
                 src={profileImage || "/images/defaultPFP.jpeg"}
                 alt="your profile picture"
@@ -30,6 +36,7 @@ const Navigation = ({ isLoggedIn, path, profileImage }: NavProps) => {
               />
             </div>
           </div>
+          <NavMenu active={navMenuActive} setActive={setNavMenuActive} />
         </div>
       ) : (
         <div className="flex justify-center items-center w-screen h-full relative">
