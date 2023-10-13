@@ -8,14 +8,18 @@ type NavMenuProps = {
 const NavMenu = ({ active, setActive }: NavMenuProps) => {
   return (
     <div
-      className={`absolute w-[20rem] h-[100vh]
-      ${active ? "right-0" : "right-[-20rem]"} 
-      top-[60px] transition duration-500 border-l-[1px] border-solid border-black dark:border-white`}
+      className={`absolute w-full h-[100vh] bg-black text-white
+      ${active ? "right-0" : "right-[-9999px]"} 
+      top-0 transition duration-500 border-l-[1px] border-solid border-black dark:border-white`}
     >
-      <div className="flex flex-col gap-5 p-[1rem]">
+      <div className="flex flex-col gap-5 p-[1rem] mt-[60px]">
+        <Link href={"/create-post"} className="flex md:hidden">
+          Create post
+        </Link>
         <Link href={"/profile"}>Your profile</Link>
         <Link href={"/About"}>About</Link>
         <Link href={"/Settings"}>Settings</Link>
+
         <form action="/auth/sign-out" method="post">
           <button>Logout</button>
         </form>

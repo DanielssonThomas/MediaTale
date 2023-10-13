@@ -17,24 +17,30 @@ const Navigation = ({ isLoggedIn, path, profileImage }: NavProps) => {
     <div className="flex flex-col border-solid border-b-2 border-black dark:border-white w-full h-[60px] relative">
       {isLoggedIn ? (
         <div className="flex justify-center items-center w-screen h-full relative">
-          <div className="absolute flex flex-col justify-center items-center left-[20px] top-[5px] w-[50px] h-[50px] border-black">
+          <Link
+            href={"/"}
+            className="absolute flex flex-col justify-center items-center left-[20px] top-[5px] w-[50px] h-[50px] border-black z-50"
+          >
             <MTLogo />
-          </div>
-          <div className="flex justify-between absolute top-[5px] right-[20px] w-[200px] h-[40px]">
-            <div className="flex flex-col justify-center items-center mt-[5px] w-[120px] h-[40px] border-solid border-[1px] rounded-xl border-black dark:border-white cursor-pointer  ">
-              + New post
-            </div>
-            <div
-              className="border-solid border-[1px] rounded-full border-black overflow-hidden w-[50px] h-[50px] z-50 cursor-pointer"
-              onClick={() => setNavMenuActive(!navMenuActive)}
-            >
-              <Image
-                src={profileImage || "/images/defaultPFP.jpeg"}
-                alt="your profile picture"
-                width={50}
-                height={50}
-              />
-            </div>
+          </Link>
+
+          <Link
+            href={"/create-post"}
+            className="absolute right-[90px] top-[5px] flex-col justify-center items-center mt-[5px] w-[120px] h-[40px] border-solid border-[1px] rounded-xl border-black dark:border-white cursor-pointer hidden md:flex"
+          >
+            + New post
+          </Link>
+
+          <div
+            className="absolute top-[5px] right-[20px] border-solid border-[1px] rounded-full border-black overflow-hidden w-[50px] h-[50px] z-50 cursor-pointer"
+            onClick={() => setNavMenuActive(!navMenuActive)}
+          >
+            <Image
+              src={profileImage || "/images/defaultPFP.jpeg"}
+              alt="your profile picture"
+              width={50}
+              height={50}
+            />
           </div>
           <NavMenu active={navMenuActive} setActive={setNavMenuActive} />
         </div>
