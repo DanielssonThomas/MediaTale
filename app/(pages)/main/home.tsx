@@ -1,10 +1,6 @@
 import LogoutButton from "@/components/LogoutButton";
 const Home = () => {
-  return (
-    <>
-      <LogoutButton />
-    </>
-  );
+  return <></>;
 };
 
 export default Home;
