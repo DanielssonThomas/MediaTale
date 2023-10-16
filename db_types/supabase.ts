@@ -212,8 +212,11 @@ export interface Database {
           country: string | null
           created_at: string
           email: string | null
+          first_name: string | null
+          followers: number | null
+          following: number | null
           id: number
-          name: string | null
+          last_name: string | null
           user_id: string | null
           username: string | null
         }
@@ -223,8 +226,11 @@ export interface Database {
           country?: string | null
           created_at?: string
           email?: string | null
+          first_name?: string | null
+          followers?: number | null
+          following?: number | null
           id?: number
-          name?: string | null
+          last_name?: string | null
           user_id?: string | null
           username?: string | null
         }
@@ -234,8 +240,11 @@ export interface Database {
           country?: string | null
           created_at?: string
           email?: string | null
+          first_name?: string | null
+          followers?: number | null
+          following?: number | null
           id?: number
-          name?: string | null
+          last_name?: string | null
           user_id?: string | null
           username?: string | null
         }
