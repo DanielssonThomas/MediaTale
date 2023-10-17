@@ -1,7 +1,22 @@
 import Navigation from "@/components/Navigation/Navigation";
 import CreatePostForm from "@/components/CreatePostForm/CreatePostForm";
+import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
+import { useState } from "react";
+export const dynamic = "force-dynamic";
+const CreatePost = async () => {
+  let categories: category[] | undefined = [];
 
-const CreatePost = () => {
+  const supabase = createServerActionClient({ cookies });
+  try {
+    const { data, error } = await supabase.from("categories").select("*");
+    if (data) {
+      categories = data;
+    }
+  } catch (error) {
+    console.error("Error fetching categories:");
+  }
+
   return (
     <div className="bg-white dark:bg-black">
       <Navigation isLoggedIn={true} />
@@ -10,7 +25,7 @@ const CreatePost = () => {
           Post an small article or just something on your mind that you want to
           start a discussion about!
         </h2>
-        <CreatePostForm />
+        <CreatePostForm categories={categories} />
       </div>
     </div>
   );

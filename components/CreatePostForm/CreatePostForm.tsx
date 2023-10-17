@@ -1,9 +1,14 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const CreatePostForm = () => {
+type CreatePostFormProps = {
+  categories: category[] | undefined;
+};
+
+const CreatePostForm = ({ categories }: CreatePostFormProps) => {
   const [imageUpload, setImageUpload] = useState<Blob>();
+
   return (
     <form
       action={"/api/posts/create-post"}
