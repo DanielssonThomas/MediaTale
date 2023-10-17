@@ -10,7 +10,7 @@ const NavMenu = ({ active, setActive }: NavMenuProps) => {
     <div
       className={`absolute w-full h-[100vh] bg-black text-white
       ${active ? "right-0" : "right-[-9999px]"} 
-      top-0 transition duration-500 border-l-[1px] border-solid border-black dark:border-white`}
+      top-0 transition duration-500 border-l-[1px] border-solid border-black dark:border-white z-40`}
     >
       <div className="flex flex-col gap-5 p-[1rem] mt-[60px]">
         <Link href={"/create-post"} className="flex md:hidden">
