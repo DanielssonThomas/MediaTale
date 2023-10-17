@@ -18,7 +18,7 @@ const CreatePost = async () => {
   }
 
   return (
-    <div className="bg-white dark:bg-black">
+    <div className="bg-white dark:bg-black min-h-[100vh]">
       <Navigation isLoggedIn={true} />
       <div className="flex flex-col justify-center items-center w-full h-full">
         <h2 className="px-[2rem] pt-[1rem] text-xl">

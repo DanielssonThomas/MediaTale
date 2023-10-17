@@ -1,9 +1,10 @@
 import Navigation from "@/components/Navigation/Navigation";
-import Heading from "@/components/Profile/Heading/Heading";
-import Details from "@/components/Profile/Details/Details";
-
+import ProfileHeading from "@/components/Profile/Heading/Heading";
+import ProfileDetails from "@/components/Profile/Details/Details";
+import IsSignedIn from "@/app/utils/auth/isSignedIn";
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 export const dynamic = "force-dynamic";
 const getUserID = async () => {
   const supabase = createServerActionClient({ cookies });
@@ -39,16 +40,20 @@ const Profile = async () => {
   const fetchDetails: profile[] | null = await getDetails(user?.id);
   const details: profile | null =
     fetchDetails !== null ? fetchDetails[0] : null;
-
+  const isSignedIn = await IsSignedIn();
+  if (!isSignedIn) {
+    redirect("/");
+  }
   return (
     <div className="bg-white dark:bg-black min-h-[100vh]">
       <Navigation isLoggedIn={true} />
-      <Heading
+      <ProfileHeading
         username={details?.username}
         followers={details?.followers}
         following={details?.following}
+        signedIn={isSignedIn}
       />
-      <Details
+      <ProfileDetails
         about={details?.about}
         contact_email={details?.contact_email}
         country={details?.country}
