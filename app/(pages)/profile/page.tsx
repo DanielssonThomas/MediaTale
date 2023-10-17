@@ -1,11 +1,10 @@
 import Navigation from "@/components/Navigation/Navigation";
 import Heading from "@/components/Profile/Heading/Heading";
-import { Database } from "@/db_types/supabase";
+import Details from "@/components/Profile/Details/Details";
 
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
-import { profile } from "console";
 import { cookies } from "next/headers";
-
+export const dynamic = "force-dynamic";
 const getUserID = async () => {
   const supabase = createServerActionClient({ cookies });
   const {
@@ -40,6 +39,7 @@ const Profile = async () => {
   const fetchDetails: profile[] | null = await getDetails(user?.id);
   const details: profile | null =
     fetchDetails !== null ? fetchDetails[0] : null;
+
   return (
     <div className="bg-white dark:bg-black min-h-[100vh]">
       <Navigation isLoggedIn={true} />
@@ -47,6 +47,14 @@ const Profile = async () => {
         username={details?.username}
         followers={details?.followers}
         following={details?.following}
+      />
+      <Details
+        about={details?.about}
+        contact_email={details?.contact_email}
+        country={details?.country}
+        created_at={details?.created_at}
+        first_name={details?.first_name}
+        last_name={details?.last_name}
       />
     </div>
   );
