@@ -1,4 +1,7 @@
+"use client";
 import Image from "next/image";
+import { useState } from "react";
+import BackBtn from "@/components/General/BackBtn/page";
 
 type HeadingProps = {
   username: string | null | undefined;
@@ -13,39 +16,57 @@ const EditProfileHeading = ({
   following,
   PFImage,
 }: HeadingProps) => {
+  const [imageUpload, setImageUpload] = useState<Blob>();
+  const [avatar, setAvatar] = useState<Blob | null>(null);
+  const [name, setName] = useState<string | null | undefined>(username);
   return (
     <div>
-      <div className="flex flex-col border-b-solid border-black dark:border-white border-b-[1px] p-2 text-center">
-        <div className="flex">
-          <div className="flex border-solid border-[1px] rounded-full border-black overflow-hidden w-[80px] h-[80px] cursor-pointer">
-            <Image
-              src={PFImage || "/images/defaultPFP.jpeg"}
-              alt="your profile picture"
-              width={80}
-              height={80}
-            />
-          </div>
-
-          <label htmlFor="avatar">Upload new profile picture:</label>
-          <input name="avatar" type="file" accept=".jpg, .jpeg, .png" />
+      <div className="relative flex flex-col border-b-solid border-black dark:border-white border-b-[1px] p-2 gap-[2rem]">
+        <BackBtn />
+        <div className="mt-[3rem]">
+          <label htmlFor="avatar" className="text-sm">
+            Upload new profile picture:
+          </label>
+          <input
+            name="avatar"
+            type="file"
+            accept=".jpg, .jpeg, .png"
+            onChange={(e: any) => setImageUpload(e.target.files[0])}
+          />
+        </div>
+        <div className="flex justify-center items-center">
+          {imageUpload && (
+            <div>
+              <div className="relative flex flex-col justify-center items-center border-solid border-[1px] rounded-full border-black overflow-hidden w-[200px] h-[200px]">
+                <Image
+                  src={URL.createObjectURL(imageUpload)}
+                  alt="Uploaded image"
+                  fill={true}
+                />
+              </div>
+            </div>
+          )}
         </div>
 
-        <div>
-          <label htmlFor="username">Username:</label>
+        <div className="flex flex-col">
+          <label htmlFor="username" className="text-sm">
+            Username:
+          </label>
           <input
             name="username"
             type="text"
-            className="w-[80px] text-3xl"
-            placeholder={username ?? ""}
+            className="text-lg"
+            onChange={(e) => setName(e.target.value)}
+            value={name !== null ? name : ""}
           />
         </div>
       </div>
       <div>
         <div className="flex justify-between w-full h-[2rem]">
-          <h3 className="w-full border-solid border-black dark:border-white border-r-[1px] px-2">
+          <h3 className="w-full border-solid border-black dark:border-white border-r-[1px] px-2 text-sm">
             Followers:
           </h3>
-          <h3 className="w-full px-2">Following:</h3>
+          <h3 className="w-full px-2 ">Following:</h3>
         </div>
         <div className="flex justify-between w-full h-[2rem] border-solid border-black dark:border-white border-b-[1px]">
           <h4 className="w-full px-2 border-solid border-black dark:border-white border-r-[1px]">

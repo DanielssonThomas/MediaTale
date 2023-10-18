@@ -15,14 +15,16 @@ type NavProps = {
 const Navigation = ({ isLoggedIn, path, profileImage }: NavProps) => {
   const [navMenuActive, setNavMenuActive] = useState<boolean>(false);
   return (
-    <div className="flex flex-col border-solid border-b-2 border-black dark:border-white w-full h-[60px] relative">
+    <div className="flex flex-col border-solid border-b-2 border-black dark:border-white w-full h-[60px] relative text-black dark:text-white">
       {isLoggedIn ? (
         <div className="flex justify-center items-center w-screen h-full relative">
           <Link
             href={"/"}
             className="absolute flex flex-col justify-center items-center left-[20px] top-[5px] w-[50px] h-[50px] border-black z-50"
           >
-            <MTLogo />
+            <div className="border-[1px] dark:border-white border-black border-solid rounded-full">
+              <MTLogo />
+            </div>
           </Link>
 
           <Link

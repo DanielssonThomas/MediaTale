@@ -24,7 +24,9 @@ const Profile = async ({ params: { username } }: ProfileProps) => {
   }
 
   const userData = fetchUser.data[0];
+
   const isSignedIn = await IsSignedIn();
+
   return (
     <div className="bg-white dark:bg-black min-h-[100vh]">
       <Navigation isLoggedIn={isSignedIn} />
