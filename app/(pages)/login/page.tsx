@@ -12,18 +12,14 @@ export default function Login() {
             action="/auth/sign-in"
             method="post"
           >
-            <label className="text-md text-black" htmlFor="email">
-              Email
-            </label>
+            <div className="text-md text-black">Email</div>
             <input
               className="rounded-md px-4 py-2 bg-inherit border"
               name="email"
               placeholder="you@example.com"
               required
             />
-            <label className="text-md text-black" htmlFor="password">
-              Password
-            </label>
+            <div className="text-md text-black">Password</div>
             <input
               className="rounded-md px-4 py-2 bg-inherit border "
               type="password"

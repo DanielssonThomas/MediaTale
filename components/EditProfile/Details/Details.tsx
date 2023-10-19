@@ -38,9 +38,7 @@ const EditProfileDetails = ({
   return (
     <div className="flex flex-col gap-4 p-2">
       <div className="flex flex-col border-solid border-black dark:border-white border-b-[1px] pb-2">
-        <label htmlFor="about" className="text-sm">
-          About:
-        </label>
+        <div className="text-sm">About:</div>
         <textarea
           name="about"
           className="text-base min-h-[5rem]"
@@ -50,9 +48,7 @@ const EditProfileDetails = ({
       </div>
       <div className=" flex flex-col border-solid border-black dark:border-white border-b-[1px] pb-2">
         <div>
-          <label htmlFor="first_name" className="text-sm py-4">
-            First Name:
-          </label>
+          <div className="text-sm py-4">First Name:</div>
           <input
             name="first_name"
             type="text"
@@ -62,9 +58,7 @@ const EditProfileDetails = ({
           />
         </div>
         <div>
-          <label htmlFor="last_name" className="text-sm">
-            Last Name:
-          </label>
+          <div className="text-sm">Last Name:</div>
           <input
             name="last_name"
             type="text"
@@ -75,9 +69,7 @@ const EditProfileDetails = ({
         </div>
       </div>
       <div className="border-solid border-black dark:border-white border-b-[1px] pb-2">
-        <label htmlFor="country" className="text-sm py-4">
-          Country:
-        </label>
+        <div className="text-sm py-4">Country:</div>
         <input
           name="country"
           type="text"
@@ -87,9 +79,7 @@ const EditProfileDetails = ({
         />
       </div>
       <div className="border-solid border-black dark:border-white border-b-[1px] pb-2">
-        <label htmlFor="contact_email" className="text-sm">
-          Buisness email:
-        </label>
+        <div className="text-sm">Buisness email:</div>
         <input
           name="contact_email"
           type="email"

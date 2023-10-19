@@ -25,21 +25,21 @@ const SetupProfile = async () => {
           method="POST"
           className="flex flex-col gap-2"
         >
-          <label htmlFor="first_name">First Name: </label>
+          <div>First Name: </div>
           <input
             type="text"
             name="first_name"
             className="border-solid border-black dark:border-white border-[1px] py-[0.5rem] px-[1rem]"
           />
 
-          <label htmlFor="last_name">Last Name: </label>
+          <div>Last Name: </div>
           <input
             type="text"
             name="last_name"
             className="border-solid border-black dark:border-white border-[1px] py-[0.5rem] px-[1rem]"
           />
 
-          <label htmlFor="username">Username: </label>
+          <div>Username: </div>
           <input
             type="text"
             name="username"
@@ -47,7 +47,7 @@ const SetupProfile = async () => {
           />
 
           <div className="flex flex-col">
-            <label htmlFor="about">About</label>
+            <div>About</div>
             <textarea
               name="about"
               placeholder="Some general information you want others to know!"
@@ -55,7 +55,7 @@ const SetupProfile = async () => {
             ></textarea>
           </div>
           <div className="flex justify-between items-center">
-            <label htmlFor="country">Country: </label>
+            <div>Country: </div>
             <select
               name="country"
               className="border-solid border-black dark:border-white border-[1px] py-[0.5rem] px-[1rem]"
@@ -66,7 +66,7 @@ const SetupProfile = async () => {
             </select>
           </div>
           <div className="flex flex-col mb-8">
-            <label htmlFor="contact_email">Contact Email: </label>
+            <div>Contact Email: </div>
             <input
               type="email"
               name="contact_email"

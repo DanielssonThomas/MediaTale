@@ -15,7 +15,7 @@ const HomeFeed = ({ posts }: HomeFeedProps) => {
   }
 
   return (
-    <div className="w-full p-6">
+    <div className="flex flex-col gap-4 w-full p-6">
       {posts.map((post) => (
         <Preview post={post} />
       ))}

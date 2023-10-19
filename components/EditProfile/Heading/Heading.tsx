@@ -24,9 +24,7 @@ const EditProfileHeading = ({
       <div className="relative flex flex-col border-b-solid border-black dark:border-white border-b-[1px] p-2 gap-[2rem]">
         <BackBtn />
         <div className="mt-[3rem]">
-          <label htmlFor="avatar" className="text-sm">
-            Upload new profile picture:
-          </label>
+          <div className="text-sm">Upload new profile picture:</div>
           <input
             name="avatar"
             type="file"
@@ -49,9 +47,7 @@ const EditProfileHeading = ({
         </div>
 
         <div className="flex flex-col">
-          <label htmlFor="username" className="text-sm">
-            Username:
-          </label>
+          <div className="text-sm">Username:</div>
           <input
             name="username"
             type="text"

@@ -16,7 +16,7 @@ const CreatePostForm = ({ categories }: CreatePostFormProps) => {
       className="flex flex-col gap-6 m-[2rem]"
     >
       <div className="flex flex-col">
-        <label htmlFor="title">Title:</label>
+        <div>Title:</div>
         <input
           type="text"
           name="title"
@@ -26,7 +26,7 @@ const CreatePostForm = ({ categories }: CreatePostFormProps) => {
         />
       </div>
       <div className="flex flex-col">
-        <label htmlFor="description">Description:</label>
+        <div>Description:</div>
         <textarea
           name="description"
           placeholder="Quickly describe your posts contents"
@@ -37,7 +37,7 @@ const CreatePostForm = ({ categories }: CreatePostFormProps) => {
       </div>
 
       <div className="flex flex-col">
-        <label htmlFor="text_content">Enter text contents: </label>
+        <div>Enter text contents: </div>
         <textarea
           name="text_content"
           placeholder="Write away as you please!"
@@ -47,7 +47,7 @@ const CreatePostForm = ({ categories }: CreatePostFormProps) => {
 
       <div className="flex flex-col gap-5">
         <div>
-          <label htmlFor="image">Upload image:</label>
+          <div>Upload image:</div>
           <input
             type="file"
             name="image"
