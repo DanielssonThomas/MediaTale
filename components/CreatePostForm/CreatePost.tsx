@@ -12,6 +12,7 @@ const CreatePostForm = ({ categories }: CreatePostFormProps) => {
   return (
     <form
       action={"/api/posts/create-post"}
+      method="POST"
       className="flex flex-col gap-6 m-[2rem]"
     >
       <div className="flex flex-col">
@@ -25,12 +26,12 @@ const CreatePostForm = ({ categories }: CreatePostFormProps) => {
         />
       </div>
       <div className="flex flex-col">
-        <label htmlFor="description">Discription:</label>
+        <label htmlFor="description">Description:</label>
         <textarea
           name="description"
           placeholder="Quickly describe your posts contents"
           className="p-[0.5rem] border-solid border-[1px] rounded-sm border-black"
-          maxLength={30}
+          maxLength={200}
           required
         ></textarea>
       </div>

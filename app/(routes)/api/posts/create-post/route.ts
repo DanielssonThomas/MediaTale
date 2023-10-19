@@ -6,6 +6,9 @@ export const dynamic = "force-dynamic";
 export async function POST(request: Request) {
   const requestUrl = new URL(request.url);
   const formData = await request.formData();
+  const title = String(formData.get("title"));
+  const description = String(formData.get("description"));
+  const text_content = String(formData.get("text_content"));
 
   const supabase = createRouteHandlerClient({ cookies });
   const {
@@ -14,13 +17,22 @@ export async function POST(request: Request) {
   } = await supabase.auth.getUser();
 
   if (user) {
-    const { error } = await supabase.from("profiles").insert({});
+    const { data: userProfile }: { data: profile | null } = await supabase
+      .from("profiles")
+      .select("*")
+      .match({ user_id: user.id })
+      .single();
+
+    const { error } = await supabase.from("posts").insert({
+      title: title,
+      description: description,
+      text_content: text_content,
+      created_by_username: userProfile?.username,
+      created_by_uuid: userProfile?.user_id,
+    });
 
     if (error) {
-      console.log("Profile insertion error: ", error);
-      return NextResponse.redirect(`${requestUrl.origin}/profile/setup`, {
-        status: 301,
-      });
+      console.log("Error posting contents, error: ", error);
     }
 
     return NextResponse.redirect(`${requestUrl.origin}/`, { status: 301 });
@@ -28,7 +40,7 @@ export async function POST(request: Request) {
 
   if (error) {
     return NextResponse.redirect(
-      `/profile/setup?message=Failed to fetch user information`,
+      `/profile/setup?message=Couldn't fetch user information.`,
       {
         // a 301 status is required to redirect from a POST to a GET route
         status: 301,

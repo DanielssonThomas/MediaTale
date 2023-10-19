@@ -1,5 +1,5 @@
 import Navigation from "@/components/Navigation/Navigation";
-import CreatePostForm from "@/components/CreatePostForm/CreatePostForm";
+import CreatePostForm from "@/components/CreatePostForm/CreatePost";
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { useState } from "react";
