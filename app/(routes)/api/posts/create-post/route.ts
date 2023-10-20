@@ -1,4 +1,5 @@
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
+import { PostgrestError } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
@@ -23,18 +24,26 @@ export async function POST(request: Request) {
       .match({ user_id: user.id })
       .single();
 
-    const { error } = await supabase.from("posts").insert({
-      title: title,
-      description: description,
-      text_content: text_content,
-      created_by_username: userProfile?.username,
-      created_by_uuid: userProfile?.user_id,
-    });
+    const { data: post }: { data: post | null } = await supabase
+      .from("posts")
+      .insert({
+        title: title,
+        description: description,
+        text_content: text_content,
+        created_by_username: userProfile?.username,
+        created_by_uuid: userProfile?.user_id,
+      })
+      .select()
+      .single();
 
-    if (error) {
+    if (post === null) {
       console.log("Error posting contents, error: ", error);
+      return NextResponse.redirect(`${requestUrl.origin}/`, { status: 301 });
     }
 
+    const { data: postStatistic, error: postStatisticError } = await supabase
+      .from("posts_statistics")
+      .insert({ created_by: user.id, post_id: post.id });
     return NextResponse.redirect(`${requestUrl.origin}/`, { status: 301 });
   }
 

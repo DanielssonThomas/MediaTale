@@ -5,12 +5,17 @@ import { cookies } from "next/headers";
 
 const Home = async () => {
   const supabase = createServerActionClient({ cookies });
+
   const { data: posts }: { data: post[] | null } = await supabase
     .from("posts")
     .select("*");
+
+  const { data: postsStatistics }: { data: postStatistic[] | null } =
+    await supabase.from("posts_statistics").select("*");
+
   return (
     <div className="bg-white dark:bg-black w-full min-h-[100vh]">
-      <HomeFeed posts={posts} />
+      <HomeFeed posts={posts} postsStatistics={postsStatistics} />
     </div>
   );
 };
