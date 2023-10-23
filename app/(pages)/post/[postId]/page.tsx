@@ -35,16 +35,6 @@ const PostPage = async ({ params: { postId } }: PostProps) => {
     .match({ post_id: postId })
     .order("like_count", { ascending: false });
 
-  console.log("The post data:", data);
-  console.log("The post error:", error);
-
-  //   const { data, error } = await supabase.rpc("increment", { id: postId });
-  //   if (error) {
-  //     console.log("Error on increment: ", error);
-  //   }
-  //   if (data) {
-  //     console.log("THE FUCKIN DATA: ", data);
-  //   }
   return (
     <div className="bg-white dark:bg-black min-h-[100vh]">
       <Navigation isLoggedIn={true} />

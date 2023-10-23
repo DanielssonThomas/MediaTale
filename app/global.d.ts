@@ -4,7 +4,7 @@ declare global {
   type comment = Database["public"]["Tables"]["comments"]["Row"];
   type commentInsert = Database["public"]["Tables"]["comments"]["Insert"];
   type commentUpdate = Database["public"]["Tables"]["comments"]["Update"];
-  type commentsAndProfiles = {
+  type commentAndProfile = {
     comment: string | null;
     created_at: string;
     dislike_count: number | null;
@@ -14,6 +14,7 @@ declare global {
     profile_id: number | null;
     sub_comment_id: number | null;
     user_id: string | null;
+    profiles: { username: string };
   };
 
   type post = Database["public"]["Tables"]["posts"]["Row"];
