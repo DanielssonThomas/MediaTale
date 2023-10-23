@@ -1,5 +1,5 @@
 import Navigation from "@/components/Navigation/Navigation";
-import BackBtn from "@/components/General/BackBtn/page";
+import BackBtn from "@/components/General/BackBtn/BackBtn";
 
 const ProfileNotFound = () => {
   return (

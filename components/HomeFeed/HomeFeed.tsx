@@ -6,10 +6,11 @@ type HomeFeedProps = {
 };
 
 const HomeFeed = ({ posts, postsStatistics }: HomeFeedProps) => {
-  if (posts === null) {
+  console.log("The posts: ", posts);
+  if (posts?.length !== 1) {
     return (
-      <div>
-        <h2>No posts here yet!</h2>
+      <div className="flex flex-col justify-center items-center w-full text-center p-4 gap-8">
+        <h2 className="text-3xl">No posts here yet!</h2>
         <p>Unfortunently there has not been a new post, be the first!</p>
       </div>
     );
@@ -21,11 +22,14 @@ const HomeFeed = ({ posts, postsStatistics }: HomeFeedProps) => {
     );
   };
 
-  console.log(postsStatistics);
   return (
     <div className="flex flex-col gap-4 w-full p-6">
       {posts.map((post) => (
-        <Preview post={post} postStatistics={getStatistic(post.id)} />
+        <Preview
+          key={post.id}
+          post={post}
+          postStatistics={getStatistic(post.id)}
+        />
       ))}
     </div>
   );

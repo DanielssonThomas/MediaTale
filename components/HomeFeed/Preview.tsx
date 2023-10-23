@@ -6,7 +6,6 @@ type PreviewProps = {
 };
 
 const Preview = ({ post, postStatistics }: PreviewProps) => {
-  console.log(postStatistics);
   return (
     <Link
       href={`/post/${post.id}`}
@@ -30,14 +29,14 @@ const Preview = ({ post, postStatistics }: PreviewProps) => {
       ) : (
         <></>
       )}
-      <div>
-        <p>
+      <div className="flex w-full justify-between">
+        <p className="w-full border-solid border-black dark:border-white border-r-[1px] px-1">
           Likes:
           {postStatistics?.like_count}
         </p>
-        <p>
-          Dislikes:
-          {postStatistics?.dislike_count}
+        <p className="w-full px-1">
+          Views:
+          {postStatistics?.view_count}
         </p>
       </div>
     </Link>

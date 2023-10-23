@@ -1,6 +1,6 @@
 import Contents from "./Contents/Contents";
 import Comments from "./Comments/Comments";
-import BackBtn from "../General/BackBtn/page";
+import BackBtn from "../General/BackBtn/BackBtn";
 
 type PostProps = {
   authorStatistics: profile | null;

@@ -3,7 +3,7 @@ import MTLogo from "@/public/icons/MediaTale";
 import Link from "next/link";
 import Image from "next/image";
 import NavMenu from "./NavMenu/NavMenu";
-import BackBtn from "../General/BackBtn/page";
+import BackBtn from "../General/BackBtn/BackBtn";
 import { useState } from "react";
 
 type NavProps = {

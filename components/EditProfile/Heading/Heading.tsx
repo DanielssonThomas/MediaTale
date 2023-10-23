@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import BackBtn from "@/components/General/BackBtn/page";
+import BackBtn from "@/components/General/BackBtn/BackBtn";
 
 type HeadingProps = {
   username: string | null | undefined;
