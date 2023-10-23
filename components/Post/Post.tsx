@@ -23,7 +23,7 @@ const Post = ({
         postStatistics={postStatistics}
         post={post}
       />
-      <Comments />
+      <Comments comments={comments} />
     </div>
   );
 };

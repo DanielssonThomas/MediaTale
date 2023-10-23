@@ -12,10 +12,10 @@ export const Body = ({ post, postStatistics }: BodyProps) => {
       <article className="border-solid border-b-[1px] border-black dark:border-white p-4">
         {post?.text_content}
       </article>
-      <div className="flex  justify-center border-solid border-b-[1px] border-black dark:border-white w-full h-[5rem]">
-        <div className="flex items-center w-full border-r-[1px] border-solid border-black dark:border-white">
+      <div className="flex  justify-center border-solid border-b-[1px] border-black dark:border-white w-full h-[3rem]">
+        <div className="flex justify-between items-center w-full border-r-[1px] border-solid border-black dark:border-white">
           <div className="flex w-32 p-4">{postStatistics?.like_count}</div>
-          <div className="w-[24px] h-[24px]">
+          <div className="w-[24px] h-[24px] mr-4">
             <LikeIcon />
           </div>
         </div>

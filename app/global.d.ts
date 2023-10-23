@@ -4,6 +4,17 @@ declare global {
   type comment = Database["public"]["Tables"]["comments"]["Row"];
   type commentInsert = Database["public"]["Tables"]["comments"]["Insert"];
   type commentUpdate = Database["public"]["Tables"]["comments"]["Update"];
+  type commentsAndProfiles = {
+    comment: string | null;
+    created_at: string;
+    dislike_count: number | null;
+    id: number;
+    like_count: number | null;
+    post_id: number | null;
+    profile_id: number | null;
+    sub_comment_id: number | null;
+    user_id: string | null;
+  };
 
   type post = Database["public"]["Tables"]["posts"]["Row"];
   type postInsert = Database["public"]["Tables"]["posts"]["Insert"];

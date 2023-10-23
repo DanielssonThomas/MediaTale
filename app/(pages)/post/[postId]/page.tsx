@@ -4,7 +4,7 @@ import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
 type PostProps = {
-  params: { postId: string };
+  params: { postId: number };
 };
 
 const PostPage = async ({ params: { postId } }: PostProps) => {
@@ -13,6 +13,7 @@ const PostPage = async ({ params: { postId } }: PostProps) => {
   const { data: post }: { data: post | null } = await supabase
     .from("posts")
     .select("*")
+    .match({ id: postId })
     .single();
 
   const { data: profile }: { data: profile | null } = await supabase
@@ -28,11 +29,22 @@ const PostPage = async ({ params: { postId } }: PostProps) => {
       .match({ post_id: postId })
       .single();
 
-  const { data: comments }: { data: comment[] | null } = await supabase
+  const { data, error } = await supabase
     .from("comments")
-    .select("*")
-    .match({ post_id: postId });
+    .select("*, profiles(username)")
+    .match({ post_id: postId })
+    .order("like_count", { ascending: false });
 
+  console.log("The post data:", data);
+  console.log("The post error:", error);
+
+  //   const { data, error } = await supabase.rpc("increment", { id: postId });
+  //   if (error) {
+  //     console.log("Error on increment: ", error);
+  //   }
+  //   if (data) {
+  //     console.log("THE FUCKIN DATA: ", data);
+  //   }
   return (
     <div className="bg-white dark:bg-black min-h-[100vh]">
       <Navigation isLoggedIn={true} />
@@ -40,7 +52,7 @@ const PostPage = async ({ params: { postId } }: PostProps) => {
         authorStatistics={profile}
         post={post}
         postStatistics={postStatistics}
-        comments={comments}
+        comments={data}
       />
     </div>
   );

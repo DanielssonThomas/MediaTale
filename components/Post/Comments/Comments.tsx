@@ -1,4 +1,8 @@
-const Comments = () => {
+type CommentsProps = {
+  comments: comment[] | null;
+};
+
+const Comments = ({ comments }: CommentsProps) => {
   return <></>;
 };
 
