@@ -6,7 +6,6 @@ type HomeFeedProps = {
 };
 
 const HomeFeed = ({ posts, postsStatistics }: HomeFeedProps) => {
-  console.log("The posts: ", posts);
   if (posts?.length !== 1) {
     return (
       <div className="flex flex-col justify-center items-center w-full text-center p-4 gap-8">

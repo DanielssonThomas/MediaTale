@@ -2,9 +2,24 @@ import LogoutButton from "@/components/LogoutButton";
 import HomeFeed from "@/components/HomeFeed/HomeFeed";
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
 
 const Home = async () => {
   const supabase = createServerActionClient({ cookies });
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser();
+
+  const { data: profile }: { data: profile | null } = await supabase
+    .from("profiles")
+    .select("*")
+    .match({ user_id: user?.id })
+    .single();
+
+  if (profile === null) {
+    redirect("/profile/setup");
+  }
 
   const { data: posts }: { data: post[] | null } = await supabase
     .from("posts")
