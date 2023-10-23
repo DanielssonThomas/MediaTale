@@ -66,6 +66,7 @@ export interface Database {
           id: number
           like_count: number | null
           post_id: number | null
+          profile_id: number | null
           sub_comment_id: number | null
           user_id: string | null
         }
@@ -76,6 +77,7 @@ export interface Database {
           id?: number
           like_count?: number | null
           post_id?: number | null
+          profile_id?: number | null
           sub_comment_id?: number | null
           user_id?: string | null
         }
@@ -86,6 +88,7 @@ export interface Database {
           id?: number
           like_count?: number | null
           post_id?: number | null
+          profile_id?: number | null
           sub_comment_id?: number | null
           user_id?: string | null
         }
@@ -94,6 +97,12 @@ export interface Database {
             foreignKeyName: "comments_post_id_fkey"
             columns: ["post_id"]
             referencedRelation: "posts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "comments_profile_id_fkey"
+            columns: ["profile_id"]
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
           {
@@ -139,6 +148,12 @@ export interface Database {
           video?: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "posts_created_by_username_fkey"
+            columns: ["created_by_username"]
+            referencedRelation: "profiles"
+            referencedColumns: ["username"]
+          },
           {
             foreignKeyName: "posts_created_by_uuid_fkey"
             columns: ["created_by_uuid"]
@@ -262,7 +277,12 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      increment: {
+        Args: {
+          id: number
+        }
+        Returns: undefined
+      }
     }
     Enums: {
       [_ in never]: never
