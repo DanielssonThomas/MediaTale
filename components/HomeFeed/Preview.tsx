@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import LikeIcon from "@/public/icons/Like";
 type PreviewProps = {
   postStatistics: postStatistic | undefined;
   post: post;
@@ -29,11 +30,14 @@ const Preview = ({ post, postStatistics }: PreviewProps) => {
       ) : (
         <></>
       )}
-      <div className="flex w-full justify-between">
-        <p className="w-full border-solid border-black dark:border-white border-r-[1px] px-1">
-          Likes:
-          {postStatistics?.like_count}
-        </p>
+      <div className="flex w-full justify-between items-center h-[1.5rem]">
+        <div className="flex justify-between items-center w-full border-solid border-black dark:border-white border-r-[1px] px-1">
+          <p>
+            Likes:
+            {postStatistics?.like_count}
+          </p>
+          <LikeIcon />
+        </div>
         <p className="w-full px-1">
           Views:
           {postStatistics?.view_count}

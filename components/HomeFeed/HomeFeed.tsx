@@ -1,4 +1,5 @@
 import Preview from "./Preview";
+import LikeIcon from "@/public/icons/Like";
 
 type HomeFeedProps = {
   postsStatistics: postStatistic[] | null;
