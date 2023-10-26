@@ -1,12 +1,22 @@
 import Image from "next/image";
 
 type CreateCommentProps = {
+  authorStatistics: profile | null;
+  post: post | null;
   image?: string;
 };
 
-export const CreateComment = ({ image }: CreateCommentProps) => {
+export const CreateComment = ({
+  authorStatistics,
+  post,
+  image,
+}: CreateCommentProps) => {
   return (
-    <form className="flex justify-between items-center border-solid border-black dark:border-white border-b-[1px] w-full p-4 ">
+    <form
+      action={`/api/comments/create-comment`}
+      method="POST"
+      className="flex justify-between items-center border-solid border-black dark:border-white border-b-[1px] w-full p-4 "
+    >
       <div className="relative overflow-hidden rounded-full w-[32px] h-[32px]">
         <Image
           alt="your avatar"
@@ -14,6 +24,8 @@ export const CreateComment = ({ image }: CreateCommentProps) => {
           fill={true}
         />
       </div>
+      <input type="hidden" name="profile_id" value={authorStatistics?.id} />
+      <input type="hidden" name="post_id" value={post?.id} />
       <input
         type="text"
         name="comment"
