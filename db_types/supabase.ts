@@ -58,6 +58,37 @@ export interface Database {
           }
         ]
       }
+      comment_like: {
+        Row: {
+          comment_id: number | null
+          id: number
+          profile_id: number | null
+        }
+        Insert: {
+          comment_id?: number | null
+          id?: number
+          profile_id?: number | null
+        }
+        Update: {
+          comment_id?: number | null
+          id?: number
+          profile_id?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "comment_like_comment_id_fkey"
+            columns: ["comment_id"]
+            referencedRelation: "comments"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "comment_like_profile_id_fkey"
+            columns: ["profile_id"]
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       comments: {
         Row: {
           comment: string | null
@@ -109,6 +140,37 @@ export interface Database {
             foreignKeyName: "comments_user_id_fkey"
             columns: ["user_id"]
             referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      post_like: {
+        Row: {
+          id: number
+          post_id: number | null
+          profile_id: number | null
+        }
+        Insert: {
+          id?: number
+          post_id?: number | null
+          profile_id?: number | null
+        }
+        Update: {
+          id?: number
+          post_id?: number | null
+          profile_id?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "post_like_post_id_fkey"
+            columns: ["post_id"]
+            referencedRelation: "posts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "post_like_profile_id_fkey"
+            columns: ["profile_id"]
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           }
         ]
