@@ -1,4 +1,4 @@
-import Navigation from "@/components/Navigation/Navigation";
+import Navigation from "@/components/Navigation";
 import Post from "@/components/Post/Post";
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";

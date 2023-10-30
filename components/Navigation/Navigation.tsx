@@ -2,7 +2,7 @@
 import MTLogo from "@/public/icons/MediaTale";
 import Link from "next/link";
 import Image from "next/image";
-import NavMenu from "./NavMenu/NavMenu";
+import NavMenu from "./NavMenu";
 import BackBtn from "../General/BackBtn/BackBtn";
 import { useState } from "react";
 
@@ -12,7 +12,7 @@ type NavProps = {
   profileImage?: string;
 };
 
-const Navigation = ({ isLoggedIn, path, profileImage }: NavProps) => {
+export const Navigation = ({ isLoggedIn, path, profileImage }: NavProps) => {
   const [navMenuActive, setNavMenuActive] = useState<boolean>(false);
   return (
     <div className="flex flex-col border-solid border-b-2 border-black dark:border-white w-full h-[60px] relative text-black dark:text-white">
@@ -64,5 +64,3 @@ const Navigation = ({ isLoggedIn, path, profileImage }: NavProps) => {
     </div>
   );
 };
-
-export default Navigation;

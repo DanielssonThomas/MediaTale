@@ -1,4 +1,4 @@
-import Navigation from "@/components/Navigation/Navigation";
+import Navigation from "@/components/Navigation";
 import ProfileHeading from "@/components/Profile/Heading/Heading";
 import Details from "@/components/Profile/Details/Details";
 import { redirect } from "next/navigation";

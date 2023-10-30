@@ -1,4 +1,4 @@
-import Navigation from "@/components/Navigation/Navigation";
+import Navigation from "@/components/Navigation";
 import ProfileHeading from "@/components/Profile/Heading/Heading";
 import ProfileDetails from "@/components/Profile/Details/Details";
 import IsSignedIn from "@/app/utils/auth/isSignedIn";

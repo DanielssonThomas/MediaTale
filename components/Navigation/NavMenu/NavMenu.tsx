@@ -5,7 +5,7 @@ type NavMenuProps = {
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-const NavMenu = ({ active, setActive }: NavMenuProps) => {
+export const NavMenu = ({ active, setActive }: NavMenuProps) => {
   return (
     <div
       className={`absolute w-full h-[100vh] bg-black text-white
@@ -27,5 +27,3 @@ const NavMenu = ({ active, setActive }: NavMenuProps) => {
     </div>
   );
 };
-
-export default NavMenu;
