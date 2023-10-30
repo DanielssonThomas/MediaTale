@@ -1,15 +1,19 @@
 import React from "react";
 
-function Dislike() {
+type DislikeIconProps = {
+  disliked?: boolean;
+};
+
+const DislikeIcon = ({ disliked }: DislikeIconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={24}
-      height={24}
-      viewBox="0 0 24 24"
+      width={32}
+      height={32}
+      viewBox="0 0 260 260"
     >
       <g
-        className="fill-black dark:fill-white w-full"
+        fill={`${disliked ? "#f10808" : "#000"}`}
         strokeMiterlimit="10"
         strokeWidth="0"
       >
@@ -24,6 +28,6 @@ function Dislike() {
       </g>
     </svg>
   );
-}
+};
 
-export default Dislike;
+export default DislikeIcon;
