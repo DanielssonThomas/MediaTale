@@ -1,6 +1,7 @@
 import Contents from "./Contents/Contents";
 import Comments from "./Comments/Comments";
 import BackBtn from "../General/BackBtn/BackBtn";
+import CreateComment from "./CreateComment";
 
 type PostProps = {
   authorStatistics: profile | null;
@@ -23,6 +24,7 @@ const Post = ({
         postStatistics={postStatistics}
         post={post}
       />
+      <CreateComment post={post} authorStatistics={authorStatistics} />
       <Comments comments={comments} />
     </div>
   );
