@@ -1,10 +1,10 @@
 import Link from "next/link";
-import Nav from "@/components/Navigation/Navigation";
+import Navigation from "@/components/Navigation";
 
 export default function Login() {
   return (
     <div className="bg-white dark:bg-black w-screen h-screen">
-      <Nav isLoggedIn={false} path="/login" />
+      <Navigation isLoggedIn={false} path="/login" />
       <div className="flex flex-col justify-center items-center w-full h-full">
         <section className="flex flex-col justify-center items-center w-[20rem] h-full">
           <form
