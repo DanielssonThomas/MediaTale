@@ -4,7 +4,7 @@ declare global {
   type comment = Database["public"]["Tables"]["comments"]["Row"];
   type commentInsert = Database["public"]["Tables"]["comments"]["Insert"];
   type commentUpdate = Database["public"]["Tables"]["comments"]["Update"];
-  type commentAndProfile = {
+  type commentData = {
     comment: string | null;
     created_at: string;
     dislike_count: number | null;
@@ -15,11 +15,30 @@ declare global {
     sub_comment_id: number | null;
     user_id: string | null;
     profiles: { username: string };
+    comment_event: { like: boolean; dislike: boolean };
   };
+
+  type commentEvent = Database["public"]["Tables"]["comment_event"]["Row"];
 
   type post = Database["public"]["Tables"]["posts"]["Row"];
   type postInsert = Database["public"]["Tables"]["posts"]["Insert"];
   type postUpdate = Database["public"]["Tables"]["posts"]["Update"];
+
+  type postWithEvent = {
+    created_at: string;
+    created_by_username: string | null;
+    created_by_uuid: string | null;
+    description: string | null;
+    id: number;
+    image: string | null;
+    text_content: string | null;
+    title: string | null;
+    video: string | null;
+    post_event: {
+      dislike: boolean | null;
+      like: boolean | null;
+    };
+  };
 
   type postStatistic = Database["public"]["Tables"]["posts_statistics"]["Row"];
   type postStatisticUpdate =

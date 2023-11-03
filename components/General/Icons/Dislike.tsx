@@ -1,7 +1,7 @@
 import React from "react";
 
 type DislikeIconProps = {
-  disliked?: boolean;
+  disliked?: boolean | null;
 };
 
 const DislikeIcon = ({ disliked }: DislikeIconProps) => {

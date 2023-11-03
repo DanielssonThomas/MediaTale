@@ -58,31 +58,37 @@ export interface Database {
           }
         ]
       }
-      comment_like: {
+      comment_event: {
         Row: {
           comment_id: number | null
+          dislike: boolean | null
           id: number
+          like: boolean | null
           profile_id: number | null
         }
         Insert: {
           comment_id?: number | null
+          dislike?: boolean | null
           id?: number
+          like?: boolean | null
           profile_id?: number | null
         }
         Update: {
           comment_id?: number | null
+          dislike?: boolean | null
           id?: number
+          like?: boolean | null
           profile_id?: number | null
         }
         Relationships: [
           {
-            foreignKeyName: "comment_like_comment_id_fkey"
+            foreignKeyName: "comment_event_comment_id_fkey"
             columns: ["comment_id"]
             referencedRelation: "comments"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "comment_like_profile_id_fkey"
+            foreignKeyName: "comment_event_profile_id_fkey"
             columns: ["profile_id"]
             referencedRelation: "profiles"
             referencedColumns: ["id"]
@@ -144,31 +150,37 @@ export interface Database {
           }
         ]
       }
-      post_like: {
+      post_event: {
         Row: {
+          dislike: boolean | null
           id: number
+          like: boolean | null
           post_id: number | null
           profile_id: number | null
         }
         Insert: {
+          dislike?: boolean | null
           id?: number
+          like?: boolean | null
           post_id?: number | null
           profile_id?: number | null
         }
         Update: {
+          dislike?: boolean | null
           id?: number
+          like?: boolean | null
           post_id?: number | null
           profile_id?: number | null
         }
         Relationships: [
           {
-            foreignKeyName: "post_like_post_id_fkey"
+            foreignKeyName: "post_event_post_id_fkey"
             columns: ["post_id"]
             referencedRelation: "posts"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "post_like_profile_id_fkey"
+            foreignKeyName: "post_event_profile_id_fkey"
             columns: ["profile_id"]
             referencedRelation: "profiles"
             referencedColumns: ["id"]

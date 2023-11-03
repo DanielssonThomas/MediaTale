@@ -1,4 +1,3 @@
-import LogoutButton from "@/components/LogoutButton";
 import HomeFeed from "@/components/HomeFeed/HomeFeed";
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
@@ -6,6 +5,7 @@ import { redirect } from "next/navigation";
 
 const Home = async () => {
   const supabase = createServerActionClient({ cookies });
+
   const {
     data: { user },
     error,
@@ -21,9 +21,9 @@ const Home = async () => {
     redirect("/profile/setup");
   }
 
-  const { data: posts }: { data: post[] | null } = await supabase
+  const { data: posts }: { data: postWithEvent[] | null } = await supabase
     .from("posts")
-    .select("*");
+    .select("*, post_event(dislike, like)");
 
   const { data: postsStatistics }: { data: postStatistic[] | null } =
     await supabase.from("posts_statistics").select("*");
