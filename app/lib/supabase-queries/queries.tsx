@@ -1,6 +1,6 @@
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
-
+export const dynamic = "force-dynamic";
 const supabase = createServerActionClient({ cookies });
 
 type getProfileByIDProps = {

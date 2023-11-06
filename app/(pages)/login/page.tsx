@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Navigation from "@/components/Navigation";
-
+export const dynamic = "force-dynamic";
 export default function Login() {
   return (
     <div className="bg-white dark:bg-black w-screen h-screen">

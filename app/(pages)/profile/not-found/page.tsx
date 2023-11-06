@@ -1,7 +1,7 @@
 import Navigation from "@/components/Navigation";
 import BackBtn from "@/components/General/BackBtn/BackBtn";
 import IsSignedIn from "@/app/utils/auth/isSignedIn";
-
+export const dynamic = "force-dynamic";
 const ProfileNotFound = async () => {
   const signedInStatus = await IsSignedIn();
   return (

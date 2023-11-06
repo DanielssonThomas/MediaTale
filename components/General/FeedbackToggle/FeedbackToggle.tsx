@@ -7,7 +7,7 @@ type FeedbackToggleProps = {
   post?: boolean;
   liked?: boolean;
   disliked?: boolean;
-  id: number;
+  id?: number;
 };
 
 export const FeedbackToggle = ({
@@ -16,8 +16,8 @@ export const FeedbackToggle = ({
   disliked,
   id,
 }: FeedbackToggleProps) => {
-  const handleLike = () => {};
-  const handleDislike = () => {};
+  const handleLike = async () => {};
+  const handleDislike = async () => {};
   return liked || disliked ? (
     <div className="flex justify-center items-center">
       {liked ? <LikeIcon /> : <DislikeIcon />}
