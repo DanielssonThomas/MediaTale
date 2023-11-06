@@ -6,14 +6,14 @@ import EditProfile from "@/components/EditProfile/EditProfile";
 import { redirect } from "next/navigation";
 import {
   getSignedInUser,
-  getProfileByID,
+  getProfileById,
 } from "@/app/lib/supabase-queries/queries";
 
 export const dynamic = "force-dynamic";
 const ProfileEdit = async () => {
   const userStatus = await IsSignedIn();
   const user = await getSignedInUser();
-  const profile = await getProfileByID({ user_id: user ? user.id : "" });
+  const profile = await getProfileById({ user_id: user ? user.id : "" });
 
   if (profile) {
     return (
