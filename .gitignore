@@ -5,6 +5,7 @@
 
 # testing
 /coverage
+/app/(routes)/api/dev
 
 # next.js
 /.next/
