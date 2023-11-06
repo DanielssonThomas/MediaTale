@@ -11,6 +11,7 @@ const LikeIcon = ({ Liked }: LikeIconProps) => {
       width={32}
       height={32}
       viewBox="0 0 90 90"
+      className="cursor-pointer"
     >
       <g
         fill={`${Liked ? "#f10808" : "#000"}`}

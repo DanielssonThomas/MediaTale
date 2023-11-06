@@ -1,5 +1,5 @@
-import LikeIcon from "@/public/icons/Like";
-import Dislike from "@/public/icons/Dislike";
+import Heart from "@/components/General/Icons/Heart";
+import FeedbackToggle from "@/components/General/FeedbackToggle";
 type BodyProps = {
   post: post | null;
   postStatistics: postStatistic | null;
@@ -9,7 +9,7 @@ export const Body = ({ post, postStatistics }: BodyProps) => {
   const createdAt = postStatistics?.created_at.split("T")[0];
   return (
     <div className="flex flex-col justify-center items-center w-full">
-      <article className="border-solid border-b-[1px] border-black dark:border-white p-4 min-h-[8rem]">
+      <article className="border-solid border-b-[1px] border-black dark:border-white p-4 min-h-[8rem] w-full">
         {post?.text_content}
       </article>
       <div className="flex justify-center border-solid border-b-[1px] border-black dark:border-white w-full h-[4rem]">
@@ -18,7 +18,7 @@ export const Body = ({ post, postStatistics }: BodyProps) => {
           <div className="flex justify-between">
             <p>{postStatistics?.like_count}</p>
             <div className="flex justify-center items-center w-[24px] h-[24px] ">
-              <LikeIcon />
+              <Heart />
             </div>
           </div>
         </div>
@@ -33,10 +33,7 @@ export const Body = ({ post, postStatistics }: BodyProps) => {
       </div>
       <div className="flex justify-between items-center w-full p-[0.5rem] border-b-[1px] border-solid border-black dark:border-white">
         <p>Did you like or dislike this post? </p>
-        <div className="flex gap-2">
-          <LikeIcon />
-          <Dislike />
-        </div>
+        <FeedbackToggle />
       </div>
     </div>
   );

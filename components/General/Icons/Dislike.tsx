@@ -11,6 +11,7 @@ const DislikeIcon = ({ disliked }: DislikeIconProps) => {
       width={32}
       height={32}
       viewBox="0 0 260 260"
+      className="cursor-pointer"
     >
       <g
         fill={`${disliked ? "#f10808" : "#000"}`}
