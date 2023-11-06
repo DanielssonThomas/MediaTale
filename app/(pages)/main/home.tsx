@@ -1,7 +1,7 @@
 import HomeFeed from "@/components/HomeFeed/HomeFeed";
 import { redirect } from "next/navigation";
 import {
-  getProfileByID,
+  getProfileById,
   getPostsWithEvents,
   getPostsStatistics,
   getSignedInUser,
@@ -10,7 +10,7 @@ import {
 const Home = async () => {
   const posts = await getPostsWithEvents({ limit: 10 });
   const user = await getSignedInUser();
-  const profile = await getProfileByID({
+  const profile = await getProfileById({
     user_id: user !== null ? user.id : "",
   });
 
