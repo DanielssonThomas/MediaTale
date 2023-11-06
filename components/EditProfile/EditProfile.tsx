@@ -4,25 +4,25 @@ import EditProfileDetails from "./Details/Details";
 import { FormEvent } from "react";
 
 type EditProfileProps = {
-  userProfile: profile;
+  profile: profile;
 };
 
-const EditProfile = ({ userProfile }: EditProfileProps) => {
+const EditProfile = ({ profile }: EditProfileProps) => {
   return (
     <form action={"/auth/edit-profile"} method="POST">
       <EditProfileHeading
-        followers={userProfile?.followers}
-        following={userProfile?.following}
-        username={userProfile?.username}
+        followers={profile?.followers}
+        following={profile?.following}
+        username={profile?.username}
         PFImage=""
       />
       <EditProfileDetails
-        about={userProfile?.about}
-        contact_email={userProfile?.contact_email}
-        country={userProfile?.country}
-        created_at={userProfile?.created_at}
-        first_name={userProfile?.first_name}
-        last_name={userProfile?.last_name}
+        about={profile?.about}
+        contact_email={profile?.contact_email}
+        country={profile?.country}
+        created_at={profile?.created_at}
+        first_name={profile?.first_name}
+        last_name={profile?.last_name}
       />
       <div className="flex justify-center items-center">
         <button

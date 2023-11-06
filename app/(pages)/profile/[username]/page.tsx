@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import IsSignedIn from "@/app/utils/auth/isSignedIn";
+import { getProfileByUsername } from "@/app/lib/supabase-queries/queries";
 
 export const dynamic = "force-dynamic";
 type ProfileProps = {
@@ -12,38 +13,32 @@ type ProfileProps = {
 };
 
 const Profile = async ({ params: { username } }: ProfileProps) => {
-  const supabase = createServerActionClient({ cookies });
+  const profile = await getProfileByUsername({ username: username });
 
-  const fetchUser: { data: profile[] | null } = await supabase
-    .from("profiles")
-    .select("*")
-    .match({ username: username });
-
-  if (fetchUser.data?.length === 0 || fetchUser.data === null) {
+  if (profile === null) {
     return redirect("/profile/not-found");
   }
-
-  const userData = fetchUser.data[0];
 
   const isSignedIn = await IsSignedIn();
 
   return (
     <div className="bg-white dark:bg-black min-h-[100vh]">
       <Navigation isLoggedIn={isSignedIn} />
+
       <ProfileHeading
-        followers={userData.followers}
-        following={userData.following}
-        username={userData.username}
+        followers={profile.followers}
+        following={profile.following}
+        username={profile.username}
         PFImage=""
         signedIn={isSignedIn}
       />
       <Details
-        about={userData.about}
-        contact_email={userData.contact_email}
-        country={userData.country}
-        created_at={userData.created_at}
-        first_name={userData.first_name}
-        last_name={userData.last_name}
+        about={profile.about}
+        contact_email={profile.contact_email}
+        country={profile.country}
+        created_at={profile.created_at}
+        first_name={profile.first_name}
+        last_name={profile.last_name}
       />
     </div>
   );

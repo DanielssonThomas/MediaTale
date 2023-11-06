@@ -1,19 +1,15 @@
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+import IsSignedIn from "@/app/utils/auth/isSignedIn";
 
 export const dynamic = "force-dynamic";
 
 const SetupProfile = async () => {
-  const supabase = createServerComponentClient({ cookies });
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  if (session === null) {
-    redirect("/");
+  const signedIn = await IsSignedIn();
+  if (!signedIn) {
+    redirect("/profile/not-found");
   }
-
   return (
     <div className="bg-white dark:bg-black w-full h-screen">
       <div className="flex flex-col justify-center items-center h-[10vh]">

@@ -4,27 +4,22 @@ import { cookies } from "next/headers";
 import IsSignedIn from "@/app/utils/auth/isSignedIn";
 import EditProfile from "@/components/EditProfile/EditProfile";
 import { redirect } from "next/navigation";
+import {
+  getSignedInUser,
+  getProfileByID,
+} from "@/app/lib/supabase-queries/queries";
+
 export const dynamic = "force-dynamic";
 const ProfileEdit = async () => {
-  const supabase = createServerActionClient({ cookies });
   const userStatus = await IsSignedIn();
+  const user = await getSignedInUser();
+  const profile = await getProfileByID({ user_id: user ? user.id : "" });
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  const userProfileData: { data: profile[] | null } = await supabase
-    .from("profiles")
-    .select("*")
-    .match({ user_id: user?.id });
-
-  if (userProfileData.data) {
-    const userProfile: profile = userProfileData.data[0];
-
+  if (profile) {
     return (
       <div className="bg-white dark:bg-black min-h-[100vh] ">
         <Navigation isLoggedIn={userStatus} />
-        <EditProfile userProfile={userProfile} />
+        <EditProfile profile={profile} />
       </div>
     );
   }

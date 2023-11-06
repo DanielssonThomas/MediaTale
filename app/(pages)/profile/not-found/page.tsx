@@ -1,14 +1,16 @@
 import Navigation from "@/components/Navigation";
 import BackBtn from "@/components/General/BackBtn/BackBtn";
+import IsSignedIn from "@/app/utils/auth/isSignedIn";
 
-const ProfileNotFound = () => {
+const ProfileNotFound = async () => {
+  const signedInStatus = await IsSignedIn();
   return (
     <div className="bg-white dark:bg-black min-h-[100vh]">
-      <Navigation isLoggedIn={false} />
-      <BackBtn />
+      <Navigation isLoggedIn={signedInStatus} />
 
-      <div className="flex flex-col justify-center items-center w-full">
-        <section className="flex flex-col gap-8 text-center p-8">
+      <div className="relative flex flex-col justify-center items-center w-full">
+        <BackBtn />
+        <section className="flex flex-col gap-8 text-center p-12">
           <h2 className="text-4xl">No profile was found!</h2>
           <div>
             <i className="pb-2">
