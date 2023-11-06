@@ -17,8 +17,8 @@ export const NavMenu = ({ active, setActive }: NavMenuProps) => {
           Create post
         </Link>
         <Link href={"/profile"}>Your profile</Link>
-        <Link href={"/About"}>About</Link>
-        <Link href={"/Settings"}>Settings</Link>
+        <Link href={"/about"}>About</Link>
+        <Link href={"/settings"}>Settings</Link>
 
         <form action="/auth/sign-out" method="post">
           <button>Logout</button>
