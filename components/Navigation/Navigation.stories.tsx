@@ -11,9 +11,3 @@ const meta: Meta<typeof Navigation> = {
 };
 
 export default meta;
-
-export const Button: StoryObj<typeof Navigation> = {
-  args: {
-    isLoggedIn: false,
-  },
-};
