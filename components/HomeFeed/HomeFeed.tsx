@@ -1,9 +1,9 @@
 import Preview from "./Preview";
-import LikeIcon from "@/public/icons/Like";
+import LikeIcon from "@/components/General/Icons/Like";
 
 type HomeFeedProps = {
   postsStatistics: postStatistic[] | null;
-  posts: post[] | null;
+  posts: postWithEvent[] | null;
 };
 
 const HomeFeed = ({ posts, postsStatistics }: HomeFeedProps) => {
@@ -27,6 +27,7 @@ const HomeFeed = ({ posts, postsStatistics }: HomeFeedProps) => {
       {posts.map((post) => (
         <Preview
           key={post.id}
+          postLiked={post.post_event.like}
           post={post}
           postStatistics={getStatistic(post.id)}
         />

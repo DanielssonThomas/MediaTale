@@ -1,12 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import LikeIcon from "@/public/icons/Like";
+import Heart from "@/components/General/Icons/Heart";
 type PreviewProps = {
   postStatistics: postStatistic | undefined;
-  post: post;
+  post: postWithEvent;
+  postLiked: boolean | null;
 };
 
-const Preview = ({ post, postStatistics }: PreviewProps) => {
+const Preview = ({ post, postStatistics, postLiked }: PreviewProps) => {
   return (
     <Link
       href={`/post/${post.id}`}
@@ -36,7 +37,7 @@ const Preview = ({ post, postStatistics }: PreviewProps) => {
             Likes:
             {postStatistics?.like_count}
           </p>
-          <LikeIcon />
+          <Heart />
         </div>
         <p className="w-full px-1">
           Views:

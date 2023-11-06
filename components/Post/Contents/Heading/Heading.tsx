@@ -1,5 +1,5 @@
-import DislikeIcon from "@/public/icons/Dislike";
-import LikeIcon from "@/public/icons/Like";
+import DislikeIcon from "@/components/General/Icons/Dislike";
+import LikeIcon from "@/components/General/Icons/Like";
 import Image from "next/image";
 import Link from "next/link";
 

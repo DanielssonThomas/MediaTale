@@ -24,6 +24,13 @@ declare global {
   type postInsert = Database["public"]["Tables"]["posts"]["Insert"];
   type postUpdate = Database["public"]["Tables"]["posts"]["Update"];
 
+  type prototypePost = {
+    post: Database["public"]["Tables"]["posts"]["Row"];
+    postStatistics: Database["public"]["Tables"]["posts_statistics"]["Row"];
+    comments: Database["public"]["Tables"]["comments"]["Row"];
+    likeCount: number;
+  };
+
   type postWithEvent = {
     created_at: string;
     created_by_username: string | null;

@@ -7,7 +7,7 @@ type PostProps = {
   authorStatistics: profile | null;
   post: post | null;
   postStatistics: postStatistic | null;
-  comments: commentAndProfile[] | null;
+  comments: commentData[] | null;
 };
 
 const Post = ({

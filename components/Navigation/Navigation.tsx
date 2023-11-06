@@ -1,5 +1,5 @@
 "use client";
-import MTLogo from "@/public/icons/MediaTale";
+import MTLogo from "@/components/General/Icons/MediaTale";
 import Link from "next/link";
 import Image from "next/image";
 import NavMenu from "./NavMenu";

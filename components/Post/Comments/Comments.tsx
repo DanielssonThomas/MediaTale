@@ -1,7 +1,7 @@
 import { Comment } from "./Comment/Comment";
 
 type CommentsProps = {
-  comments: commentAndProfile[] | null;
+  comments: commentData[] | null;
 };
 
 const Comments = ({ comments }: CommentsProps) => {
