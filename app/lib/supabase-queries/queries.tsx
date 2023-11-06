@@ -1,10 +1,11 @@
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 export const dynamic = "force-dynamic";
+
 const supabase = createServerActionClient({ cookies });
 
-type getProfileByIDProps = {
-  user_id: string | null;
+type getProfileByIdProps = {
+  user_id: string | null | undefined;
 };
 
 type getProfileByUsernameProps = {
@@ -15,7 +16,11 @@ type getPostProps = {
   limit: number;
 };
 
-type getCommentsProps = {
+type getPostStatisticsByIdProps = {
+  post_id: number;
+};
+
+type getCommentsByPostIdProps = {
   post_id: number;
 };
 
@@ -26,7 +31,7 @@ export const getSignedInUser = async () => {
   return user;
 };
 
-export const getProfileByID = async ({ user_id }: getProfileByIDProps) => {
+export const getProfileById = async ({ user_id }: getProfileByIdProps) => {
   const { data: profile }: { data: profile | null } = await supabase
     .from("profiles")
     .select("*")
@@ -46,6 +51,15 @@ export const getProfileByUsername = async ({
   return profile;
 };
 
+export const getPostById = async ({ post_id }: { post_id: number }) => {
+  const { data: post }: { data: post | null } = await supabase
+    .from("posts")
+    .select("*")
+    .match({ id: post_id })
+    .single();
+  return post;
+};
+
 export const getPostsWithEvents = async ({ limit }: getPostProps) => {
   const { data: posts }: { data: postWithEvent[] | null } = await supabase
     .from("posts")
@@ -60,11 +74,26 @@ export const getPostsStatistics = async () => {
   return postsStatistics;
 };
 
-export const getComments = async ({ post_id }: getCommentsProps) => {
-  const { data: comments }: { data: comment[] | null } = await supabase
+export const getPostStatisticsById = async ({
+  post_id,
+}: getPostStatisticsByIdProps) => {
+  const { data: postStatistics }: { data: postStatistic | null } =
+    await supabase
+      .from("posts_statistics")
+      .select("*")
+      .match({ post_id: post_id })
+      .single();
+  return postStatistics;
+};
+
+export const getCommentsByPostId = async ({
+  post_id,
+}: getCommentsByPostIdProps) => {
+  const { data: comments }: { data: commentData[] | null } = await supabase
     .from("comments")
-    .select("*")
-    .match({ post_id: post_id });
+    .select("*, profiles(username), comment_event(like, dislike)")
+    .match({ post_id: post_id })
+    .order("like_count", { ascending: false });
 
   return comments;
 };
