@@ -1,6 +1,8 @@
 import { cookies } from "next/headers";
 import ChangePasswordForm from "@/components/Auth/ChangePassword/Form";
+
 export const dynamic = "force-dynamic";
+
 const UpdatePassword = () => {
   const theme = cookies().get("theme");
   return (
@@ -11,3 +13,5 @@ const UpdatePassword = () => {
     </div>
   );
 };
+
+export default UpdatePassword;
