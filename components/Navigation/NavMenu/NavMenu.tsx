@@ -8,8 +8,8 @@ type NavMenuProps = {
 export const NavMenu = ({ active, setActive }: NavMenuProps) => {
   return (
     <div
-      className={`absolute w-full h-[100vh] bg-black text-white
-      ${active ? "right-0" : "right-[-9999px]"} 
+      className={`absolute w-full h-[100vh] transition-all bg-white text-black dark:bg-black dark:text-white
+      ${active ? "right-0" : "right-[-100vw]"} 
       top-0 transition duration-500 border-l-[1px] border-solid border-black dark:border-white z-40`}
     >
       <div className="flex flex-col gap-5 p-[1rem] mt-[60px]">
