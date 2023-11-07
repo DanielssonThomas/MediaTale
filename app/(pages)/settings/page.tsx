@@ -20,7 +20,7 @@ const Settings = async ({
       {searchParams.message && (
         <Alert error={false} text={searchParams.message} />
       )}
-      <div className="w-screen min-h-screen bg-white dark:bg-black">
+      <div className="w-screen min-h-screen bg-white dark:bg-black ">
         <Navigation isLoggedIn={true} />
         <div className="flex flex-col justify-center items-center gap-4">
           <h2 className="text-2xl border-b-[1px] border-solid border-black w-[15rem] dark:border-white text-center p-4">

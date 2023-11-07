@@ -18,7 +18,7 @@ const Post = ({
 }: PostProps) => {
   return (
     <div className="relative">
-      <Button text="Back" type="link" href="/" />
+      <Button text="Back" type="link" href="/" posTopLeft={true} />
       <Contents
         authorStatistics={authorStatistics}
         postStatistics={postStatistics}

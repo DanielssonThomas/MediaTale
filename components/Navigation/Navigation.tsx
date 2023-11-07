@@ -48,8 +48,10 @@ export const Navigation = ({ isLoggedIn, path, profileImage }: NavProps) => {
           <NavMenu active={navMenuActive} setActive={setNavMenuActive} />
         </div>
       ) : (
-        <div className="flex justify-center items-center w-screen h-full relative">
-          {path === "/login" && <Button text="back" type="link" href="/" />}
+        <div className="relative flex justify-center items-center w-screen h-full">
+          {path === "/login" && (
+            <Button text="Back" type="link" href="/" posTopLeft={true} />
+          )}
           <h1 className="text-2xl">MediaTale</h1>
           {path !== "/login" && (
             <Link

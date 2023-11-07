@@ -2,22 +2,31 @@
 import { useState } from "react";
 import Button from "@/components/General/Button";
 
-export const ChangePasswordEmail = async () => {
+export const ChangePasswordEmail = () => {
   const [alertActive, setAlertActive] = useState<boolean>(false);
   return (
     <div>
       <div
         className={`${
-          alertActive && "hidden"
-        }absolute flex flex-col justify-center items-center w-full min-h-screen `}
+          alertActive ? "opacity-100" : "opacity-0"
+        } transition-all duration-300 absolute top-0 left-0 flex flex-col justify-center items-center w-full min-h-screen overflow-hidden`}
       >
         <div
-          className="w-full min-h-screen z-20 bg-black dark:bg-white opacity-30"
+          className={`transition-all duration-300 w-full min-h-screen z-20 bg-black dark:bg-white ${
+            alertActive ? "opacity-30" : "opacity-0"
+          }`}
           onClick={() => setAlertActive(false)}
         ></div>
-        <div className="flex flex-col justify-center items-center w-[15rem] h-[20rem] gap-4 z-30 bg-white dark:bg-black">
-          <h2>An email for password update will be sent</h2>
-          <p>Do you want to change your password</p>
+        <div
+          className={`transition-all duration-700 ${
+            alertActive ? "bottom-[25vh]" : "bottom-[-25rem]"
+          } absolute flex flex-col justify-center items-center w-[20rem] h-[25rem] gap-12 z-30 bg-white dark:bg-black text-center rounded-md`}
+        >
+          <h2 className="text-2xl">We will email you!</h2>
+          <p className="text-sm">
+            To update the password we will send a link where you will be able to
+            change your password once.
+          </p>
           <div className="flex justify-around">
             <form action="/auth/send-PW-reset-email" method="POST">
               <Button text="Send email" type="default" />

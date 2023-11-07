@@ -3,29 +3,35 @@ import Link from "next/link";
 type ButtonDefaultProps = {
   text: string;
   type: "default";
+  posTopLeft?: boolean;
 };
 
 type ButtonFormActionProps = {
   text: string;
   type: "formAction";
   formAction: string;
+  posTopLeft?: boolean;
 };
 
 type ButtonLinkProps = {
   text: string;
   type: "link";
   href: string;
+  posTopLeft?: boolean;
 };
 
 type ButtonProps = ButtonDefaultProps | ButtonFormActionProps | ButtonLinkProps;
 
 export const Button = (Button: ButtonProps) => {
+  const topLeft = "absolute left-[15px] top-[15px]";
   switch (Button.type) {
     case "link":
       return (
         <Link
           href={Button ? Button.href : "/"}
-          className={`group border-solid border-[1px] border-black dark:border-white md:border-none relative w-40 h-[2rem] overflow-hidden `}
+          className={`${
+            Button.posTopLeft ? topLeft : "relative"
+          } group border-solid border-[1px] border-black dark:border-white md:border-none w-40 h-[2rem] overflow-hidden `}
         >
           <span className="absolute w-40 h-[1px] bg-black dark:bg-white transition-all duration-500 left-[-10rem] top-0 group-hover:left-0"></span>
           <span className="absolute w-40 h-[1px] bg-black dark:bg-white transition-all duration-500 right-[-10rem] bottom-0 group-hover:right-0"></span>
@@ -40,7 +46,9 @@ export const Button = (Button: ButtonProps) => {
       return (
         <button
           formAction={Button.formAction}
-          className={`group border-solid border-[1px] border-black dark:border-white md:border-none relative w-40 h-[2rem] overflow-hidden`}
+          className={`${
+            Button.posTopLeft ? topLeft : "relative"
+          } group border-solid border-[1px] border-black dark:border-white md:border-none w-40 h-[2rem] overflow-hidden`}
         >
           <span className="absolute w-40 h-[1px] bg-black dark:bg-white transition-all duration-500 left-[-10rem] top-0 group-hover:left-0"></span>
           <span className="absolute w-40 h-[1px] bg-black dark:bg-white transition-all duration-500 right-[-10rem] bottom-0 group-hover:right-0"></span>
@@ -54,7 +62,9 @@ export const Button = (Button: ButtonProps) => {
     case "default":
       return (
         <button
-          className={`group border-solid border-[1px] border-black dark:border-white md:border-none relative w-40 h-[2rem] overflow-hidden`}
+          className={`${
+            Button.posTopLeft ? topLeft : "relative"
+          } group border-solid border-[1px] border-black dark:border-white md:border-none w-40 h-[2rem] overflow-hidden`}
         >
           <span className="absolute w-40 h-[1px] bg-black dark:bg-white transition-all duration-500 left-[-10rem] top-0 group-hover:left-0"></span>
           <span className="absolute w-40 h-[1px] bg-black dark:bg-white transition-all duration-500 right-[-10rem] bottom-0 group-hover:right-0"></span>

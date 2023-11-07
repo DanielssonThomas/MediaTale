@@ -13,7 +13,7 @@ const ProfileNotFound = async () => {
         <Navigation isLoggedIn={signedInStatus} />
 
         <div className="relative flex flex-col justify-center items-center w-full">
-          <Button text="Back" type="link" href="/" />
+          <Button text="Back" type="link" href="/" posTopLeft={true} />
           <section className="flex flex-col gap-8 text-center p-12">
             <h2 className="text-4xl">No profile was found!</h2>
             <div>

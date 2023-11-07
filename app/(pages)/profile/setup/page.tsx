@@ -2,6 +2,7 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import IsSignedIn from "@/app/utils/auth/isSignedIn";
+import Button from "@/components/General/Button";
 
 export const dynamic = "force-dynamic";
 
@@ -13,7 +14,7 @@ const SetupProfile = async () => {
   const theme = cookies().get("theme");
   return (
     <div className={theme?.value}>
-      <div className="bg-white dark:bg-black w-full h-screen">
+      <div className="bg-white dark:bg-black w-screen h-screen">
         <div className="flex flex-col justify-center items-center h-[10vh]">
           <h1 className="text-2xl">MediaTale - Setup process</h1>
         </div>
@@ -71,10 +72,9 @@ const SetupProfile = async () => {
                 className="border-solid border-black dark:border-white border-[1px] py-[0.5rem] px-[1rem]"
               />
             </div>
-
-            <button className="border-solid border-black dark:border-white border-[1px] py-[0.5rem] px-[1rem]">
-              Save
-            </button>
+            <div className="flex justify-center items-center">
+              <Button text="save" type="default" />
+            </div>
           </form>
         </div>
       </div>

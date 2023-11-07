@@ -7,7 +7,7 @@ type HomeFeedProps = {
 };
 
 const HomeFeed = ({ posts, postsStatistics }: HomeFeedProps) => {
-  if (posts?.length === 1 || posts === null) {
+  if (posts?.length === 0 || posts === null) {
     return (
       <div className="flex flex-col justify-center items-center w-full text-center p-4 gap-8">
         <h2 className="text-3xl">No posts here yet!</h2>
