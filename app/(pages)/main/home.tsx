@@ -5,7 +5,7 @@ import {
   getPostsWithEvents,
   getPostsStatistics,
   getSignedInUser,
-} from "@/app/lib/supabase-queries/queries";
+} from "@/app/utils/supabase-queries/queries";
 
 const Home = async () => {
   const posts = await getPostsWithEvents({ limit: 10 });

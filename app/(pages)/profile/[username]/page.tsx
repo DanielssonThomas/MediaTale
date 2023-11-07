@@ -5,7 +5,7 @@ import { redirect } from "next/navigation";
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import IsSignedIn from "@/app/utils/auth/isSignedIn";
-import { getProfileByUsername } from "@/app/lib/supabase-queries/queries";
+import { getProfileByUsername } from "@/app/utils/supabase-queries/queries";
 
 export const dynamic = "force-dynamic";
 type ProfileProps = {

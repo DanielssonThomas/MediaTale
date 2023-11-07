@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import {
   getSignedInUser,
   getProfileById,
-} from "@/app/lib/supabase-queries/queries";
+} from "@/app/utils/supabase-queries/queries";
 
 export const dynamic = "force-dynamic";
 

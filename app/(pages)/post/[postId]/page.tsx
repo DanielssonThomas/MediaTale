@@ -7,7 +7,7 @@ import {
   getProfileById,
   getCommentsByPostId,
   getPostStatisticsById,
-} from "@/app/lib/supabase-queries/queries";
+} from "@/app/utils/supabase-queries/queries";
 
 type PostProps = {
   params: { postId: number };
