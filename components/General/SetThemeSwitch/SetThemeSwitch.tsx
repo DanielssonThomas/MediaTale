@@ -1,9 +1,9 @@
 import { setCookie } from "./setCookie";
-
+import Button from "../Button";
 export const SetThemeSwitch = () => {
   return (
     <form action={setCookie}>
-      <button>Switch theme</button>
+      <Button text="Switch theme" />
     </form>
   );
 };

@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 import ChangePasswordForm from "@/components/Auth/ChangePassword/Form";
-import Alert from "@/components/General/Alert";
+import Alert from "@/components/General/Toast";
 import MTLogo from "@/components/General/Icons/MediaTale";
 export const dynamic = "force-dynamic";
 

@@ -1,7 +1,9 @@
+import Button from "@/components/General/Button";
+
 export const ChangePasswordEmail = async () => {
   return (
     <form action="/auth/send-PW-reset-email" method="POST">
-      <button>Change password</button>
+      <Button text="Change password" />
     </form>
   );
 };

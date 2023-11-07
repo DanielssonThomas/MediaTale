@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
 
-type AlertProps = {
+type ToastProps = {
   error: boolean;
   text: string;
 };
 
-export const Alert = ({ error, text }: AlertProps) => {
+export const Toast = ({ error, text }: ToastProps) => {
   const [show, setShow] = useState<boolean>(true);
   useEffect(() => {
     setTimeout(() => setShow(!show), 3000);
