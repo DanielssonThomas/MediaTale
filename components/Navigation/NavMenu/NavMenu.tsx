@@ -16,12 +16,12 @@ export const NavMenu = ({ active, setActive }: NavMenuProps) => {
         <Link href={"/create-post"} className="flex md:hidden">
           Create post
         </Link>
-        <Button text="Your profile" link={"/profile"} />
-        <Button text="About" link={"/about"} />
-        <Button text="Settings" link={"/settings"} />
+        <Button text="Your profile" type="link" href={"/profile"} />
+        <Button text="About" type="link" href={"/about"} />
+        <Button text="Settings" type="link" href={"/settings"} />
 
         <form action="/auth/sign-out" method="post">
-          <Button text="Logout" />
+          <Button text="Logout" type="default" />
         </form>
       </div>
     </div>

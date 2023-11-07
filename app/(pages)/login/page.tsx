@@ -1,6 +1,6 @@
-import Link from "next/link";
 import Navigation from "@/components/Navigation";
 import { cookies } from "next/headers";
+import Button from "@/components/General/Button";
 export const dynamic = "force-dynamic";
 const Login = async () => {
   const theme = cookies().get("theme");
@@ -12,7 +12,7 @@ const Login = async () => {
         <div className="flex flex-col justify-center items-center w-full h-full">
           <section className="flex flex-col justify-center items-center w-[20rem] h-full">
             <form
-              className="flex-1 flex flex-col w-full justify-center text-foreground gap-4"
+              className="flex-1 flex flex-col w-full justify-center items-center text-foreground gap-4"
               action="/auth/sign-in"
               method="post"
             >
@@ -31,15 +31,19 @@ const Login = async () => {
                 placeholder="••••••••"
                 required
               />
-              <button className="bg-green-700 rounded px-4 py-2 text-white">
-                Sign In
-              </button>
-              <button
+              <Button text="Sign In" type="default" />
+
+              <Button
+                text="Sign Up"
+                type="formAction"
                 formAction="/auth/sign-up"
-                className="border border-gray-700 rounded px-4 py-2 text-black"
-              >
-                Sign Up
-              </button>
+              />
+
+              <Button
+                text="Forgotten password?"
+                type="link"
+                href="/forgotten-password"
+              />
             </form>
           </section>
         </div>

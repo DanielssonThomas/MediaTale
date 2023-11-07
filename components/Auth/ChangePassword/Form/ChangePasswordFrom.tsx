@@ -14,7 +14,7 @@ export const ChangePasswordForm = ({ code }: { code: string }) => {
         className="text-center border-[1px] border-solid border-black dark:border-white text-black dark:text-white rounded"
         placeholder="Enter new password"
       />
-      <Button text="Update" />
+      <Button text="Update" type="default" />
     </form>
   );
 };

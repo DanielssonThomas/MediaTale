@@ -1,6 +1,6 @@
 import Contents from "./Contents/Contents";
 import Comments from "./Comments/Comments";
-import BackBtn from "../General/BackBtn/BackBtn";
+import Button from "../General/Button";
 import CreateComment from "./CreateComment";
 
 type PostProps = {
@@ -18,7 +18,7 @@ const Post = ({
 }: PostProps) => {
   return (
     <div className="relative">
-      <BackBtn />
+      <Button text="Back" type="link" href="/" />
       <Contents
         authorStatistics={authorStatistics}
         postStatistics={postStatistics}

@@ -3,7 +3,7 @@ import MTLogo from "@/components/General/Icons/MediaTale";
 import Link from "next/link";
 import Image from "next/image";
 import NavMenu from "./NavMenu";
-import BackBtn from "../General/BackBtn/BackBtn";
+import Button from "../General/Button";
 import { useState } from "react";
 
 type NavProps = {
@@ -49,7 +49,7 @@ export const Navigation = ({ isLoggedIn, path, profileImage }: NavProps) => {
         </div>
       ) : (
         <div className="flex justify-center items-center w-screen h-full relative">
-          {path === "/login" && <BackBtn />}
+          {path === "/login" && <Button text="back" type="link" href="/" />}
           <h1 className="text-2xl">MediaTale</h1>
           {path !== "/login" && (
             <Link
