@@ -104,8 +104,12 @@ export const sendPWChangeToCurrentUser = async ({ path }: { path: string }) => {
     const { data, error } = await supabase.auth.resetPasswordForEmail(
       user?.email,
       {
-        redirectTo: `${path}/reset-password`,
+        redirectTo: `${path}/update-password`,
       }
     );
+    if (error) {
+      return error;
+    }
+    return data;
   }
 };

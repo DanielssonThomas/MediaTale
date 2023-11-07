@@ -1,16 +1,20 @@
-export const ChangePasswordForm = () => {
+"use client";
+import Button from "@/components/General/Button";
+export const ChangePasswordForm = ({ code }: { code: string }) => {
   return (
-    <form action="/auth/reset-password">
+    <form
+      action="/auth/reset-password"
+      className="flex flex-col items-center gap-2"
+      method="POST"
+    >
+      <input type="hidden" value={code} name="code" />
       <input
         type="password"
-        name="old_password"
-        placeholder="Enter old password"
-      />
-      <input
-        type="password"
-        name="new_password"
+        name="password"
+        className="text-center border-[1px] border-solid border-black dark:border-white text-black dark:text-white rounded"
         placeholder="Enter new password"
       />
+      <Button text="Update" />
     </form>
   );
 };
