@@ -10,16 +10,19 @@ import {
 } from "@/app/lib/supabase-queries/queries";
 
 export const dynamic = "force-dynamic";
+
 const ProfileEdit = async () => {
   const userStatus = await IsSignedIn();
   const user = await getSignedInUser();
   const profile = await getProfileById({ user_id: user ? user.id : "" });
-
+  const theme = cookies().get("theme");
   if (profile) {
     return (
-      <div className="bg-white dark:bg-black min-h-[100vh] ">
-        <Navigation isLoggedIn={userStatus} />
-        <EditProfile profile={profile} />
+      <div className={theme?.value}>
+        <div className="bg-white dark:bg-black min-h-[100vh] ">
+          <Navigation isLoggedIn={userStatus} />
+          <EditProfile profile={profile} />
+        </div>
       </div>
     );
   }

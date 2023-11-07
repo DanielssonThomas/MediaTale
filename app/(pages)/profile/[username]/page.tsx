@@ -20,26 +20,28 @@ const Profile = async ({ params: { username } }: ProfileProps) => {
   }
 
   const isSignedIn = await IsSignedIn();
-
+  const theme = cookies().get("theme");
   return (
-    <div className="bg-white dark:bg-black min-h-[100vh]">
-      <Navigation isLoggedIn={isSignedIn} />
+    <div className={theme?.value}>
+      <div className="bg-white dark:bg-black min-h-[100vh]">
+        <Navigation isLoggedIn={isSignedIn} />
 
-      <ProfileHeading
-        followers={profile.followers}
-        following={profile.following}
-        username={profile.username}
-        PFImage=""
-        signedIn={isSignedIn}
-      />
-      <Details
-        about={profile.about}
-        contact_email={profile.contact_email}
-        country={profile.country}
-        created_at={profile.created_at}
-        first_name={profile.first_name}
-        last_name={profile.last_name}
-      />
+        <ProfileHeading
+          followers={profile.followers}
+          following={profile.following}
+          username={profile.username}
+          PFImage=""
+          signedIn={isSignedIn}
+        />
+        <Details
+          about={profile.about}
+          contact_email={profile.contact_email}
+          country={profile.country}
+          created_at={profile.created_at}
+          first_name={profile.first_name}
+          last_name={profile.last_name}
+        />
+      </div>
     </div>
   );
 };

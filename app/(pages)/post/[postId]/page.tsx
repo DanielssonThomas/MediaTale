@@ -20,15 +20,18 @@ const PostPage = async ({ params: { postId } }: PostProps) => {
   const profile = await getProfileById({ user_id: post?.created_by_uuid });
   const postStatistics = await getPostStatisticsById({ post_id: postId });
   const comments = await getCommentsByPostId({ post_id: postId });
+  const theme = cookies().get("theme");
   return (
-    <div className="bg-white dark:bg-black min-h-[100vh]">
-      <Navigation isLoggedIn={true} />
-      <Post
-        authorStatistics={profile}
-        post={post}
-        postStatistics={postStatistics}
-        comments={comments}
-      />
+    <div className={theme?.value}>
+      <div className="bg-white dark:bg-black min-h-[100vh]">
+        <Navigation isLoggedIn={true} />
+        <Post
+          authorStatistics={profile}
+          post={post}
+          postStatistics={postStatistics}
+          comments={comments}
+        />
+      </div>
     </div>
   );
 };
