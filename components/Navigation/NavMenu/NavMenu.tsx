@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import Button from "@/components/General/Button";
 type NavMenuProps = {
   active: boolean;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;
@@ -8,20 +8,20 @@ type NavMenuProps = {
 export const NavMenu = ({ active, setActive }: NavMenuProps) => {
   return (
     <div
-      className={`absolute w-full h-[100vh] transition-all bg-white text-black dark:bg-black dark:text-white
+      className={`absolute w-[425px] h-[100vh] transition-all bg-white text-black dark:bg-black dark:text-white
       ${active ? "right-0" : "right-[-100vw]"} 
-      top-0 transition duration-500 border-l-[1px] border-solid border-black dark:border-white z-40`}
+      top-0 transition duration-200 border-l-[1px] border-solid border-black dark:border-white z-40`}
     >
-      <div className="flex flex-col gap-5 p-[1rem] mt-[60px]">
+      <div className="flex flex-col items-center gap-5 p-[1rem] mt-[60px] text-center">
         <Link href={"/create-post"} className="flex md:hidden">
           Create post
         </Link>
-        <Link href={"/profile"}>Your profile</Link>
-        <Link href={"/about"}>About</Link>
-        <Link href={"/settings"}>Settings</Link>
+        <Button text="Your profile" link={"/profile"} />
+        <Button text="About" link={"/about"} />
+        <Button text="Settings" link={"/settings"} />
 
         <form action="/auth/sign-out" method="post">
-          <button>Logout</button>
+          <Button text="Logout" />
         </form>
       </div>
     </div>
