@@ -17,15 +17,17 @@ const Post = ({
   comments,
 }: PostProps) => {
   return (
-    <div className="relative">
+    <div className="relative flex flex-col items-center">
       <Button text="Back" type="link" href="/" posTopLeft={true} />
-      <Contents
-        authorStatistics={authorStatistics}
-        postStatistics={postStatistics}
-        post={post}
-      />
-      <CreateComment post={post} authorStatistics={authorStatistics} />
-      <Comments comments={comments} />
+      <div className="max-w-[40rem]">
+        <Contents
+          authorStatistics={authorStatistics}
+          postStatistics={postStatistics}
+          post={post}
+        />
+        <CreateComment post={post} authorStatistics={authorStatistics} />
+        <Comments comments={comments} />
+      </div>
     </div>
   );
 };

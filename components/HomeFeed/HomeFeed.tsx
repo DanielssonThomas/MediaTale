@@ -1,5 +1,4 @@
 import Preview from "./Preview";
-import LikeIcon from "@/components/General/Icons/Like";
 
 type HomeFeedProps = {
   postsStatistics: postStatistic[] | null;
@@ -23,16 +22,18 @@ const HomeFeed = ({ posts, postsStatistics }: HomeFeedProps) => {
   };
 
   return (
-    <div className="flex flex-col gap-4 w-full p-6">
-      {posts.map((post) => (
-        <Preview
-          key={post.id}
-          postLiked={post.post_event.like}
-          post={post}
-          postStatistics={getStatistic(post.id)}
-        />
-      ))}
-    </div>
+    <section className="flex flex-col justify-center items-center w-full">
+      <div className="flex flex-col gap-4 max-w-[100rem] min-h-screen p-6 border-[1px] border-solid border-black dark:border-white">
+        {posts.map((post) => (
+          <Preview
+            key={post.id}
+            postLiked={post.post_event.like}
+            post={post}
+            postStatistics={getStatistic(post.id)}
+          />
+        ))}
+      </div>
+    </section>
   );
 };
 

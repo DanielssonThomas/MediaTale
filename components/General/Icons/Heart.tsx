@@ -8,9 +8,9 @@ const Heart = ({ Liked }: HeartProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={32}
-      height={32}
-      viewBox="0 0 90 90"
+      width={24}
+      height={24}
+      viewBox="0 0 100 100"
     >
       <g
         fill={`${Liked ? "#f10808" : "#000"}`}
