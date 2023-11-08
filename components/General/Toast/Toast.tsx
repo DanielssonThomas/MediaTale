@@ -21,7 +21,7 @@ export const Toast = ({ error, text }: ToastProps) => {
         } text-white transition-all z-50`}
       >
         <p
-          className="absolute flex justify-center items-center top-[-0.5rem] right-[-0.5rem] bg-black rounded-full p-1 cursor-pointer w-8 h-8 text-xl"
+          className="absolute flex justify-center items-center top-[-0.5rem] right-[-0.5rem] bg-black rounded-full p-1 cursor-pointer w-4 h-4 text-xs"
           onClick={() => setShow(!show)}
         >
           X

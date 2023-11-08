@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
-import ProfileHeading from "@/components/Profile/Heading/Heading";
-import Details from "@/components/Profile/Details/Details";
+import ProfileHeading from "@/components/Profile/Heading";
+import Details from "@/components/Profile/Details";
 import { redirect } from "next/navigation";
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";

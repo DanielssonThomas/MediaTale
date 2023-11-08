@@ -1,6 +1,6 @@
 import Navigation from "@/components/Navigation";
-import ProfileHeading from "@/components/Profile/Heading/Heading";
-import ProfileDetails from "@/components/Profile/Details/Details";
+import ProfileHeading from "@/components/Profile/Heading";
+import ProfileDetails from "@/components/Profile/Details";
 import IsSignedIn from "@/app/utils/auth/isSignedIn";
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";

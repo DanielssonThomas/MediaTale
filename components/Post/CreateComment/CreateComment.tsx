@@ -29,6 +29,7 @@ export const CreateComment = ({
       <input
         type="text"
         name="comment"
+        className="w-1/2 text-center"
         placeholder="Write a comment for this post here"
       />
       <button

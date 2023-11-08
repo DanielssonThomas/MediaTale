@@ -5,7 +5,8 @@ import SetThemeSwitch from "@/components/General/SetThemeSwitch";
 import LogoutButton from "@/components/General/LogoutButton";
 import ChangePasswordEmail from "@/components/Auth/ChangePassword/SendEmail";
 import { cookies } from "next/headers";
-import Alert from "@/components/General/Toast";
+import Toast from "@/components/General/Toast";
+import Button from "@/components/General/Button";
 export const dynamic = "force-dynamic";
 
 const Settings = async ({
@@ -18,11 +19,12 @@ const Settings = async ({
   return (
     <div className={theme?.value}>
       {searchParams.message && (
-        <Alert error={false} text={searchParams.message} />
+        <Toast error={false} text={searchParams.message} />
       )}
       <div className="w-screen min-h-screen bg-white dark:bg-black ">
         <Navigation isLoggedIn={true} />
-        <div className="flex flex-col justify-center items-center gap-4">
+        <div className="flex flex-col justify-center items-center gap-4 pt-8 relative">
+          <Button text="Back" type="link" href="/" posTopLeft={true} />
           <h2 className="text-2xl border-b-[1px] border-solid border-black w-[15rem] dark:border-white text-center p-4">
             Settings
           </h2>

@@ -7,7 +7,7 @@ type DetailsProps = {
   created_at: string | null | undefined;
 };
 
-const ProfileDetails = ({
+export const ProfileDetails = ({
   about,
   country,
   contact_email,
@@ -44,5 +44,3 @@ const ProfileDetails = ({
     </div>
   );
 };
-
-export default ProfileDetails;

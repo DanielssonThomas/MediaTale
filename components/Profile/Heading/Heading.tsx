@@ -9,7 +9,7 @@ type HeadingProps = {
   signedIn: boolean;
 };
 
-const ProfileHeading = ({
+export const ProfileHeading = ({
   username,
   followers,
   following,
@@ -54,5 +54,3 @@ const ProfileHeading = ({
     </div>
   );
 };
-
-export default ProfileHeading;
