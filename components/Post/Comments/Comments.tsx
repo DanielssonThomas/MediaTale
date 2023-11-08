@@ -5,7 +5,7 @@ type CommentsProps = {
 };
 
 const Comments = ({ comments }: CommentsProps) => {
-  if (comments?.length === 1) {
+  if (comments?.length === 0) {
     return (
       <div className="flex justify-center items-center w-full">
         <h3>No comments</h3>

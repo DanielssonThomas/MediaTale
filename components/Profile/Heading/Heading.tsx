@@ -6,7 +6,7 @@ type HeadingProps = {
   followers: number | null | undefined;
   following: number | null | undefined;
   PFImage?: string;
-  signedIn: boolean;
+  isCurrentUser: boolean;
 };
 
 export const ProfileHeading = ({
@@ -14,7 +14,7 @@ export const ProfileHeading = ({
   followers,
   following,
   PFImage,
-  signedIn,
+  isCurrentUser,
 }: HeadingProps) => {
   return (
     <div>
@@ -28,7 +28,7 @@ export const ProfileHeading = ({
           />
         </div>
         <h2 className="w-[80px] text-3xl">{username}</h2>
-        {signedIn && (
+        {isCurrentUser && (
           <Link
             href={"/profile/edit"}
             className="w-[80px] border-solid border-[1px] border-black dark:border-white px-2"

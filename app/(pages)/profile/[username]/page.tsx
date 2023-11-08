@@ -2,10 +2,13 @@ import Navigation from "@/components/Navigation";
 import ProfileHeading from "@/components/Profile/Heading";
 import Details from "@/components/Profile/Details";
 import { redirect } from "next/navigation";
-import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import IsSignedIn from "@/app/utils/auth/isSignedIn";
-import { getProfileByUsername } from "@/app/utils/supabase-queries/queries";
+import {
+  getProfileByUsername,
+  getProfileById,
+  getSignedInUser,
+} from "@/app/utils/supabase-queries/queries";
 
 export const dynamic = "force-dynamic";
 type ProfileProps = {
@@ -14,12 +17,20 @@ type ProfileProps = {
 
 const Profile = async ({ params: { username } }: ProfileProps) => {
   const profile = await getProfileByUsername({ username: username });
-
+  let isCurrentUser = false;
   if (profile === null) {
     return redirect("/profile/not-found");
   }
 
   const isSignedIn = await IsSignedIn();
+  if (isSignedIn) {
+    const user = await getSignedInUser();
+    if (user !== null) {
+      const currentUserProfile = await getProfileById({ user_id: user.id });
+      isCurrentUser =
+        currentUserProfile?.username === profile.username ? true : false;
+    }
+  }
   const theme = cookies().get("theme");
   return (
     <div className={theme?.value}>
@@ -31,7 +42,7 @@ const Profile = async ({ params: { username } }: ProfileProps) => {
           following={profile.following}
           username={profile.username}
           PFImage=""
-          signedIn={isSignedIn}
+          isCurrentUser={isCurrentUser}
         />
         <Details
           about={profile.about}
