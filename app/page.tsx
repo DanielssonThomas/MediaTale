@@ -11,7 +11,7 @@ export default async function Index() {
   return (
     <div className={theme?.value}>
       <div className="bg-white dark:bg-black w-screen h-screen overflow-hidden">
-        <Navigation isLoggedIn={isLoggedIn} path="/" />
+        <Navigation isLoggedIn={isLoggedIn} showLoginButton={true} />
         {!isLoggedIn ? <LandingPage /> : <HomePage />}
       </div>
     </div>

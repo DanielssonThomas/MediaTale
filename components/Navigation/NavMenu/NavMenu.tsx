@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Button from "@/components/General/Button";
+
 type NavMenuProps = {
   active: boolean;
   setActive: React.Dispatch<React.SetStateAction<boolean>>;

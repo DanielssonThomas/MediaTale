@@ -12,7 +12,7 @@ const Login = async ({ searchParams }: { searchParams: { error: string } }) => {
       <div className="bg-white dark:bg-black w-screen h-screen">
         {searchParams.error && <Toast error={true} text={searchParams.error} />}
 
-        <Navigation isLoggedIn={false} path="/login" />
+        <Navigation isLoggedIn={false} showLoginButton={true} />
         <div className="flex justify-center w-full">
           <section className="flex flex-col justify-center items-center w-[25rem] gap-8">
             <div className="flex flex-col justify-center gap-2 text-center pt-4">

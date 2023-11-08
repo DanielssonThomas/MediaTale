@@ -8,14 +8,18 @@ import { useState } from "react";
 
 type NavProps = {
   isLoggedIn: boolean;
-  path?: string;
+  showLoginButton?: boolean;
   profileImage?: string;
 };
 
-export const Navigation = ({ isLoggedIn, path, profileImage }: NavProps) => {
+export const Navigation = ({
+  isLoggedIn,
+  showLoginButton,
+  profileImage,
+}: NavProps) => {
   const [navMenuActive, setNavMenuActive] = useState<boolean>(false);
   return (
-    <div className="flex flex-col border-solid border-b-2 border-black dark:border-white w-full h-[60px] relative text-black dark:text-white">
+    <div className="flex flex-col border-solid border-b-2 border-black dark:border-white w-screen h-[60px] relative text-black dark:text-white">
       {isLoggedIn ? (
         <div className="flex justify-center items-center w-screen h-full relative">
           <Link
@@ -49,11 +53,11 @@ export const Navigation = ({ isLoggedIn, path, profileImage }: NavProps) => {
         </div>
       ) : (
         <div className="relative flex justify-center items-center w-screen h-full">
-          {path === "/login" && (
+          {showLoginButton && (
             <Button text="Back" type="link" href="/" posTopLeft={true} />
           )}
           <h1 className="text-2xl">MediaTale</h1>
-          {path !== "/login" && (
+          {showLoginButton && (
             <Link
               href="/login"
               className="absolute flex flex-col justify-center items-center top-[15px] right-[15px] w-[100px] h-[30px] border-solid border-[1px] rounded-md border-black"
