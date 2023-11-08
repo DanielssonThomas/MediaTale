@@ -1,7 +1,7 @@
 "use client";
 import EditProfileHeading from "./Heading/Heading";
 import EditProfileDetails from "./Details/Details";
-import { FormEvent } from "react";
+import Button from "../General/Button";
 
 type EditProfileProps = {
   profile: profile;
@@ -9,7 +9,7 @@ type EditProfileProps = {
 
 const EditProfile = ({ profile }: EditProfileProps) => {
   return (
-    <form action={"/auth/edit-profile"} method="POST">
+    <form action={"/auth/edit-profile"} method="POST" className="full p-8">
       <EditProfileHeading
         followers={profile?.followers}
         following={profile?.following}
@@ -25,12 +25,7 @@ const EditProfile = ({ profile }: EditProfileProps) => {
         last_name={profile?.last_name}
       />
       <div className="flex justify-center items-center">
-        <button
-          type="submit"
-          className="border-solid border-black dark:border-white border-[1px] bg-green-700 text-white rounded py-2 px-4 mb-4"
-        >
-          Save changes
-        </button>
+        <Button type="default" text="Save changes" />
       </div>
     </form>
   );

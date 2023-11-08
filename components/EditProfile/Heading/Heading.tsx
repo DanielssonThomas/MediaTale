@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import Button from "@/components/General/Button";
 
 type HeadingProps = {
   username: string | null | undefined;
@@ -22,7 +21,6 @@ const EditProfileHeading = ({
   return (
     <div>
       <div className="relative flex flex-col border-b-solid border-black dark:border-white border-b-[1px] p-2 gap-[2rem]">
-        <Button text="Back" type="link" href="/" posTopLeft={true} />
         <div className="mt-[3rem]">
           <div className="text-sm">Upload new profile picture:</div>
           <input

@@ -37,7 +37,7 @@ const EditProfileDetails = ({
 
   return (
     <div className="flex flex-col gap-4 p-2">
-      <div className="flex flex-col border-solid border-black dark:border-white border-b-[1px] pb-2">
+      <div className="flex flex-col border-solid border-black dark:border-white border-b-[1px]">
         <div className="text-sm">About:</div>
         <textarea
           name="about"
@@ -46,15 +46,15 @@ const EditProfileDetails = ({
           value={aboutContent === null ? "" : aboutContent}
         ></textarea>
       </div>
-      <div className=" flex flex-col border-solid border-black dark:border-white border-b-[1px] pb-2">
+      <div className=" flex flex-col border-solid border-black dark:border-white border-b-[1px]">
         <div>
-          <div className="text-sm py-4">First Name:</div>
+          <div className="text-sm">First Name:</div>
           <input
             name="first_name"
             type="text"
             onChange={(e) => setFirstName(e.target.value)}
             value={firstName === null ? "" : firstName}
-            className="px-4"
+            className="text-lg w-full"
           />
         </div>
         <div>
@@ -64,31 +64,31 @@ const EditProfileDetails = ({
             type="text"
             onChange={(e) => setLastName(e.target.value)}
             value={lastName === null ? "" : lastName}
-            className="px-4"
+            className="text-lg w-full"
           />
         </div>
       </div>
-      <div className="border-solid border-black dark:border-white border-b-[1px] pb-2">
-        <div className="text-sm py-4">Country:</div>
+      <div className="border-solid border-black dark:border-white border-b-[1px]">
+        <div className="text-sm">Country:</div>
         <input
           name="country"
           type="text"
           onChange={(e) => setCountryContent(e.target.value)}
           value={countryContent === null ? "" : countryContent}
-          className="px-4"
+          className="text-lg w-full"
         />
       </div>
-      <div className="border-solid border-black dark:border-white border-b-[1px] pb-2">
+      <div className="border-solid border-black dark:border-white border-b-[1px]">
         <div className="text-sm">Buisness email:</div>
         <input
           name="contact_email"
           type="email"
           onChange={(e) => setContactContent(e.target.value)}
           value={contactContent === null ? "" : contactContent}
-          className="px-4"
+          className="text-lg w-full"
         />
       </div>
-      <div className="border-solid border-black dark:border-white border-b-[1px] pb-2">
+      <div className="border-solid border-black dark:border-white border-b-[1px]">
         <h3 className="text-sm">Created at:</h3>
         <section>{created_at}</section>
       </div>

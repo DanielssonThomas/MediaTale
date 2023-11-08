@@ -13,7 +13,7 @@ const CreatePostForm = ({ categories }: CreatePostFormProps) => {
     <form
       action={"/api/posts/create-post"}
       method="POST"
-      className="flex flex-col gap-6 m-[2rem]"
+      className="flex flex-col gap-6 m-[2rem] "
     >
       <div className="flex flex-col">
         <div>Title:</div>
@@ -41,7 +41,7 @@ const CreatePostForm = ({ categories }: CreatePostFormProps) => {
         <textarea
           name="text_content"
           placeholder="Write away as you please!"
-          className="p-[0.5rem] border-solid border-[1px] rounded-sm border-black"
+          className="p-[0.5rem] border-solid border-[1px] rounded-sm border-black resize-y min-h-[30vh]"
         ></textarea>
       </div>
 

@@ -1,13 +1,17 @@
 import Navigation from "@/components/Navigation";
 import { cookies } from "next/headers";
 import Button from "@/components/General/Button";
+import Toast from "@/components/General/Toast";
+
 export const dynamic = "force-dynamic";
-const Login = async () => {
+const Login = async ({ searchParams }: { searchParams: { error: string } }) => {
   const theme = cookies().get("theme");
 
   return (
     <div className={theme?.value}>
       <div className="bg-white dark:bg-black w-screen h-screen">
+        {searchParams.error && <Toast error={true} text={searchParams.error} />}
+
         <Navigation isLoggedIn={false} path="/login" />
         <div className="flex justify-center w-full">
           <section className="flex flex-col justify-center items-center w-[25rem] gap-8">
@@ -26,14 +30,14 @@ const Login = async () => {
             >
               <div className="text-md text-black">Email</div>
               <input
-                className="rounded-md px-4 py-2 bg-inherit border w-full"
+                className="rounded-md px-4 py-2 bg-inherit border-[1px] border-solid border-black dark:border-white w-full text-center"
                 name="email"
                 placeholder="you@example.com"
                 required
               />
               <div className="text-md text-black">Password</div>
               <input
-                className="rounded-md px-4 py-2 bg-inherit border w-full"
+                className="rounded-md px-4 py-2 bg-inherit border-[1px] border-black dark:border-white w-full text-center"
                 type="password"
                 name="password"
                 placeholder="••••••••"
