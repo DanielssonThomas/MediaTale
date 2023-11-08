@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import ProfileHeading from "@/components/Profile/Heading";
 import ProfileDetails from "@/components/Profile/Details";
 import IsSignedIn from "@/app/utils/auth/isSignedIn";
+import Button from "@/components/General/Button";
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -41,27 +42,32 @@ const Profile = async () => {
   const fetchDetails: profile[] | null = await getDetails(user?.id);
   const details: profile | null =
     fetchDetails !== null ? fetchDetails[0] : null;
+
   const isSignedIn = await IsSignedIn();
+
   if (!isSignedIn) {
     redirect("/");
   }
   return (
     <div className="bg-white dark:bg-black min-h-[100vh]">
       <Navigation isLoggedIn={true} />
-      <ProfileHeading
-        username={details?.username}
-        followers={details?.followers}
-        following={details?.following}
-        signedIn={isSignedIn}
-      />
-      <ProfileDetails
-        about={details?.about}
-        contact_email={details?.contact_email}
-        country={details?.country}
-        created_at={details?.created_at}
-        first_name={details?.first_name}
-        last_name={details?.last_name}
-      />
+      <section className="flex flex-col justify-center items-center relative pt-8">
+        <Button type="link" text="Back" href="/" posTopLeft={true} />
+        <ProfileHeading
+          username={details?.username}
+          followers={details?.followers}
+          following={details?.following}
+          isCurrentUser={true}
+        />
+        <ProfileDetails
+          about={details?.about}
+          contact_email={details?.contact_email}
+          country={details?.country}
+          created_at={details?.created_at}
+          first_name={details?.first_name}
+          last_name={details?.last_name}
+        />
+      </section>
     </div>
   );
 };

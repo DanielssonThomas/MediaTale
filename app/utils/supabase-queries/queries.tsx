@@ -113,3 +113,15 @@ export const sendPWChangeToCurrentUser = async ({ path }: { path: string }) => {
     return data;
   }
 };
+
+export const sendPWResetByEmail = async ({
+  email,
+  path,
+}: {
+  email: string;
+  path: string;
+}) => {
+  const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
+    redirectTo: `${path}/update-password`,
+  });
+};

@@ -23,7 +23,7 @@ const HomeFeed = ({ posts, postsStatistics }: HomeFeedProps) => {
 
   return (
     <section className="flex flex-col justify-center items-center w-full">
-      <div className="flex flex-col gap-4 max-w-[100rem] min-h-screen p-6 border-[1px] border-solid border-black dark:border-white">
+      <div className="flex flex-col gap-4 max-w-[100rem] min-h-screen p-6 border-x-[1px] border-solid border-black dark:border-white">
         {posts.map((post) => (
           <Preview
             key={post.id}

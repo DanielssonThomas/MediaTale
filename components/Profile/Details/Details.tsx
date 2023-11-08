@@ -16,7 +16,7 @@ export const ProfileDetails = ({
   created_at,
 }: DetailsProps) => {
   return (
-    <div className="flex flex-col gap-4 p-2">
+    <div className="flex flex-col gap-4 p-2 w-[40rem]">
       <div className="border-solid border-black dark:border-white border-b-[1px] pb-2">
         <h2 className="text-xl">About:</h2>
         <section className="text-base min-h-[5rem]">{about}</section>

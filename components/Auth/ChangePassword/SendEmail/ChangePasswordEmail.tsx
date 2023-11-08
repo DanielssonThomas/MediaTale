@@ -28,7 +28,7 @@ export const ChangePasswordEmail = () => {
             change your password once.
           </p>
           <div className="flex justify-around">
-            <form action="/auth/send-PW-reset-email" method="POST">
+            <form action="/auth/send-PW-reset-user" method="POST">
               <Button text="Send email" type="default" />
             </form>
           </div>
