@@ -19,7 +19,7 @@ export const Navigation = ({
 }: NavProps) => {
   const [navMenuActive, setNavMenuActive] = useState<boolean>(false);
   return (
-    <div className="flex flex-col border-solid border-b-2 border-black dark:border-white w-screen h-[60px] relative text-black dark:text-white">
+    <div className="flex flex-col border-solid border-b-2 border-black dark:border-white w-screen bg-white dark:bg-black h-[60px] relative text-black dark:text-white">
       {isLoggedIn ? (
         <div className="flex justify-center items-center w-screen h-full relative">
           <Link

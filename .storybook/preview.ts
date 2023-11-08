@@ -1,7 +1,7 @@
 import type { Preview } from "@storybook/react";
 import "../app/tailwind.css";
 import { withThemeByClassName } from "@storybook/addon-themes";
-
+import { themes } from "@storybook/theming";
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
@@ -11,6 +11,9 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
+    layout: "fullscreen",
+    backgrounds: { disable: true },
+    docs: { theme: themes.dark },
   },
 
   decorators: [
