@@ -19,9 +19,7 @@ const PostPage = async ({
   params: { postId },
   searchParams: { message, error },
 }: PostProps) => {
-  const supabase = createServerActionClient({ cookies });
   const post = await getPostById({ post_id: postId });
-
   const profile = await getProfileById({ user_id: post?.created_by_uuid });
   const postStatistics = await getPostStatisticsById({ post_id: postId });
   const comments = await getCommentsByPostId({ post_id: postId });

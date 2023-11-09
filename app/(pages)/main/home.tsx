@@ -1,5 +1,6 @@
 import HomeFeed from "@/components/HomeFeed/HomeFeed";
 import { redirect } from "next/navigation";
+import Navigation from "@/components/Navigation";
 import {
   getProfileById,
   getPostsWithEvents,
@@ -21,6 +22,7 @@ const Home = async () => {
 
   return (
     <div className="bg-white dark:bg-black w-full min-h-[100vh]">
+      <Navigation isLoggedIn={true} />
       <HomeFeed posts={posts} postsStatistics={postsStatistics} />
     </div>
   );

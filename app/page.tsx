@@ -1,6 +1,5 @@
 import LandingPage from "./(pages)/main/landing";
 import HomePage from "./(pages)/main/home";
-import Navigation from "@/components/Navigation";
 import IsSignedIn from "./utils/auth/isSignedIn";
 import { cookies } from "next/headers";
 export const dynamic = "force-dynamic";
@@ -11,7 +10,6 @@ export default async function Index() {
   return (
     <div className={theme?.value}>
       <div className="bg-white dark:bg-black w-screen h-screen overflow-hidden">
-        <Navigation isLoggedIn={isLoggedIn} showLoginButton={true} />
         {!isLoggedIn ? <LandingPage /> : <HomePage />}
       </div>
     </div>
