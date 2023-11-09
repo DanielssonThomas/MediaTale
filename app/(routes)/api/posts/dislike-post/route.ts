@@ -17,8 +17,8 @@ export const POST = async (req: Request) => {
   const { error } = await supabase.from("post_event").insert({
     profile_id: profile?.id,
     post_id: post_id,
-    like_bool: true,
-    dislike: false,
+    like_bool: false,
+    dislike: true,
   });
 
   if (error) {

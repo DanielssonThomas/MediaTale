@@ -47,12 +47,14 @@ export interface Database {
           {
             foreignKeyName: "categories_posts_category_id_fkey"
             columns: ["category_id"]
+            isOneToOne: false
             referencedRelation: "categories"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "categories_posts_post_id_fkey"
             columns: ["post_id"]
+            isOneToOne: false
             referencedRelation: "posts"
             referencedColumns: ["id"]
           }
@@ -84,12 +86,14 @@ export interface Database {
           {
             foreignKeyName: "comment_event_comment_id_fkey"
             columns: ["comment_id"]
+            isOneToOne: false
             referencedRelation: "comments"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "comment_event_profile_id_fkey"
             columns: ["profile_id"]
+            isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["id"]
           }
@@ -99,9 +103,9 @@ export interface Database {
         Row: {
           comment: string | null
           created_at: string
-          dislike_count: number | null
+          dislike_count: number
           id: number
-          like_count: number | null
+          like_count: number
           post_id: number | null
           profile_id: number | null
           sub_comment_id: number | null
@@ -110,9 +114,9 @@ export interface Database {
         Insert: {
           comment?: string | null
           created_at?: string
-          dislike_count?: number | null
+          dislike_count?: number
           id?: number
-          like_count?: number | null
+          like_count?: number
           post_id?: number | null
           profile_id?: number | null
           sub_comment_id?: number | null
@@ -121,9 +125,9 @@ export interface Database {
         Update: {
           comment?: string | null
           created_at?: string
-          dislike_count?: number | null
+          dislike_count?: number
           id?: number
-          like_count?: number | null
+          like_count?: number
           post_id?: number | null
           profile_id?: number | null
           sub_comment_id?: number | null
@@ -133,18 +137,21 @@ export interface Database {
           {
             foreignKeyName: "comments_post_id_fkey"
             columns: ["post_id"]
+            isOneToOne: false
             referencedRelation: "posts"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "comments_profile_id_fkey"
             columns: ["profile_id"]
+            isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "comments_user_id_fkey"
             columns: ["user_id"]
+            isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
           }
@@ -152,23 +159,23 @@ export interface Database {
       }
       post_event: {
         Row: {
-          dislike: boolean | null
+          dislike_bool: boolean
           id: number
-          like: boolean | null
+          like_bool: boolean
           post_id: number | null
           profile_id: number | null
         }
         Insert: {
-          dislike?: boolean | null
+          dislike_bool?: boolean
           id?: number
-          like?: boolean | null
+          like_bool?: boolean
           post_id?: number | null
           profile_id?: number | null
         }
         Update: {
-          dislike?: boolean | null
+          dislike_bool?: boolean
           id?: number
-          like?: boolean | null
+          like_bool?: boolean
           post_id?: number | null
           profile_id?: number | null
         }
@@ -176,12 +183,14 @@ export interface Database {
           {
             foreignKeyName: "post_event_post_id_fkey"
             columns: ["post_id"]
+            isOneToOne: false
             referencedRelation: "posts"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "post_event_profile_id_fkey"
             columns: ["profile_id"]
+            isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["id"]
           }
@@ -225,24 +234,28 @@ export interface Database {
           {
             foreignKeyName: "posts_created_by_username_fkey"
             columns: ["created_by_username"]
+            isOneToOne: false
             referencedRelation: "profiles"
             referencedColumns: ["username"]
           },
           {
             foreignKeyName: "posts_created_by_uuid_fkey"
             columns: ["created_by_uuid"]
+            isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "posts_image_fkey"
             columns: ["image"]
+            isOneToOne: false
             referencedRelation: "buckets"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "posts_video_fkey"
             columns: ["video"]
+            isOneToOne: false
             referencedRelation: "buckets"
             referencedColumns: ["id"]
           }
@@ -257,7 +270,7 @@ export interface Database {
           like_count: number | null
           post_id: number | null
           updated_at: string | null
-          view_count: number | null
+          view_count: number
         }
         Insert: {
           created_at?: string
@@ -267,7 +280,7 @@ export interface Database {
           like_count?: number | null
           post_id?: number | null
           updated_at?: string | null
-          view_count?: number | null
+          view_count?: number
         }
         Update: {
           created_at?: string
@@ -277,18 +290,20 @@ export interface Database {
           like_count?: number | null
           post_id?: number | null
           updated_at?: string | null
-          view_count?: number | null
+          view_count?: number
         }
         Relationships: [
           {
             foreignKeyName: "posts_statistics_created_by_fkey"
             columns: ["created_by"]
+            isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
           },
           {
             foreignKeyName: "posts_statistics_post_id_fkey"
             columns: ["post_id"]
+            isOneToOne: false
             referencedRelation: "posts"
             referencedColumns: ["id"]
           }
@@ -341,6 +356,7 @@ export interface Database {
           {
             foreignKeyName: "profiles_user_id_fkey"
             columns: ["user_id"]
+            isOneToOne: false
             referencedRelation: "users"
             referencedColumns: ["id"]
           }
@@ -351,9 +367,16 @@ export interface Database {
       [_ in never]: never
     }
     Functions: {
-      increment: {
+      increment_post_view: {
         Args: {
-          id: number
+          targetid: number
+        }
+        Returns: undefined
+      }
+      like_post: {
+        Args: {
+          target_id: number
+          user_profile_id: number
         }
         Returns: undefined
       }
