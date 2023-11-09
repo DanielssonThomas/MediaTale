@@ -8,22 +8,23 @@ import { NextResponse } from "next/server";
 
 export const POST = async (req: Request) => {
   const supabase = createRouteHandlerClient({ cookies });
-  const formData = await req.formData();
-  const post_id = Number(formData.get("post_id"));
-
+  const reqData: any = await req.json();
+  const { post_id } = reqData;
+  console.log("data: ", post_id);
   const user = await getSignedInUser();
   const profile = await getProfileById({ user_id: user?.id });
 
-  const { error } = await supabase.from("post_event").insert({
+  const { data, error } = await supabase.from("post_event").insert({
     profile_id: profile?.id,
-    post_id: post_id,
+    post_id: Number(post_id),
     like_bool: true,
-    dislike: false,
+    dislike_bool: false,
   });
 
   if (error) {
-    return NextResponse.json({ status: "failed", error: error });
+    console.log(error);
+    return NextResponse.json({ status: 301 });
   }
 
-  return NextResponse.json({ status: "success", error: false });
+  return NextResponse.json({ status: 301 });
 };

@@ -10,15 +10,14 @@ export const POST = async (req: Request) => {
   const supabase = createRouteHandlerClient({ cookies });
   const reqData: any = await req.json();
   const { post_id } = reqData;
-  console.log("data: ", post_id);
   const user = await getSignedInUser();
   const profile = await getProfileById({ user_id: user?.id });
 
-  const { data, error } = await supabase.from("post_event").insert({
+  const { data, error } = await supabase.from("comment_event").insert({
     profile_id: profile?.id,
     post_id: Number(post_id),
-    like_bool: false,
-    dislike_bool: true,
+    like_bool: true,
+    dislike_bool: false,
   });
 
   if (error) {
@@ -26,5 +25,8 @@ export const POST = async (req: Request) => {
     return NextResponse.json({ status: 301 });
   }
 
+  if (data) {
+    console.log("data: ", data);
+  }
   return NextResponse.json({ status: 301 });
 };

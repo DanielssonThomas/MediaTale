@@ -1,6 +1,7 @@
 import Heart from "@/components/General/Icons/Heart";
 import Views from "@/components/General/Icons/Views";
 import FeedbackToggle from "@/components/General/FeedbackToggle";
+import { redirect } from "next/navigation";
 type BodyProps = {
   post: post | null;
   postStatistics: postStatistic | null;
@@ -8,6 +9,9 @@ type BodyProps = {
 
 export const Body = ({ post, postStatistics }: BodyProps) => {
   const createdAt = postStatistics?.created_at.split("T")[0];
+  if (post === null) {
+    redirect("/");
+  }
   return (
     <div className="flex flex-col justify-center items-center w-full">
       <article className="border-solid border-b-[1px] border-black dark:border-white p-4 min-h-[8rem] w-full">
@@ -30,7 +34,7 @@ export const Body = ({ post, postStatistics }: BodyProps) => {
       </div>
       <div className="flex justify-between items-center w-full p-[0.5rem] border-b-[1px] border-solid border-black dark:border-white">
         <p>Did you like or dislike this post? </p>
-        <FeedbackToggle />
+        <FeedbackToggle id={post.id} type="posts" />
       </div>
     </div>
   );
