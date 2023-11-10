@@ -27,7 +27,7 @@ const HomeFeed = ({ posts, postsStatistics }: HomeFeedProps) => {
         {posts.map((post) => (
           <Preview
             key={post.id}
-            postLiked={post.post_event.like}
+            postLiked={post.post_event.like_bool}
             post={post}
             postStatistics={getStatistic(post.id)}
           />

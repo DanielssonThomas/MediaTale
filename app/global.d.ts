@@ -42,8 +42,8 @@ declare global {
     title: string | null;
     video: string | null;
     post_event: {
-      dislike: boolean | null;
-      like: boolean | null;
+      dislike_bool: boolean | null;
+      like_bool: boolean | null;
     };
   };
 

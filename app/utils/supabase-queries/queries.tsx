@@ -79,6 +79,23 @@ export const getPostById = async ({ post_id }: { post_id: number }) => {
   return post;
 };
 
+export const getPostWithEventById = async ({ id }: { id: number }) => {
+  const {
+    data: post,
+    error,
+  }: { data: postWithEvent | null; error: PostgrestError | null } =
+    await supabase
+      .from("posts")
+      .select("*, post_event(dislike_bool, like_bool)")
+      .match({ id: id })
+      .single();
+
+  if (error) {
+    console.log("getPostWithEvent error: ", error);
+  }
+  return post;
+};
+
 export const getPostsWithEvents = async ({ limit }: getPostProps) => {
   const {
     data: posts,
@@ -125,12 +142,18 @@ export const getPostStatisticsById = async ({
 export const getCommentsByPostId = async ({
   post_id,
 }: getCommentsByPostIdProps) => {
-  const { data: comments }: { data: commentData[] | null } = await supabase
-    .from("comments")
-    .select("*, profiles(username), comment_event(like, dislike)")
-    .match({ post_id: post_id })
-    .order("like_count", { ascending: false });
-
+  const {
+    data: comments,
+    error,
+  }: { data: commentData[] | null; error: PostgrestError | null } =
+    await supabase
+      .from("comments")
+      .select("*, profiles(username), comment_event(like_bool, dislike_bool)")
+      .match({ post_id: post_id })
+      .order("like_count", { ascending: false });
+  if (error) {
+    console.log("getCommentsById error: ", error);
+  }
   return comments;
 };
 

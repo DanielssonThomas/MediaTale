@@ -4,7 +4,7 @@ import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import Toast from "@/components/General/Toast";
 import { cookies } from "next/headers";
 import {
-  getPostById,
+  getPostWithEventById,
   getProfileById,
   getCommentsByPostId,
   getPostStatisticsById,
@@ -19,7 +19,7 @@ const PostPage = async ({
   params: { postId },
   searchParams: { message, error },
 }: PostProps) => {
-  const post = await getPostById({ post_id: postId });
+  const post = await getPostWithEventById({ id: postId });
   const profile = await getProfileById({ user_id: post?.created_by_uuid });
   const postStatistics = await getPostStatisticsById({ post_id: postId });
   const comments = await getCommentsByPostId({ post_id: postId });

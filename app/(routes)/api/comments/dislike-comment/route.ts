@@ -16,8 +16,8 @@ export const POST = async (req: Request) => {
   const { data, error } = await supabase.from("comment_event").insert({
     profile_id: profile?.id,
     comment_id: Number(comment_id),
-    like_bool: true,
-    dislike_bool: false,
+    like_bool: false,
+    dislike_bool: true,
   });
 
   if (error) {

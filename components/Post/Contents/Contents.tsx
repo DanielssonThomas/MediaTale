@@ -3,7 +3,7 @@ import Body from "./Body";
 
 type ContentsProps = {
   authorStatistics: profile | null;
-  post: post | null;
+  post: postWithEvent | null;
   postStatistics: postStatistic | null;
 };
 

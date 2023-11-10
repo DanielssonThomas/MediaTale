@@ -63,23 +63,23 @@ export interface Database {
       comment_event: {
         Row: {
           comment_id: number | null
-          dislike: boolean | null
+          dislike_bool: boolean | null
           id: number
-          like: boolean | null
+          like_bool: boolean | null
           profile_id: number | null
         }
         Insert: {
           comment_id?: number | null
-          dislike?: boolean | null
+          dislike_bool?: boolean | null
           id?: number
-          like?: boolean | null
+          like_bool?: boolean | null
           profile_id?: number | null
         }
         Update: {
           comment_id?: number | null
-          dislike?: boolean | null
+          dislike_bool?: boolean | null
           id?: number
-          like?: boolean | null
+          like_bool?: boolean | null
           profile_id?: number | null
         }
         Relationships: [

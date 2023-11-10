@@ -5,7 +5,7 @@ import CreateComment from "./CreateComment";
 
 type PostProps = {
   authorStatistics: profile | null;
-  post: post | null;
+  post: postWithEvent | null;
   postStatistics: postStatistic | null;
   comments: commentData[] | null;
 };

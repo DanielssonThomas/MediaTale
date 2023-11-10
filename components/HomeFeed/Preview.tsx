@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Heart from "@/components/General/Icons/Heart";
 import Views from "../General/Icons/Views";
+
 type PreviewProps = {
   postStatistics: postStatistic | undefined;
   post: postWithEvent;
@@ -21,7 +22,7 @@ const Preview = ({ post, postStatistics, postLiked }: PreviewProps) => {
         </div>
 
         {post.image !== "" ? (
-          <div className="flex flex-col p-1">
+          <div className="flex flex-col p-1 text-center w-full">
             <h3 className="text-2xl border-solid border-b-[1px] border-black dark:border-white">
               {post.title}
             </h3>

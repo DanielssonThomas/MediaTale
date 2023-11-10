@@ -21,7 +21,12 @@ export const Comment = ({ comment }: CommentProps) => {
           <div className="flex justify-between items-center w-full">
             <p>{comment.like_count ? comment.like_count : "0"} </p>
             <div className="flex gap-2 mr-[16px]">
-              <FeedbackToggle id={comment.id} type="comments" />
+              <FeedbackToggle
+                id={comment.id}
+                type="comments"
+                disliked={comment.comment_event.dislike}
+                liked={comment.comment_event.like}
+              />
             </div>
           </div>
           <div className="flex justify-around items-center w-full">
