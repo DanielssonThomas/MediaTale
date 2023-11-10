@@ -54,7 +54,7 @@ export const Button = (Button: ButtonProps) => {
                 <polyline points="15 18 9 12 15 6" />
               </svg>
             </div>
-            {Button.text}
+            <div className="text-sm">{Button.text}</div>
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -103,7 +103,7 @@ export const Button = (Button: ButtonProps) => {
                 <polyline points="15 18 9 12 15 6" />
               </svg>
             </div>
-            {Button.text}
+            <div className="text-sm">{Button.text}</div>
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +151,7 @@ export const Button = (Button: ButtonProps) => {
                 <polyline points="15 18 9 12 15 6" />
               </svg>
             </div>
-            {Button.text}
+            <div className="text-sm">{Button.text}</div>
             <div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
