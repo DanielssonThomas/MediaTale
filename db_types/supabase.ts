@@ -206,7 +206,6 @@ export interface Database {
           image: string | null
           text_content: string | null
           title: string | null
-          video: string | null
         }
         Insert: {
           created_at?: string
@@ -217,7 +216,6 @@ export interface Database {
           image?: string | null
           text_content?: string | null
           title?: string | null
-          video?: string | null
         }
         Update: {
           created_at?: string
@@ -228,7 +226,6 @@ export interface Database {
           image?: string | null
           text_content?: string | null
           title?: string | null
-          video?: string | null
         }
         Relationships: [
           {
@@ -243,20 +240,6 @@ export interface Database {
             columns: ["created_by_uuid"]
             isOneToOne: false
             referencedRelation: "users"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "posts_image_fkey"
-            columns: ["image"]
-            isOneToOne: false
-            referencedRelation: "buckets"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "posts_video_fkey"
-            columns: ["video"]
-            isOneToOne: false
-            referencedRelation: "buckets"
             referencedColumns: ["id"]
           }
         ]
@@ -312,6 +295,7 @@ export interface Database {
       profiles: {
         Row: {
           about: string | null
+          avatar_url: string | null
           contact_email: string | null
           country: string | null
           created_at: string
@@ -326,6 +310,7 @@ export interface Database {
         }
         Insert: {
           about?: string | null
+          avatar_url?: string | null
           contact_email?: string | null
           country?: string | null
           created_at?: string
@@ -340,6 +325,7 @@ export interface Database {
         }
         Update: {
           about?: string | null
+          avatar_url?: string | null
           contact_email?: string | null
           country?: string | null
           created_at?: string

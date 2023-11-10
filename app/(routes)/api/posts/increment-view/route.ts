@@ -4,9 +4,8 @@ import { NextResponse } from "next/server";
 
 export const POST = async (req: Request) => {
   const supabase = createRouteHandlerClient({ cookies });
-  const formData = await req.formData();
-  const requestUrl = new URL(req.url);
-  const post_id = Number(formData.get("post_id"));
+  const reqData: any = await req.json();
+  const { post_id } = await reqData;
 
   const { data, error } = await supabase.rpc("increment_post_view", {
     targetid: post_id,
@@ -14,11 +13,8 @@ export const POST = async (req: Request) => {
 
   if (error) {
     console.log("Increment error: ", error);
+    return NextResponse.json({ error: true });
   }
 
-  console.log("Increment view count data: ", data);
-
-  return NextResponse.redirect(`${requestUrl.origin}/post/${post_id}`, {
-    status: 301,
-  });
+  return NextResponse.json({ error: false });
 };

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Heart from "@/components/General/Icons/Heart";
 import Views from "../General/Icons/Views";
+import Link from "next/link";
 
 type PreviewProps = {
   postStatistics: postStatistic | undefined;
@@ -10,7 +11,7 @@ type PreviewProps = {
 
 const Preview = ({ post, postStatistics, postLiked }: PreviewProps) => {
   return (
-    <form action="/api/posts/increment-view" method="POST">
+    <Link href={`/post/${post.id}`}>
       <input type="hidden" value={post.id} name="post_id" />
       <button className="flex flex-col justify-around relative w-full h-[10rem] rounded-[2px] border-solid border-[1px] border-black dark:border-white">
         <div className="absolute left-[-20px] top-[-15px] w-[25px] h-[25px] rounded-full overflow-hidden border-black dark:border-white border-solid">
@@ -42,7 +43,7 @@ const Preview = ({ post, postStatistics, postLiked }: PreviewProps) => {
           </div>
         </div>
       </button>
-    </form>
+    </Link>
   );
 };
 

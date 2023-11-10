@@ -1,7 +1,9 @@
+"use client";
 import Contents from "./Contents/Contents";
 import Comments from "./Comments/Comments";
 import Button from "../General/Button";
 import CreateComment from "./CreateComment";
+import { useEffect } from "react";
 
 type PostProps = {
   authorStatistics: profile | null;
@@ -16,6 +18,18 @@ const Post = ({
   postStatistics,
   comments,
 }: PostProps) => {
+  const incrementView = async () => {
+    await fetch("/api/posts/increment-view", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ post_id: post?.id }),
+    });
+  };
+  useEffect(() => {
+    incrementView();
+  }, []);
   return (
     <div className="relative flex flex-col items-center">
       <Button text="Back" type="link" href="/" posTopLeft={true} />
