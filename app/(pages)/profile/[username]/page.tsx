@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import ProfileHeading from "@/components/Profile/Heading";
+import ProfilePosts from "@/components/Profile/Posts";
 import Details from "@/components/Profile/Details";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
@@ -36,23 +37,26 @@ const Profile = async ({ params: { username } }: ProfileProps) => {
   return (
     <div className={theme?.value}>
       <div className="bg-white dark:bg-black min-h-[100vh]">
-        <Navigation isLoggedIn={isSignedIn} avatar_url={profile.avatar_url} />
-        <ProfileHeading
-          followers={profile.followers}
-          following={profile.following}
-          username={profile.username}
-          user_id={profile.user_id}
-          isCurrentUser={isCurrentUser}
-          avatar_url={profile.avatar_url}
-        />
-        <Details
-          about={profile.about}
-          contact_email={profile.contact_email}
-          country={profile.country}
-          created_at={profile.created_at}
-          first_name={profile.first_name}
-          last_name={profile.last_name}
-        />
+        <section className="flex flex-col justify-center items-center relative pt-8">
+          <Navigation isLoggedIn={isSignedIn} avatar_url={profile.avatar_url} />
+          <ProfileHeading
+            followers={profile.followers}
+            following={profile.following}
+            username={profile.username}
+            user_id={profile.user_id}
+            isCurrentUser={isCurrentUser}
+            avatar_url={profile.avatar_url}
+          />
+          <Details
+            about={profile.about}
+            contact_email={profile.contact_email}
+            country={profile.country}
+            created_at={profile.created_at}
+            first_name={profile.first_name}
+            last_name={profile.last_name}
+          />
+          <ProfilePosts user_id={profile.user_id} />
+        </section>
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import HomeFeed from "@/components/HomeFeed/HomeFeed";
+import PostFeed from "@/components/General/Posts";
 import { redirect } from "next/navigation";
 import Navigation from "@/components/Navigation";
 import {
@@ -15,7 +15,7 @@ const Home = async () => {
     user_id: user !== null ? user.id : "",
   });
 
-  const postsStatistics = await getPostsStatistics();
+  const postsStatistics = await getPostsStatistics({ limit: 10 });
   if (profile === null) {
     redirect("/profile/setup");
   }
@@ -23,7 +23,11 @@ const Home = async () => {
   return (
     <div className="bg-white dark:bg-black w-full min-h-[100vh]">
       <Navigation isLoggedIn={true} avatar_url={profile.avatar_url} />
-      <HomeFeed posts={posts} postsStatistics={postsStatistics} />
+      <div className="flex justify-center items-center w-full">
+        <div className="max-w-[40rem]">
+          <PostFeed posts={posts} postsStatistics={postsStatistics} />
+        </div>
+      </div>
     </div>
   );
 };

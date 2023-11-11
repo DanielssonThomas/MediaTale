@@ -1,15 +1,16 @@
-import PostPreview from "../General/PostPreview.tsx";
-type HomeFeedProps = {
+import PostPreview from "../PostPreview.tsx";
+
+type PostFeedProps = {
   postsStatistics: postStatistic[] | null;
   posts: postWithEvent[] | null;
 };
 
-const HomeFeed = ({ posts, postsStatistics }: HomeFeedProps) => {
+export const PostFeed = ({ posts, postsStatistics }: PostFeedProps) => {
   if (posts?.length === 0 || posts === null) {
     return (
       <div className="flex flex-col justify-center items-center w-full text-center p-4 gap-8">
         <h2 className="text-3xl">No posts here yet!</h2>
-        <p>Unfortunently there has not been a new post, be the first!</p>
+        <p>Unfortunently there are no posts here!</p>
       </div>
     );
   }
@@ -22,7 +23,7 @@ const HomeFeed = ({ posts, postsStatistics }: HomeFeedProps) => {
 
   return (
     <section className="flex flex-col justify-center items-center w-full">
-      <div className="flex flex-col gap-4 max-w-[100rem] min-h-screen p-6 border-x-[1px] border-solid border-black dark:border-white">
+      <div className="flex flex-col gap-4 max-w-[100rem] min-h-screen p-6 border-x-[1px] border-solid border-black dark:border-white w-full">
         {posts.map((post) => (
           <PostPreview
             key={post.id}
@@ -40,5 +41,3 @@ const HomeFeed = ({ posts, postsStatistics }: HomeFeedProps) => {
     </section>
   );
 };
-
-export default HomeFeed;

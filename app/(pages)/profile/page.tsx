@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import ProfileHeading from "@/components/Profile/Heading";
 import ProfileDetails from "@/components/Profile/Details";
+import ProfilePosts from "@/components/Profile/Posts";
 import IsSignedIn from "@/app/utils/auth/isSignedIn";
 import { getSignedInProfilePictureUrl } from "@/app/utils/supabase-queries/queries";
 import Button from "@/components/General/Button";
@@ -55,6 +56,7 @@ const Profile = async () => {
           first_name={details?.first_name}
           last_name={details?.last_name}
         />
+        <ProfilePosts user_id={user?.id} />
       </section>
     </div>
   );

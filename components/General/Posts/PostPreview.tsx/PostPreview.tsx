@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Heart from "@/components/General/Icons/Heart";
-import Views from "../Icons/Views";
+import Views from "../../Icons/Views";
 import Link from "next/link";
 
 type PostPreviewProps = {

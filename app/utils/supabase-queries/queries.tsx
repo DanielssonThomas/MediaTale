@@ -16,6 +16,7 @@ type getProfileByUsernameProps = {
 
 type getPostProps = {
   limit: number;
+  user_id?: string | null | undefined;
 };
 
 type getPostStatisticsByIdProps = {
@@ -107,7 +108,23 @@ export const getPostWithEventById = async ({ id }: { id: number }) => {
   return post;
 };
 
-export const getPostsWithEvents = async ({ limit }: getPostProps) => {
+export const getPostsWithEvents = async ({ limit, user_id }: getPostProps) => {
+  if (user_id !== undefined) {
+    const {
+      data: posts,
+      error,
+    }: { data: postWithEvent[] | null; error: PostgrestError | null } =
+      await supabase
+        .from("posts")
+        .select("*, post_event(dislike_bool, like_bool)")
+        .match({ created_by_uuid: user_id })
+        .limit(limit);
+
+    if (error) {
+      console.log("getPostsWithEvents error: ", error);
+    }
+    return posts;
+  }
   const {
     data: posts,
     error,
@@ -123,12 +140,36 @@ export const getPostsWithEvents = async ({ limit }: getPostProps) => {
   return posts;
 };
 
-export const getPostsStatistics = async () => {
+export const getPostsStatistics = async ({
+  limit,
+  user_id,
+}: {
+  limit: number;
+  user_id?: string | null | undefined;
+}) => {
+  if (user_id !== undefined) {
+    const {
+      data: postsStatistics,
+      error,
+    }: { data: postStatistic[] | null; error: PostgrestError | null } =
+      await supabase
+        .from("posts_statistics")
+        .select("*, profiles(avatar_url)")
+        .match({ created_by: user_id })
+        .limit(limit);
+    if (error) {
+      console.log("getPostsStatistics error:", error);
+    }
+    return postsStatistics;
+  }
   const {
     data: postsStatistics,
     error,
   }: { data: postStatistic[] | null; error: PostgrestError | null } =
-    await supabase.from("posts_statistics").select("*, profiles(avatar_url)");
+    await supabase
+      .from("posts_statistics")
+      .select("*, profiles(avatar_url)")
+      .limit(limit);
   if (error) {
     console.log("getPostsStatistics error:", error);
   }
