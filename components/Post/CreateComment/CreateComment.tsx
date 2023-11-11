@@ -3,7 +3,7 @@ import Image from "next/image";
 type CreateCommentProps = {
   profile_id: number | undefined;
   post: post | null;
-  image: string | null;
+  image: string | null | undefined;
 };
 
 export const CreateComment = ({

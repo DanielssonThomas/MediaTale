@@ -46,6 +46,7 @@ const PostPage = async ({
           postStatistics={postStatistics}
           comments={comments}
           signedInUserProfileId={currentUserProfile?.id}
+          signedInUserAvatar={currentUserProfile?.avatar_url}
         />
       </div>
     </div>

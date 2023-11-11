@@ -10,7 +10,7 @@ type PostProps = {
   post: postWithEvent | null;
   postStatistics: postStatistic | null;
   signedInUserProfileId: number | undefined;
-  signedInUserAvatar: string | null;
+  signedInUserAvatar: string | null | undefined;
   comments: commentData[] | null;
 };
 
