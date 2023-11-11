@@ -16,7 +16,7 @@ const ProfileEdit = async () => {
   const user = await getSignedInUser();
   const profile = await getProfileById({ user_id: user ? user.id : "" });
 
-  const theme = cookies().get("theme");
+  const theme = await cookies().get("theme");
   if (profile) {
     return (
       <div className={theme?.value}>

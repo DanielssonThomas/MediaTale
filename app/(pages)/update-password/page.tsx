@@ -8,7 +8,7 @@ const UpdatePassword = ({
 }: {
   searchParams: { message: string; code: string };
 }) => {
-  const theme = cookies().get("theme");
+  const theme = await cookies().get("theme");
   return (
     <div className={theme?.value}>
       <div className="flex flex-col items-center bg-[#EDEDED] dark:bg-[#1C1C1C] text-black dark:text-[#EDEDED] min-h-screen w-screen pt-[5rem] gap-6">

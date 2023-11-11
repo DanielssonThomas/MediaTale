@@ -1,4 +1,4 @@
-"use client";
+"use server";
 import Button from "@/components/General/Button";
 export const ChangePasswordForm = ({ code }: { code: string }) => {
   return (

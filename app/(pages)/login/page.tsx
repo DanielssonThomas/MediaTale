@@ -5,7 +5,7 @@ import Toast from "@/components/General/Toast";
 
 export const dynamic = "force-dynamic";
 const Login = async ({ searchParams }: { searchParams: { error: string } }) => {
-  const theme = cookies().get("theme");
+  const theme = await cookies().get("theme");
 
   return (
     <div className={theme?.value}>

@@ -36,7 +36,7 @@ const Profile = async ({ params: { username } }: ProfileProps) => {
     }
   }
 
-  const theme = cookies().get("theme");
+  const theme = await cookies().get("theme");
   return (
     <div className={theme?.value}>
       <div className="bg-[#EDEDED] dark:bg-[#1C1C1C] min-h-[100vh]">

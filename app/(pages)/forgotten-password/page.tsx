@@ -5,12 +5,12 @@ import Button from "@/components/General/Button";
 import Toast from "@/components/General/Toast";
 export const dynamic = "force-dynamic";
 
-const ForgottenPassword = ({
+const ForgottenPassword = async ({
   searchParams,
 }: {
   searchParams: { message: string };
 }) => {
-  const theme = cookies().get("theme");
+  const theme = await cookies().get("theme");
   return (
     <div className={theme?.value}>
       <div className="flex flex-col items-center bg-[#EDEDED] dark:bg-[#1C1C1C] text-black dark:text-[#EDEDED] min-h-screen w-screen gap-6">

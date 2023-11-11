@@ -1,5 +1,5 @@
 import "./globals.css";
-import { cookies } from "next/headers";
+
 export const metadata = {
   title: "MediaTale",
   description:
@@ -11,9 +11,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const theme = cookies().get("theme");
   return (
-    <html lang="en" className={theme === undefined ? theme : ""}>
+    <html lang="en">
       <body>
         <main className="min-h-screen bg-background flex flex-col items-center overflow-hidden">
           {children}

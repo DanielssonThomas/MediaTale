@@ -17,7 +17,7 @@ const Settings = async ({
 }) => {
   (await IsSignedIn()) ?? redirect("/");
   const avatarUrl = await getSignedInProfilePictureUrl();
-  const theme = cookies().get("theme");
+  const theme = await cookies().get("theme");
   return (
     <div className={theme?.value}>
       {searchParams.message && (

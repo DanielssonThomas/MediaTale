@@ -4,8 +4,6 @@ import { cookies } from "next/headers";
 
 export const dynamic = "force-dynamic";
 
-const supabase = createServerActionClient({ cookies });
-
 type getProfileByIdProps = {
   user_id: string | null | undefined;
 };
@@ -28,13 +26,16 @@ type getCommentsByPostIdProps = {
 };
 
 export const getSignedInUser = async () => {
+  const supabase = createServerActionClient({ cookies });
   const {
     data: { user },
+    error,
   } = await supabase.auth.getUser();
   return user;
 };
 
 export const getSignedInProfilePictureUrl = async () => {
+  const supabase = createServerActionClient({ cookies });
   const user = await getSignedInUser();
   const { data } = await supabase
     .from("profiles")
@@ -45,6 +46,7 @@ export const getSignedInProfilePictureUrl = async () => {
 };
 
 export const getProfileById = async ({ user_id }: getProfileByIdProps) => {
+  const supabase = createServerActionClient({ cookies });
   const {
     data: profile,
     error,
@@ -62,6 +64,7 @@ export const getProfileById = async ({ user_id }: getProfileByIdProps) => {
 export const getProfileByUsername = async ({
   username,
 }: getProfileByUsernameProps) => {
+  const supabase = createServerActionClient({ cookies });
   const {
     data: profile,
     error,
@@ -77,6 +80,7 @@ export const getProfileByUsername = async ({
 };
 
 export const getPostById = async ({ post_id }: { post_id: number }) => {
+  const supabase = createServerActionClient({ cookies });
   const {
     data: post,
     error,
@@ -92,6 +96,7 @@ export const getPostById = async ({ post_id }: { post_id: number }) => {
 };
 
 export const getPostWithEventById = async ({ id }: { id: number }) => {
+  const supabase = createServerActionClient({ cookies });
   const {
     data: post,
     error,
@@ -109,6 +114,7 @@ export const getPostWithEventById = async ({ id }: { id: number }) => {
 };
 
 export const getPostsWithEvents = async ({ limit, user_id }: getPostProps) => {
+  const supabase = createServerActionClient({ cookies });
   if (user_id !== undefined) {
     const {
       data: posts,
@@ -147,6 +153,7 @@ export const getPostsStatistics = async ({
   limit: number;
   user_id?: string | null | undefined;
 }) => {
+  const supabase = createServerActionClient({ cookies });
   if (user_id !== undefined) {
     const {
       data: postsStatistics,
@@ -179,6 +186,7 @@ export const getPostsStatistics = async ({
 export const getPostStatisticsById = async ({
   post_id,
 }: getPostStatisticsByIdProps) => {
+  const supabase = createServerActionClient({ cookies });
   const {
     data: postStatistics,
     error,
@@ -194,6 +202,7 @@ export const getPostStatisticsById = async ({
 export const getCommentsByPostId = async ({
   post_id,
 }: getCommentsByPostIdProps) => {
+  const supabase = createServerActionClient({ cookies });
   const {
     data: comments,
     error,
@@ -210,6 +219,7 @@ export const getCommentsByPostId = async ({
 };
 
 export const sendPWChangeToCurrentUser = async ({ path }: { path: string }) => {
+  const supabase = createServerActionClient({ cookies });
   const user = await getSignedInUser();
   if (user !== null && user.email !== undefined) {
     const { data, error } = await supabase.auth.resetPasswordForEmail(
@@ -232,6 +242,7 @@ export const sendPWResetByEmail = async ({
   email: string;
   path: string;
 }) => {
+  const supabase = createServerActionClient({ cookies });
   const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: `${path}/update-password`,
   });
