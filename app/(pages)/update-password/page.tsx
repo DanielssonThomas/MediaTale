@@ -3,7 +3,7 @@ import ChangePasswordForm from "@/components/Auth/ChangePassword/Form";
 import Toast from "@/components/General/Toast";
 export const dynamic = "force-dynamic";
 
-const UpdatePassword = ({
+const UpdatePassword = async ({
   searchParams,
 }: {
   searchParams: { message: string; code: string };
