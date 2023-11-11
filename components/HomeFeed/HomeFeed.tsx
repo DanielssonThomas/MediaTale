@@ -1,5 +1,4 @@
-import Preview from "./Preview";
-
+import PostPreview from "../General/PostPreview.tsx";
 type HomeFeedProps = {
   postsStatistics: postStatistic[] | null;
   posts: postWithEvent[] | null;
@@ -25,11 +24,16 @@ const HomeFeed = ({ posts, postsStatistics }: HomeFeedProps) => {
     <section className="flex flex-col justify-center items-center w-full">
       <div className="flex flex-col gap-4 max-w-[100rem] min-h-screen p-6 border-x-[1px] border-solid border-black dark:border-white">
         {posts.map((post) => (
-          <Preview
+          <PostPreview
             key={post.id}
-            postLiked={post.post_event.like_bool}
-            post={post}
-            postStatistics={getStatistic(post.id)}
+            avatar_url={getStatistic(post.id)?.profiles.avatar_url ?? null}
+            description={post.description}
+            like_count={getStatistic(post.id)?.like_count ?? 0}
+            title={post.title}
+            username={post.created_by_username}
+            post_id={post.id}
+            imageUrl={post.image}
+            view_count={getStatistic(post.id)?.view_count ?? 0}
           />
         ))}
       </div>
