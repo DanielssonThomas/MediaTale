@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import ProfileHeading from "@/components/Profile/Heading";
 import ProfilePosts from "@/components/Profile/Posts";
 import Details from "@/components/Profile/Details";
+import Button from "@/components/General/Button";
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import IsSignedIn from "@/app/utils/auth/isSignedIn";
@@ -19,6 +20,7 @@ type ProfileProps = {
 const Profile = async ({ params: { username } }: ProfileProps) => {
   const profile = await getProfileByUsername({ username: username });
   let isCurrentUser = false;
+  let currentUserAvatar = null;
   if (profile === null) {
     return redirect("/profile/not-found");
   }
@@ -30,6 +32,7 @@ const Profile = async ({ params: { username } }: ProfileProps) => {
       const currentUserProfile = await getProfileById({ user_id: user.id });
       isCurrentUser =
         currentUserProfile?.username === profile.username ? true : false;
+      currentUserAvatar = currentUserProfile?.avatar_url;
     }
   }
 
@@ -37,8 +40,9 @@ const Profile = async ({ params: { username } }: ProfileProps) => {
   return (
     <div className={theme?.value}>
       <div className="bg-white dark:bg-black min-h-[100vh]">
+        <Navigation isLoggedIn={isSignedIn} avatar_url={currentUserAvatar} />
         <section className="flex flex-col justify-center items-center relative pt-8">
-          <Navigation isLoggedIn={isSignedIn} avatar_url={profile.avatar_url} />
+          <Button type="link" text="Back" href="/" posTopLeft={true} />
           <ProfileHeading
             followers={profile.followers}
             following={profile.following}

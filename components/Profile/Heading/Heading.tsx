@@ -19,7 +19,7 @@ export const ProfileHeading = ({
 }: HeadingProps) => {
   return (
     <div className="w-[40rem]">
-      <div className="flex justify-between items-center border-b-solid border-black dark:border-white border-b-[1px] p-2 text-center">
+      <div className="flex justify-between items-center border-b-solid border-black dark:border-white border-b-[1px] p-2 text-center relative">
         <div className="relative border-solid border-[1px] rounded-full border-black overflow-hidden w-[50px] h-[50px]">
           <Image
             src={avatar_url || "/images/defaultPFP.jpeg"}
@@ -27,7 +27,7 @@ export const ProfileHeading = ({
             fill={true}
           />
         </div>
-        <h2 className="text-3xl">{username}</h2>
+        <h2 className="absolute left-1/3 text-3xl">{username}</h2>
         {isCurrentUser && (
           <Button type="link" text="edit" href="/profile/edit" />
         )}
