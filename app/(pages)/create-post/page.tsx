@@ -22,7 +22,7 @@ const CreatePost = async () => {
   const theme = cookies().get("theme");
   return (
     <div className={theme?.value}>
-      <div className="bg-white dark:bg-black min-h-[100vh]">
+      <div className="bg-[#EDEDED] dark:bg-[#1C1C1C] min-h-[100vh]">
         <Navigation isLoggedIn={true} avatar_url={avatar_url} />
         <div className="flex flex-col justify-center items-center w-full h-full">
           <h2 className="px-[2rem] pt-[1rem] text-xl">

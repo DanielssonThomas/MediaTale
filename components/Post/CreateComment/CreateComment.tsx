@@ -15,7 +15,7 @@ export const CreateComment = ({
     <form
       action={`/api/comments/create-comment`}
       method="POST"
-      className="flex justify-between items-center border-solid border-black dark:border-white border-b-[1px] w-full p-4 "
+      className="flex justify-between items-center border-solid border-black dark:border-[#EDEDED] border-b-[1px] w-full p-4 "
     >
       <div className="relative overflow-hidden rounded-full w-[32px] h-[32px]">
         <Image
@@ -33,12 +33,12 @@ export const CreateComment = ({
       <input
         type="text"
         name="comment"
-        className="w-1/2 text-center"
+        className="w-1/2 p-1 dark:bg-[#1C1C1C] dark:border-[#EDEDED] border-solid border-[1px]"
         placeholder="Write a comment for this post here"
       />
       <button
         type="submit"
-        className="border-solid border-[1px] border-black dark:border-white p-2 rounded-md"
+        className="border-solid border-[1px] border-black dark:border-[#EDEDED] p-2 rounded-md"
       >
         Comment
       </button>

@@ -32,8 +32,8 @@ const PostPage = async ({
 
   const theme = cookies().get("theme");
   return (
-    <div className={theme?.value}>
-      <div className="bg-white dark:bg-black min-h-[100vh]">
+    <div className={`${theme?.value} dark:text-[#EDEDED]`}>
+      <div className="bg-[#EDEDED] dark:bg-[#1C1C1C] min-h-[100vh]">
         {showToast === error && <Toast error={true} text={message} />}
         {showToast && message !== "" && <Toast error={false} text={message} />}
         <Navigation

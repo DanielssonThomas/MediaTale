@@ -23,11 +23,11 @@ const Settings = async ({
       {searchParams.message && (
         <Toast error={false} text={searchParams.message} />
       )}
-      <div className="w-screen min-h-screen bg-white dark:bg-black ">
+      <div className="w-screen min-h-screen bg-[#EDEDED] dark:bg-[#1C1C1C] dark:text-[#EDEDED]">
         <Navigation isLoggedIn={true} avatar_url={avatarUrl} />
         <div className="flex flex-col justify-center items-center gap-4 pt-8 relative">
           <Button text="Back" type="link" href="/" posTopLeft={true} />
-          <h2 className="text-2xl border-b-[1px] border-solid border-black w-[15rem] dark:border-white text-center p-4">
+          <h2 className="text-2xl border-b-[1px] border-solid border-black w-[15rem] dark:border-[#EDEDED] text-center p-4">
             Settings
           </h2>
           <ChangePasswordEmail />

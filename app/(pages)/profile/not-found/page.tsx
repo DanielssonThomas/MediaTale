@@ -11,7 +11,7 @@ const ProfileNotFound = async () => {
   const theme = cookies().get("theme");
   return (
     <div className={theme?.value}>
-      <div className="bg-white dark:bg-black min-h-[100vh]">
+      <div className="bg-[#EDEDED] dark:bg-[#1C1C1C] min-h-[100vh]">
         <Navigation isLoggedIn={signedInStatus} avatar_url={avatarUrl} />
 
         <div className="relative flex flex-col justify-center items-center w-full">

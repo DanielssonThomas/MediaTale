@@ -35,7 +35,7 @@ const Post = ({
     incrementView();
   }, []);
   return (
-    <div className="relative flex flex-col items-center">
+    <div className="relative flex flex-col items-center dark:text-[#EDEDED]">
       <Button text="Back" type="link" href="/" posTopLeft={true} />
       <div className="max-w-[40rem]">
         <Contents

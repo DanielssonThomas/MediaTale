@@ -9,7 +9,7 @@ const Login = async ({ searchParams }: { searchParams: { error: string } }) => {
 
   return (
     <div className={theme?.value}>
-      <div className="bg-white dark:bg-black w-screen h-screen">
+      <div className="bg-[#EDEDED] dark:bg-[#1C1C1C] w-screen h-screen">
         {searchParams.error && <Toast error={true} text={searchParams.error} />}
 
         <Navigation
@@ -34,14 +34,14 @@ const Login = async ({ searchParams }: { searchParams: { error: string } }) => {
             >
               <div className="text-md text-black">Email</div>
               <input
-                className="rounded-md px-4 py-2 bg-inherit border-[1px] border-solid border-black dark:border-white w-full text-center"
+                className="rounded-md px-4 py-2 bg-inherit border-[1px] border-solid border-black dark:border-[#EDEDED] w-full text-center"
                 name="email"
                 placeholder="you@example.com"
                 required
               />
               <div className="text-md text-black">Password</div>
               <input
-                className="rounded-md px-4 py-2 bg-inherit border-[1px] border-black dark:border-white w-full text-center"
+                className="rounded-md px-4 py-2 bg-inherit border-[1px] border-black dark:border-[#EDEDED] w-full text-center"
                 type="password"
                 name="password"
                 placeholder="••••••••"

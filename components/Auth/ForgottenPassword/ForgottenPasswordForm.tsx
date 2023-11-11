@@ -10,7 +10,7 @@ export const ForgottenPasswordForm = () => {
       <input
         type="email"
         name="email"
-        className="text-center border-[1px] border-solid border-black dark:border-white text-black dark:text-white rounded"
+        className="text-center border-[1px] border-solid border-black dark:border-[#EDEDED] text-black dark:text-[#EDEDED] rounded"
         placeholder="Enter email here"
         required
       />

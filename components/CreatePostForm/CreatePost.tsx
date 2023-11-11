@@ -73,7 +73,7 @@ const CreatePostForm = ({ categories }: CreatePostFormProps) => {
           </i>
         </div>
       </div>
-      <button className="border-solid border-black dark:border-white border-[1px] bg-green-700 text-white rounded">
+      <button className="border-solid border-black dark:border-[#EDEDED] border-[1px] bg-green-700 text-[#EDEDED] rounded">
         Post
       </button>
     </form>

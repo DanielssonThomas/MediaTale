@@ -11,7 +11,7 @@ const UpdatePassword = ({
   const theme = cookies().get("theme");
   return (
     <div className={theme?.value}>
-      <div className="flex flex-col items-center bg-white dark:bg-black text-black dark:text-white min-h-screen w-screen pt-[5rem] gap-6">
+      <div className="flex flex-col items-center bg-[#EDEDED] dark:bg-[#1C1C1C] text-black dark:text-[#EDEDED] min-h-screen w-screen pt-[5rem] gap-6">
         {searchParams.message && (
           <Toast error={true} text={searchParams.message} />
         )}

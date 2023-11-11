@@ -13,7 +13,7 @@ const Heart = ({ Liked }: HeartProps) => {
       viewBox="0 0 100 100"
     >
       <g
-        fill={`${Liked ? "#f10808" : "#000"}`}
+        className={`${Liked ?? "#f10808"} dark:fill-[#EDEDED]`}
         strokeMiterlimit="10"
         strokeWidth="0"
       >

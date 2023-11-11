@@ -20,21 +20,21 @@ export const Navigation = ({
 }: NavProps) => {
   const [navMenuActive, setNavMenuActive] = useState<boolean>(false);
   return (
-    <div className="flex flex-col border-solid border-b-2 border-black dark:border-white w-screen bg-white dark:bg-black h-[60px] relative text-black dark:text-white">
+    <div className="flex flex-col border-solid border-b-2 border-black dark:border-[#EDEDED] w-screen bg-[#EDEDED] dark:bg-[#1C1C1C] h-[60px] relative text-black dark:text-[#EDEDED]">
       {isLoggedIn ? (
         <div className="flex justify-center items-center w-screen h-full relative">
           <Link
             href={"/"}
             className="absolute flex flex-col justify-center items-center left-[20px] top-[5px] w-[50px] h-[50px] border-black z-50"
           >
-            <div className="border-[1px] dark:border-white border-black border-solid rounded-full">
+            <div className="border-[1px] dark:border-[#EDEDED] border-black border-solid rounded-full">
               <MTLogo />
             </div>
           </Link>
 
           <Link
             href={"/create-post"}
-            className="absolute right-[90px] top-[5px] flex-col justify-center items-center mt-[5px] w-[120px] h-[40px] border-solid border-[1px] rounded-xl border-black dark:border-white cursor-pointer hidden md:flex"
+            className="absolute right-[90px] top-[5px] flex-col justify-center items-center mt-[5px] w-[120px] h-[40px] border-solid border-[1px] rounded-xl border-black dark:border-[#EDEDED] cursor-pointer hidden md:flex"
           >
             + New post
           </Link>

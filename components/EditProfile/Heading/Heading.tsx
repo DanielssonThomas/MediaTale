@@ -12,13 +12,13 @@ const EditProfileHeading = ({ username }: HeadingProps) => {
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {};
   return (
     <div>
-      <div className="relative flex flex-col border-b-solid border-black dark:border-white border-b-[1px] p-2 gap-[2rem]">
+      <div className="relative flex flex-col border-b-solid border-black dark:border-[#EDEDED] border-b-[1px] p-2 gap-[2rem]">
         <div className="flex flex-col">
           <div className="text-sm">Username:</div>
           <input
             name="username"
             type="text"
-            className="text-lg"
+            className="text-lg dark:text-[#EDEDED] dark:bg-[#1C1C1C]"
             onChange={(e) => setName(e.target.value)}
             value={name !== null ? name : ""}
           />

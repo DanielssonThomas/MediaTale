@@ -14,7 +14,7 @@ const DislikeIcon = ({ disliked }: DislikeIconProps) => {
       className="cursor-pointer"
     >
       <g
-        fill={`${disliked ? "#f10808" : "#000"}`}
+        className={`${disliked ?? "#f10808"} dark:fill-[#EDEDED]`}
         strokeMiterlimit="10"
         strokeWidth="0"
       >

@@ -12,8 +12,8 @@ export const Comment = ({ comment }: CommentProps) => {
 
   return (
     <div>
-      <div className="relative border-solid border-black dark:border-white border-[1px] rounded-md">
-        <div className="border-solid border-black dark:border-white border-b-[1px] p-4">
+      <div className="relative border-solid border-black dark:border-[#EDEDED] border-[1px] rounded-md">
+        <div className="border-solid border-black dark:border-[#EDEDED] border-b-[1px] p-4">
           <h3 className="text-sm">{comment.profiles.username} says</h3>
           <p className="text-xs">{comment.comment}</p>
         </div>

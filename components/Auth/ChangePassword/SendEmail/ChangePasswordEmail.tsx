@@ -12,7 +12,7 @@ export const ChangePasswordEmail = () => {
         } transition-all duration-300 absolute top-0 left-0 flex flex-col justify-center items-center w-full min-h-screen overflow-hidden`}
       >
         <div
-          className={`transition-all duration-300 w-full min-h-screen z-20 bg-black dark:bg-white ${
+          className={`transition-all duration-300 w-full min-h-screen z-20 bg-[#50d71e] dark:bg-[#EDEDED] ${
             alertActive ? "opacity-30" : "opacity-0"
           }`}
           onClick={() => setAlertActive(false)}
@@ -20,7 +20,7 @@ export const ChangePasswordEmail = () => {
         <div
           className={`transition-all duration-700 ${
             alertActive ? "bottom-[25vh]" : "bottom-[-25rem]"
-          } absolute flex flex-col justify-center items-center w-[20rem] h-[25rem] gap-12 z-30 bg-white dark:bg-black text-center rounded-md`}
+          } absolute flex flex-col justify-center items-center w-[20rem] h-[25rem] gap-12 z-30 bg-[#EDEDED] dark:bg-[#1C1C1C] text-center rounded-md`}
         >
           <h2 className="text-2xl">We will email you!</h2>
           <p className="text-sm">

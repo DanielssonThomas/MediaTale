@@ -11,7 +11,7 @@ export const ChangePasswordForm = ({ code }: { code: string }) => {
       <input
         type="password"
         name="password"
-        className="text-center border-[1px] border-solid border-black dark:border-white text-black dark:text-white rounded"
+        className="text-center border-[1px] border-solid border-black dark:border-[#EDEDED] text-black dark:text-[#EDEDED] rounded"
         placeholder="Enter new password"
       />
       <Button text="Update" type="default" />

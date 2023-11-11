@@ -13,7 +13,7 @@ const SetupProfile = async () => {
   const theme = cookies().get("theme");
   return (
     <div className={theme?.value}>
-      <div className="bg-white dark:bg-black w-screen h-screen">
+      <div className="bg-[#EDEDED] dark:bg-[#1C1C1C] w-screen h-screen">
         <div className="flex flex-col justify-center items-center h-[10vh]">
           <h1 className="text-2xl">MediaTale - Setup process</h1>
         </div>
@@ -27,21 +27,21 @@ const SetupProfile = async () => {
             <input
               type="text"
               name="first_name"
-              className="border-solid border-black dark:border-white border-[1px] py-[0.5rem] px-[1rem]"
+              className="border-solid border-black dark:border-[#EDEDED] border-[1px] py-[0.5rem] px-[1rem]"
             />
 
             <div>Last Name: </div>
             <input
               type="text"
               name="last_name"
-              className="border-solid border-black dark:border-white border-[1px] py-[0.5rem] px-[1rem]"
+              className="border-solid border-black dark:border-[#EDEDED] border-[1px] py-[0.5rem] px-[1rem]"
             />
 
             <div>Username: </div>
             <input
               type="text"
               name="username"
-              className="border-solid border-black dark:border-white border-[1px] py-[0.5rem] px-[1rem]"
+              className="border-solid border-black dark:border-[#EDEDED] border-[1px] py-[0.5rem] px-[1rem]"
             />
 
             <div className="flex flex-col">
@@ -56,7 +56,7 @@ const SetupProfile = async () => {
               <div>Country: </div>
               <select
                 name="country"
-                className="border-solid border-black dark:border-white border-[1px] py-[0.5rem] px-[1rem]"
+                className="border-solid border-black dark:border-[#EDEDED] border-[1px] py-[0.5rem] px-[1rem]"
               >
                 <option value="Sweden">Sweden</option>
                 <option value="Finland">Finland</option>
@@ -68,7 +68,7 @@ const SetupProfile = async () => {
               <input
                 type="email"
                 name="contact_email"
-                className="border-solid border-black dark:border-white border-[1px] py-[0.5rem] px-[1rem]"
+                className="border-solid border-black dark:border-[#EDEDED] border-[1px] py-[0.5rem] px-[1rem]"
               />
             </div>
             <div className="flex justify-center items-center">

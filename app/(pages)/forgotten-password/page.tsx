@@ -13,7 +13,7 @@ const ForgottenPassword = ({
   const theme = cookies().get("theme");
   return (
     <div className={theme?.value}>
-      <div className="flex flex-col items-center bg-white dark:bg-black text-black dark:text-white min-h-screen w-screen gap-6">
+      <div className="flex flex-col items-center bg-[#EDEDED] dark:bg-[#1C1C1C] text-black dark:text-[#EDEDED] min-h-screen w-screen gap-6">
         <Navigation isLoggedIn={false} avatar_url={null} />
         <Button type="link" text="Back" href="/" posTopLeft={true} />
         <section className="flex flex-col items-center pt-10">

@@ -20,9 +20,9 @@ const ProfileEdit = async () => {
   if (profile) {
     return (
       <div className={theme?.value}>
-        <div className="bg-white dark:bg-black min-h-[100vh] w-full relative">
+        <div className="bg-[#EDEDED] dark:bg-[#1C1C1C] min-h-[100vh] w-full relative">
           <Navigation isLoggedIn={userStatus} avatar_url={profile.avatar_url} />
-          <div className="flex justify-center w-full">
+          <div className="flex justify-center w-full dark:text-[#EDEDED]">
             <div className="w-full absolute">
               <Button text="Back" type="link" href="/" posTopLeft={true} />
             </div>

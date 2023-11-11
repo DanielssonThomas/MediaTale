@@ -22,9 +22,6 @@ const EditProfileDetails = ({
   const [aboutContent, setAboutContent] = useState<string | null | undefined>(
     about
   );
-  const [countryContent, setCountryContent] = useState<
-    string | null | undefined
-  >(country);
   const [contactContent, setContactContent] = useState<
     string | null | undefined
   >(contact_email);
@@ -37,16 +34,16 @@ const EditProfileDetails = ({
 
   return (
     <div className="flex flex-col gap-4 p-2">
-      <div className="flex flex-col border-solid border-black dark:border-white border-b-[1px]">
+      <div className="flex flex-col border-solid border-black dark:border-[#EDEDED] border-b-[1px]">
         <div className="text-sm">About:</div>
         <textarea
           name="about"
-          className="text-base min-h-[5rem]"
+          className="text-base min-h-[5rem] dark:bg-[#1C1C1C]"
           onChange={(e) => setAboutContent(e.target.value)}
           value={aboutContent === null ? "" : aboutContent}
         ></textarea>
       </div>
-      <div className=" flex flex-col border-solid border-black dark:border-white border-b-[1px]">
+      <div className=" flex flex-col border-solid border-black dark:border-[#EDEDED] border-b-[1px]">
         <div>
           <div className="text-sm">First Name:</div>
           <input
@@ -54,7 +51,7 @@ const EditProfileDetails = ({
             type="text"
             onChange={(e) => setFirstName(e.target.value)}
             value={firstName === null ? "" : firstName}
-            className="text-lg w-full"
+            className="text-lg w-full dark:bg-[#1C1C1C]"
           />
         </div>
         <div>
@@ -64,31 +61,33 @@ const EditProfileDetails = ({
             type="text"
             onChange={(e) => setLastName(e.target.value)}
             value={lastName === null ? "" : lastName}
-            className="text-lg w-full"
+            className="text-lg w-full dark:bg-[#1C1C1C]"
           />
         </div>
       </div>
-      <div className="border-solid border-black dark:border-white border-b-[1px]">
+      <div className="border-solid border-black dark:border-[#EDEDED] border-b-[1px]">
         <div className="text-sm">Country:</div>
-        <input
+        <select
           name="country"
-          type="text"
-          onChange={(e) => setCountryContent(e.target.value)}
-          value={countryContent === null ? "" : countryContent}
-          className="text-lg w-full"
-        />
+          className="border-solid border-black dark:border-[#EDEDED] border-[1px] py-[0.5rem] px-[1rem] dark:bg-[#1C1C1C] w-full"
+        >
+          <option value="Sweden">Sweden</option>
+          <option value="Finland">Finland</option>
+          <option value="Norway">Norway</option>
+        </select>
       </div>
-      <div className="border-solid border-black dark:border-white border-b-[1px]">
-        <div className="text-sm">Buisness email:</div>
+      <div className="border-solid border-black dark:border-[#EDEDED] border-b-[1px] ">
+        <div className="text-sm dark:text-[#EDEDED]">Buisness email:</div>
         <input
           name="contact_email"
           type="email"
           onChange={(e) => setContactContent(e.target.value)}
           value={contactContent === null ? "" : contactContent}
-          className="text-lg w-full"
+          placeholder="email here"
+          className="text-lg w-full dark:bg-[#1C1C1C]"
         />
       </div>
-      <div className="border-solid border-black dark:border-white border-b-[1px]">
+      <div className="border-solid border-black dark:border-[#EDEDED] border-b-[1px]">
         <h3 className="text-sm">Created at:</h3>
         <section>{created_at}</section>
       </div>

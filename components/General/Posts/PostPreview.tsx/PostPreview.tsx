@@ -25,10 +25,10 @@ export const PostPreview = ({
   imageUrl,
 }: PostPreviewProps) => {
   return (
-    <Link href={`/post/${post_id}`}>
+    <Link href={`/post/${post_id}`} className="dark:text-[#EDEDED]">
       <input type="hidden" value={post_id} name="post_id" />
-      <button className="flex flex-col justify-around relative w-full h-[10rem] rounded-[2px] border-solid border-[1px] border-black dark:border-white">
-        <div className="absolute left-[-20px] top-[-15px] w-[25px] h-[25px] rounded-full overflow-hidden border-black dark:border-white border-solid">
+      <button className="flex flex-col justify-around relative w-full h-[10rem] rounded-[2px] border-solid border-[1px] border-black dark:border-[#EDEDED] bg-[#EDEDED] dark:bg-[#232323]">
+        <div className="absolute left-[-20px] top-[-15px] w-[25px] h-[25px] rounded-full overflow-hidden border-black dark:border-[#EDEDED] border-solid">
           <Image
             src={avatar_url || "/images/defaultPFP.jpeg"}
             alt={`${username}'s avatar`}
@@ -38,7 +38,7 @@ export const PostPreview = ({
 
         {imageUrl !== "" ? (
           <div className="flex flex-col p-1 text-center w-full">
-            <h3 className="text-2xl border-solid border-b-[1px] border-black dark:border-white">
+            <h3 className="text-2xl border-solid border-b-[1px] border-black dark:border-[#EDEDED]">
               {title}
             </h3>
             <p className="min-h-[3rem] p-2">{description}</p>

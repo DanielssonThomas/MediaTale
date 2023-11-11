@@ -39,7 +39,7 @@ const Profile = async ({ params: { username } }: ProfileProps) => {
   const theme = cookies().get("theme");
   return (
     <div className={theme?.value}>
-      <div className="bg-white dark:bg-black min-h-[100vh]">
+      <div className="bg-[#EDEDED] dark:bg-[#1C1C1C] min-h-[100vh]">
         <Navigation isLoggedIn={isSignedIn} avatar_url={currentUserAvatar} />
         <section className="flex flex-col justify-center items-center relative pt-8">
           <Button type="link" text="Back" href="/" posTopLeft={true} />

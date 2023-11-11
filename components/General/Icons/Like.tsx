@@ -14,7 +14,7 @@ const LikeIcon = ({ Liked }: LikeIconProps) => {
       className="cursor-pointer"
     >
       <g
-        fill={`${Liked ? "#f10808" : "#000"}`}
+        className={`${Liked ?? "#f10808"} dark:fill-[#EDEDED]`}
         strokeMiterlimit="10"
         strokeWidth="0"
       >

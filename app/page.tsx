@@ -9,7 +9,7 @@ export default async function Index() {
   const theme = cookies().get("theme");
   return (
     <div className={theme?.value}>
-      <div className="bg-white dark:bg-black w-screen h-screen overflow-hidden">
+      <div className="bg-[#EDEDED] dark:bg-[#1C1C1C] w-screen h-screen overflow-hidden">
         {!isLoggedIn ? <LandingPage /> : <HomePage />}
       </div>
     </div>

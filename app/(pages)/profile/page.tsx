@@ -35,29 +35,32 @@ const Profile = async () => {
     redirect("/");
   }
   const avatarUrl = await getSignedInProfilePictureUrl();
+  const theme = cookies().get("theme");
   return (
-    <div className="bg-white dark:bg-black min-h-[100vh]">
-      <Navigation isLoggedIn={true} avatar_url={avatarUrl} />
-      <section className="flex flex-col justify-center items-center relative pt-8">
-        <Button type="link" text="Back" href="/" posTopLeft={true} />
-        <ProfileHeading
-          username={details?.username}
-          followers={details?.followers}
-          following={details?.following}
-          isCurrentUser={true}
-          user_id={user?.id}
-          avatar_url={avatarUrl}
-        />
-        <ProfileDetails
-          about={details?.about}
-          contact_email={details?.contact_email}
-          country={details?.country}
-          created_at={details?.created_at}
-          first_name={details?.first_name}
-          last_name={details?.last_name}
-        />
-        <ProfilePosts user_id={user?.id} />
-      </section>
+    <div className={`${theme?.value}`}>
+      <div className="bg-[#EDEDED] dark:bg-[#1C1C1C] min-h-[100vh]">
+        <Navigation isLoggedIn={true} avatar_url={avatarUrl} />
+        <section className="flex flex-col justify-center items-center relative pt-8 dark:text-[#EDEDED]">
+          <Button type="link" text="Back" href="/" posTopLeft={true} />
+          <ProfileHeading
+            username={details?.username}
+            followers={details?.followers}
+            following={details?.following}
+            isCurrentUser={true}
+            user_id={user?.id}
+            avatar_url={avatarUrl}
+          />
+          <ProfileDetails
+            about={details?.about}
+            contact_email={details?.contact_email}
+            country={details?.country}
+            created_at={details?.created_at}
+            first_name={details?.first_name}
+            last_name={details?.last_name}
+          />
+          <ProfilePosts user_id={user?.id} />
+        </section>
+      </div>
     </div>
   );
 };
