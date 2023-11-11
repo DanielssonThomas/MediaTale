@@ -9,6 +9,8 @@ type PostProps = {
   authorStatistics: profile | null;
   post: postWithEvent | null;
   postStatistics: postStatistic | null;
+  signedInUserProfileId: number | undefined;
+  signedInUserAvatar: string | null;
   comments: commentData[] | null;
 };
 
@@ -16,6 +18,8 @@ const Post = ({
   authorStatistics,
   post,
   postStatistics,
+  signedInUserProfileId,
+  signedInUserAvatar,
   comments,
 }: PostProps) => {
   const incrementView = async () => {
@@ -39,7 +43,11 @@ const Post = ({
           postStatistics={postStatistics}
           post={post}
         />
-        <CreateComment post={post} authorStatistics={authorStatistics} />
+        <CreateComment
+          post={post}
+          profile_id={signedInUserProfileId}
+          image={signedInUserAvatar}
+        />
         <Comments comments={comments} />
       </div>
     </div>

@@ -31,18 +31,19 @@ const Profile = async ({ params: { username } }: ProfileProps) => {
         currentUserProfile?.username === profile.username ? true : false;
     }
   }
+
   const theme = cookies().get("theme");
   return (
     <div className={theme?.value}>
       <div className="bg-white dark:bg-black min-h-[100vh]">
-        <Navigation isLoggedIn={isSignedIn} />
-
+        <Navigation isLoggedIn={isSignedIn} avatar_url={profile.avatar_url} />
         <ProfileHeading
           followers={profile.followers}
           following={profile.following}
           username={profile.username}
-          PFImage=""
+          user_id={profile.user_id}
           isCurrentUser={isCurrentUser}
+          avatar_url={profile.avatar_url}
         />
         <Details
           about={profile.about}

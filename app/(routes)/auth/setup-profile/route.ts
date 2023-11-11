@@ -1,3 +1,4 @@
+import { getSignedInUser } from "@/app/utils/supabase-queries/queries";
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
@@ -14,10 +15,7 @@ export async function POST(request: Request) {
   const contact_email = String(formData.get("contact_email"));
 
   const supabase = createRouteHandlerClient({ cookies });
-  const {
-    data: { user },
-    error,
-  } = await supabase.auth.getUser();
+  const user = await getSignedInUser();
 
   if (user) {
     const { error } = await supabase.from("profiles").insert({
@@ -39,16 +37,6 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.redirect(`${requestUrl.origin}/`, { status: 301 });
-  }
-
-  if (error) {
-    return NextResponse.redirect(
-      `/profile/setup?message=Failed to fetch user information`,
-      {
-        // a 301 status is required to redirect from a POST to a GET route
-        status: 301,
-      }
-    );
   }
 
   return NextResponse.redirect(`${requestUrl.origin}/profile/setup`, {

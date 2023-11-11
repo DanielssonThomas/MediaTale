@@ -1,6 +1,7 @@
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { PostgrestError } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
+
 export const dynamic = "force-dynamic";
 
 const supabase = createServerActionClient({ cookies });
@@ -30,6 +31,16 @@ export const getSignedInUser = async () => {
     data: { user },
   } = await supabase.auth.getUser();
   return user;
+};
+
+export const getSignedInProfilePictureUrl = async () => {
+  const user = await getSignedInUser();
+  const { data } = await supabase
+    .from("profiles")
+    .select("avatar_url")
+    .match({ user_id: user?.id })
+    .single();
+  return data?.avatar_url;
 };
 
 export const getProfileById = async ({ user_id }: getProfileByIdProps) => {
@@ -117,7 +128,7 @@ export const getPostsStatistics = async () => {
     data: postsStatistics,
     error,
   }: { data: postStatistic[] | null; error: PostgrestError | null } =
-    await supabase.from("posts_statistics").select("*");
+    await supabase.from("posts_statistics").select("*, profiles(avatar_url)");
   if (error) {
     console.log("getPostsStatistics error:", error);
   }

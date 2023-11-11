@@ -107,7 +107,7 @@ export interface Database {
           id: number
           like_count: number
           post_id: number | null
-          profile_id: number | null
+          profile_id: number
           sub_comment_id: number | null
           user_id: string | null
         }
@@ -118,7 +118,7 @@ export interface Database {
           id?: number
           like_count?: number
           post_id?: number | null
-          profile_id?: number | null
+          profile_id: number
           sub_comment_id?: number | null
           user_id?: string | null
         }
@@ -129,7 +129,7 @@ export interface Database {
           id?: number
           like_count?: number
           post_id?: number | null
-          profile_id?: number | null
+          profile_id?: number
           sub_comment_id?: number | null
           user_id?: string | null
         }
@@ -252,6 +252,7 @@ export interface Database {
           id: number
           like_count: number | null
           post_id: number | null
+          profile_id: number
           updated_at: string | null
           view_count: number
         }
@@ -262,6 +263,7 @@ export interface Database {
           id?: number
           like_count?: number | null
           post_id?: number | null
+          profile_id: number
           updated_at?: string | null
           view_count?: number
         }
@@ -272,6 +274,7 @@ export interface Database {
           id?: number
           like_count?: number | null
           post_id?: number | null
+          profile_id?: number
           updated_at?: string | null
           view_count?: number
         }
@@ -288,6 +291,13 @@ export interface Database {
             columns: ["post_id"]
             isOneToOne: false
             referencedRelation: "posts"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "posts_statistics_profile_id_fkey"
+            columns: ["profile_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           }
         ]

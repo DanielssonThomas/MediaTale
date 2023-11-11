@@ -2,27 +2,12 @@ import Navigation from "@/components/Navigation";
 import ProfileHeading from "@/components/Profile/Heading";
 import ProfileDetails from "@/components/Profile/Details";
 import IsSignedIn from "@/app/utils/auth/isSignedIn";
+import { getSignedInProfilePictureUrl } from "@/app/utils/supabase-queries/queries";
 import Button from "@/components/General/Button";
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 export const dynamic = "force-dynamic";
-
-const getUserID = async () => {
-  const supabase = createServerActionClient({ cookies });
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-  return user?.id;
-};
-
-const getAvatar = async (userId: Promise<string | undefined>) => {
-  const supabase = createServerActionClient({ cookies });
-  const { data } = await supabase.storage
-    .from("avatars")
-    .getPublicUrl(`${userId}/`);
-  return data;
-};
 
 const getDetails = async (userId: string | undefined) => {
   const supabase = createServerActionClient({ cookies });
@@ -48,9 +33,10 @@ const Profile = async () => {
   if (!isSignedIn) {
     redirect("/");
   }
+  const avatarUrl = await getSignedInProfilePictureUrl();
   return (
     <div className="bg-white dark:bg-black min-h-[100vh]">
-      <Navigation isLoggedIn={true} />
+      <Navigation isLoggedIn={true} avatar_url={avatarUrl} />
       <section className="flex flex-col justify-center items-center relative pt-8">
         <Button type="link" text="Back" href="/" posTopLeft={true} />
         <ProfileHeading
@@ -58,6 +44,8 @@ const Profile = async () => {
           followers={details?.followers}
           following={details?.following}
           isCurrentUser={true}
+          user_id={user?.id}
+          avatar_url={avatarUrl}
         />
         <ProfileDetails
           about={details?.about}

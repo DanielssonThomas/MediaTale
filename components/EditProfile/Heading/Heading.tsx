@@ -1,49 +1,18 @@
 "use client";
+import Button from "@/components/General/Button";
 import Image from "next/image";
 import { useState } from "react";
 
 type HeadingProps = {
   username: string | null | undefined;
-  followers: number | null | undefined;
-  following: number | null | undefined;
-  PFImage?: string;
 };
 
-const EditProfileHeading = ({
-  username,
-  followers,
-  following,
-  PFImage,
-}: HeadingProps) => {
-  const [imageUpload, setImageUpload] = useState<Blob>();
-  const [avatar, setAvatar] = useState<Blob | null>(null);
+const EditProfileHeading = ({ username }: HeadingProps) => {
   const [name, setName] = useState<string | null | undefined>(username);
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {};
   return (
     <div>
       <div className="relative flex flex-col border-b-solid border-black dark:border-white border-b-[1px] p-2 gap-[2rem]">
-        <div className="mt-[3rem]">
-          <div className="text-sm">Upload new profile picture:</div>
-          <input
-            name="avatar"
-            type="file"
-            accept=".jpg, .jpeg, .png"
-            onChange={(e: any) => setImageUpload(e.target.files[0])}
-          />
-        </div>
-        <div className="flex justify-center items-center">
-          {imageUpload && (
-            <div>
-              <div className="relative flex flex-col justify-center items-center border-solid border-[1px] rounded-full border-black overflow-hidden w-[200px] h-[200px]">
-                <Image
-                  src={URL.createObjectURL(imageUpload)}
-                  alt="Uploaded image"
-                  fill={true}
-                />
-              </div>
-            </div>
-          )}
-        </div>
-
         <div className="flex flex-col">
           <div className="text-sm">Username:</div>
           <input

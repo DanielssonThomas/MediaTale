@@ -47,7 +47,19 @@ declare global {
     };
   };
 
-  type postStatistic = Database["public"]["Tables"]["posts_statistics"]["Row"];
+  type postStatistic = {
+    created_at: string;
+    created_by: string | null;
+    dislike_count: number | null;
+    id: number;
+    like_count: number | null;
+    post_id: number | null;
+    profile_id: number;
+    updated_at: string | null;
+    view_count: number;
+    profiles: { avatar_url: string | null };
+  };
+
   type postStatisticUpdate =
     Database["public"]["Tables"]["posts_statistics"]["Update"];
 

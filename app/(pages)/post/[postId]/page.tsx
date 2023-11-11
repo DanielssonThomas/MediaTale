@@ -8,6 +8,8 @@ import {
   getProfileById,
   getCommentsByPostId,
   getPostStatisticsById,
+  getSignedInProfilePictureUrl,
+  getSignedInUser,
 } from "@/app/utils/supabase-queries/queries";
 
 type PostProps = {
@@ -19,6 +21,9 @@ const PostPage = async ({
   params: { postId },
   searchParams: { message, error },
 }: PostProps) => {
+  const currentUser = await getSignedInUser();
+  const currentUserProfile = await getProfileById({ user_id: currentUser?.id });
+  console.log(await currentUserProfile);
   const post = await getPostWithEventById({ id: postId });
   const profile = await getProfileById({ user_id: post?.created_by_uuid });
   const postStatistics = await getPostStatisticsById({ post_id: postId });
@@ -31,12 +36,16 @@ const PostPage = async ({
       <div className="bg-white dark:bg-black min-h-[100vh]">
         {showToast === error && <Toast error={true} text={message} />}
         {showToast && message !== "" && <Toast error={false} text={message} />}
-        <Navigation isLoggedIn={true} />
+        <Navigation
+          isLoggedIn={true}
+          avatar_url={currentUserProfile?.avatar_url}
+        />
         <Post
           authorStatistics={profile}
           post={post}
           postStatistics={postStatistics}
           comments={comments}
+          signedInUserProfileId={currentUserProfile?.id}
         />
       </div>
     </div>

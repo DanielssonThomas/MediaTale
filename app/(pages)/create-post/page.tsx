@@ -3,6 +3,7 @@ import CreatePostForm from "@/components/CreatePostForm/CreatePost";
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { useState } from "react";
+import { getSignedInProfilePictureUrl } from "@/app/utils/supabase-queries/queries";
 export const dynamic = "force-dynamic";
 
 const CreatePost = async () => {
@@ -17,11 +18,12 @@ const CreatePost = async () => {
   } catch (error) {
     console.error("Error fetching categories:");
   }
+  const avatar_url = await getSignedInProfilePictureUrl();
   const theme = cookies().get("theme");
   return (
     <div className={theme?.value}>
       <div className="bg-white dark:bg-black min-h-[100vh]">
-        <Navigation isLoggedIn={true} />
+        <Navigation isLoggedIn={true} avatar_url={avatar_url} />
         <div className="flex flex-col justify-center items-center w-full h-full">
           <h2 className="px-[2rem] pt-[1rem] text-xl">
             Post an small article or just something on your mind that you want

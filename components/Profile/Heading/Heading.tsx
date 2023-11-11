@@ -1,31 +1,30 @@
 import Image from "next/image";
-import Link from "next/link";
 import Button from "@/components/General/Button";
 
 type HeadingProps = {
   username: string | null | undefined;
   followers: number | null | undefined;
   following: number | null | undefined;
-  PFImage?: string;
   isCurrentUser: boolean;
+  user_id: string | null | undefined;
+  avatar_url: string | null;
 };
 
 export const ProfileHeading = ({
   username,
   followers,
   following,
-  PFImage,
+  avatar_url,
   isCurrentUser,
 }: HeadingProps) => {
   return (
     <div className="w-[40rem]">
       <div className="flex justify-between items-center border-b-solid border-black dark:border-white border-b-[1px] p-2 text-center">
-        <div className="border-solid border-[1px] rounded-full border-black overflow-hidden w-[80px] h-[80px] cursor-pointer">
+        <div className="relative border-solid border-[1px] rounded-full border-black overflow-hidden w-[50px] h-[50px]">
           <Image
-            src={PFImage || "/images/defaultPFP.jpeg"}
-            alt="your profile picture"
-            width={80}
-            height={80}
+            src={avatar_url || "/images/defaultPFP.jpeg"}
+            alt={`${username}'s avatar`}
+            fill={true}
           />
         </div>
         <h2 className="text-3xl">{username}</h2>

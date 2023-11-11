@@ -13,7 +13,6 @@ export async function POST(request: Request) {
   const contact_email = String(formData.get("contact_email"));
   const first_name = String(formData.get("first_name"));
   const last_name = String(formData.get("last_name"));
-  const avatar = formData.get("avatar");
   const supabase = createRouteHandlerClient({ cookies });
 
   const {
@@ -33,6 +32,7 @@ export async function POST(request: Request) {
     .eq("user_id", user?.id);
 
   if (error) {
+    console.log("Proifle update error:", error);
     return NextResponse.redirect(`${requestUrl.origin}/profile`, {
       // a 301 status is required to redirect from a POST to a GET route
       status: 301,

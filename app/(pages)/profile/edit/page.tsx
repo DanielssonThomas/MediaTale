@@ -15,14 +15,17 @@ const ProfileEdit = async () => {
   const userStatus = await IsSignedIn();
   const user = await getSignedInUser();
   const profile = await getProfileById({ user_id: user ? user.id : "" });
+
   const theme = cookies().get("theme");
   if (profile) {
     return (
       <div className={theme?.value}>
-        <div className="bg-white dark:bg-black min-h-[100vh] w-full">
-          <Navigation isLoggedIn={userStatus} />
-          <div className="flex justify-center w-full relative">
-            <Button text="Back" type="link" href="/" posTopLeft={true} />
+        <div className="bg-white dark:bg-black min-h-[100vh] w-full relative">
+          <Navigation isLoggedIn={userStatus} avatar_url={profile.avatar_url} />
+          <div className="flex justify-center w-full">
+            <div className="w-full absolute">
+              <Button text="Back" type="link" href="/" posTopLeft={true} />
+            </div>
             <EditProfile profile={profile} />
           </div>
         </div>

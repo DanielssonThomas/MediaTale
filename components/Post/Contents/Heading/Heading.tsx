@@ -1,5 +1,6 @@
 import DislikeIcon from "@/components/General/Icons/Dislike";
 import LikeIcon from "@/components/General/Icons/Like";
+
 import Image from "next/image";
 import Link from "next/link";
 
@@ -17,8 +18,8 @@ export const Heading = ({ post, authorStatistics }: HeadingProps) => {
           className="relative border-solid border-[1px] border-black dark:border-white w-[50px] h-[50px] rounded-full overflow-hidden"
         >
           <Image
-            src={post?.image || "/images/defaultPFP.jpeg"}
-            alt="Poster avatar"
+            src={authorStatistics?.avatar_url || "/images/defaultPFP.jpeg"}
+            alt={`${authorStatistics?.username}'s avatar`}
             fill={true}
           />
         </Link>

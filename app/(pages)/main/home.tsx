@@ -22,7 +22,7 @@ const Home = async () => {
 
   return (
     <div className="bg-white dark:bg-black w-full min-h-[100vh]">
-      <Navigation isLoggedIn={true} />
+      <Navigation isLoggedIn={true} avatar_url={profile.avatar_url} />
       <HomeFeed posts={posts} postsStatistics={postsStatistics} />
     </div>
   );

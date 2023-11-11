@@ -1,13 +1,13 @@
 import Image from "next/image";
 
 type CreateCommentProps = {
-  authorStatistics: profile | null;
+  profile_id: number | undefined;
   post: post | null;
-  image?: string;
+  image: string | null;
 };
 
 export const CreateComment = ({
-  authorStatistics,
+  profile_id,
   post,
   image,
 }: CreateCommentProps) => {
@@ -24,7 +24,11 @@ export const CreateComment = ({
           fill={true}
         />
       </div>
-      <input type="hidden" name="profile_id" value={authorStatistics?.id} />
+      <input
+        type="hidden"
+        name="profile_id"
+        value={profile_id === undefined ? 0 : profile_id}
+      />
       <input type="hidden" name="post_id" value={post?.id} />
       <input
         type="text"

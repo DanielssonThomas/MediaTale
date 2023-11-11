@@ -43,7 +43,11 @@ export async function POST(request: Request) {
 
     const { data: postStatistic, error: postStatisticError } = await supabase
       .from("posts_statistics")
-      .insert({ created_by: user.id, post_id: post.id });
+      .insert({
+        created_by: user.id,
+        post_id: post.id,
+        profile_id: userProfile?.id,
+      });
     return NextResponse.redirect(`${requestUrl.origin}/`, { status: 301 });
   }
 

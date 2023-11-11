@@ -14,7 +14,7 @@ const ForgottenPassword = ({
   return (
     <div className={theme?.value}>
       <div className="flex flex-col items-center bg-white dark:bg-black text-black dark:text-white min-h-screen w-screen gap-6">
-        <Navigation isLoggedIn={false} />
+        <Navigation isLoggedIn={false} avatar_url={null} />
         <Button type="link" text="Back" href="/" posTopLeft={true} />
         <section className="flex flex-col items-center pt-10">
           <h2 className="text-6xl">MediaTale</h2>

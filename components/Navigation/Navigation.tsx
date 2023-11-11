@@ -1,21 +1,22 @@
 "use client";
 import MTLogo from "@/components/General/Icons/MediaTale";
 import Link from "next/link";
-import Image from "next/image";
 import NavMenu from "./NavMenu";
 import Button from "../General/Button";
+import Image from "next/image";
 import { useState } from "react";
 
 type NavProps = {
   isLoggedIn: boolean;
+  avatar_url: string | null | undefined;
   showLoginButton?: boolean;
   profileImage?: string;
 };
 
 export const Navigation = ({
   isLoggedIn,
+  avatar_url,
   showLoginButton,
-  profileImage,
 }: NavProps) => {
   const [navMenuActive, setNavMenuActive] = useState<boolean>(false);
   return (
@@ -39,14 +40,13 @@ export const Navigation = ({
           </Link>
 
           <div
-            className="absolute top-[5px] right-[20px] border-solid border-[1px] rounded-full border-black overflow-hidden w-[50px] h-[50px] z-50 cursor-pointer"
+            className="absolute top-[5px] right-[20px] border-solid border-[1px] rounded-full border-black overflow-hidden w-[50px] h-[50px] z-50 cursor-pointer object-contain"
             onClick={() => setNavMenuActive(!navMenuActive)}
           >
             <Image
-              src={profileImage || "/images/defaultPFP.jpeg"}
-              alt="your profile picture"
-              width={50}
-              height={50}
+              src={avatar_url || "/images/defaultPFP.jpeg"}
+              alt="your avatar"
+              fill={true}
             />
           </div>
           <NavMenu active={navMenuActive} setActive={setNavMenuActive} />
