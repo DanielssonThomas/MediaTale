@@ -10,6 +10,7 @@ type NavProps = {
   isLoggedIn: boolean;
   avatar_url: string | null | undefined;
   showLoginButton?: boolean;
+  showBackButton?: boolean;
   profileImage?: string;
 };
 
@@ -17,6 +18,7 @@ export const Navigation = ({
   isLoggedIn,
   avatar_url,
   showLoginButton,
+  showBackButton,
 }: NavProps) => {
   const [navMenuActive, setNavMenuActive] = useState<boolean>(false);
   return (
@@ -53,17 +55,17 @@ export const Navigation = ({
         </div>
       ) : (
         <div className="relative flex justify-center items-center w-screen h-full">
-          {showLoginButton && (
+          {showBackButton && (
             <Button text="Back" type="link" href="/" posTopLeft={true} />
           )}
           <h1 className="text-2xl">MediaTale</h1>
           {showLoginButton && (
-            <Link
+            <Button
+              type="link"
+              text="Sign in/up"
               href="/login"
-              className="absolute flex flex-col justify-center items-center top-[15px] right-[15px] w-[100px] h-[30px] border-solid border-[1px] rounded-md border-black"
-            >
-              Sign in/up
-            </Link>
+              posTopRight={true}
+            />
           )}
         </div>
       )}

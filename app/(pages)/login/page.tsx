@@ -14,11 +14,12 @@ const Login = async ({ searchParams }: { searchParams: { error: string } }) => {
 
         <Navigation
           isLoggedIn={false}
-          showLoginButton={true}
+          showLoginButton={false}
+          showBackButton={true}
           avatar_url={null}
         />
         <div className="flex justify-center w-full">
-          <section className="flex flex-col justify-center items-center w-[25rem] gap-8">
+          <section className="flex flex-col justify-center items-center w-[25rem] gap-8 dark:text-[#EDEDED]">
             <div className="flex flex-col justify-center gap-2 text-center pt-4">
               <h2 className="text-2xl">Welcome!</h2>
               <i>
@@ -28,18 +29,18 @@ const Login = async ({ searchParams }: { searchParams: { error: string } }) => {
               </i>
             </div>
             <form
-              className="flex-1 flex flex-col w-[20rem] justify-center items-center text-foreground gap-4"
+              className="flex-1 flex flex-col w-[20rem] justify-center items-center text-foreground gap-4 dark:text-[#EDEDED]"
               action="/auth/sign-in"
               method="post"
             >
-              <div className="text-md text-black">Email</div>
+              <p className="text-md ">Email</p>
               <input
-                className="rounded-md px-4 py-2 bg-inherit border-[1px] border-solid border-black dark:border-[#EDEDED] w-full text-center"
+                className="rounded-md px-4 py-2 bg-inherit border-[1px] border-solid border-black dark:border-[#EDEDED] w-full text-center "
                 name="email"
                 placeholder="you@example.com"
                 required
               />
-              <div className="text-md text-black">Password</div>
+              <p className="text-md ">Password</p>
               <input
                 className="rounded-md px-4 py-2 bg-inherit border-[1px] border-black dark:border-[#EDEDED] w-full text-center"
                 type="password"

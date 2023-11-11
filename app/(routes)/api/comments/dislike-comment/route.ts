@@ -25,8 +25,5 @@ export const POST = async (req: Request) => {
     return NextResponse.json({ status: 301 });
   }
 
-  if (data) {
-    console.log("data: ", data);
-  }
   return NextResponse.json({ status: 301 });
 };

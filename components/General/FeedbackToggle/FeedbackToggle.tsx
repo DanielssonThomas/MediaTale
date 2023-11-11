@@ -29,7 +29,7 @@ export const FeedbackToggle = ({
   const [actionTaken, setActionTaken] = useState<boolean>(
     liked || disliked ? true : false
   );
-  const handleEvent = ({
+  const handleEvent = async ({
     like,
     e,
   }: {
@@ -38,23 +38,33 @@ export const FeedbackToggle = ({
   }) => {
     e.preventDefault();
     if (type === "comments") {
-      fetch(`/api/comments/${like ? "like-" : "dislike-"}comment`, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ comment_id: id }),
-      });
+      const { status } = await fetch(
+        `/api/comments/${like ? "like-" : "dislike-"}comment`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ comment_id: id }),
+        }
+      );
+      console.log(status);
+      setActionTaken(status === 200 ? true : false);
     }
 
     if (type === "posts") {
-      fetch(`/api/posts/${like ? "like-" : "dislike-"}post`, {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ post_id: id }),
-      });
+      const { status } = await fetch(
+        `/api/posts/${like ? "like-" : "dislike-"}post`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ post_id: id }),
+        }
+      );
+      console.log(status);
+      setActionTaken(status === 200 ? true : false);
     }
   };
 

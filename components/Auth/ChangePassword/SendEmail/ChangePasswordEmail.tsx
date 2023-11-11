@@ -12,7 +12,7 @@ export const ChangePasswordEmail = () => {
         } transition-all duration-300 absolute top-0 left-0 flex flex-col justify-center items-center w-full min-h-screen overflow-hidden`}
       >
         <div
-          className={`transition-all duration-300 w-full min-h-screen z-20 bg-[#50d71e] dark:bg-[#EDEDED] ${
+          className={`transition-all duration-300 w-full min-h-screen z-20 bg-[#EDEDED]] dark:bg-[#EDEDED] ${
             alertActive ? "opacity-30" : "opacity-0"
           }`}
           onClick={() => setAlertActive(false)}

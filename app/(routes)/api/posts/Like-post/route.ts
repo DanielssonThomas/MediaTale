@@ -10,7 +10,6 @@ export const POST = async (req: Request) => {
   const supabase = createRouteHandlerClient({ cookies });
   const reqData: any = await req.json();
   const { post_id } = reqData;
-  console.log("data: ", post_id);
   const user = await getSignedInUser();
   const profile = await getProfileById({ user_id: user?.id });
 
