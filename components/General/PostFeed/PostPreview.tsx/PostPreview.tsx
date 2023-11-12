@@ -40,10 +40,10 @@ export const PostPreview = ({
 
         {imageUrl !== "" ? (
           <div className="flex flex-col p-1 text-center w-full">
-            <h3 className="text-2xl border-solid border-b-[1px] border-black dark:border-[#EDEDED]">
+            <h3 className="sm:text-2xl border-solid border-b-[1px] border-black dark:border-[#EDEDED]">
               {title}
             </h3>
-            <p className="min-h-[3rem] p-2">{description}</p>
+            <p className="min-h-[3rem] p-2 text-sm">{description}</p>
           </div>
         ) : (
           <></>

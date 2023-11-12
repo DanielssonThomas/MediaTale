@@ -1,4 +1,4 @@
-import PostFeed from "@/components/General/Posts";
+import PostFeed from "@/components/General/PostFeed";
 import { redirect } from "next/navigation";
 import Navigation from "@/components/Navigation";
 import {

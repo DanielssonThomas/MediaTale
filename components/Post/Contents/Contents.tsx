@@ -14,7 +14,11 @@ const Contents = ({
 }: ContentsProps) => {
   return (
     <div>
-      <Heading authorStatistics={authorStatistics} post={post} />
+      <Heading
+        avatar_url={authorStatistics?.avatar_url}
+        follower_count={authorStatistics?.followers}
+        username={authorStatistics?.username}
+      />
       <Body post={post} postStatistics={postStatistics} />
     </div>
   );

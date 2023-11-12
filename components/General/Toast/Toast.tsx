@@ -10,7 +10,7 @@ export const Toast = ({ error, text }: ToastProps) => {
   const [show, setShow] = useState<boolean>(true);
   useEffect(() => {
     setTimeout(() => setShow(!show), 3000);
-  }, []);
+  }, [error, text]);
   return (
     <div className="absolute w-screen h-[8rem] flex justify-center items-center top-0">
       <div
