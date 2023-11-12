@@ -6,11 +6,7 @@ export const dynamic = "force-dynamic";
 
 export default async function Index() {
   const isLoggedIn = await IsSignedIn();
-  const cookieStore = await cookies();
-  const hasThemeCookie = await cookieStore.has("theme");
-  if (!hasThemeCookie) {
-    cookieStore.set({ name: "theme", value: "" });
-  }
+
   const theme = await cookies().get("theme");
   return (
     <div className={theme?.value}>
