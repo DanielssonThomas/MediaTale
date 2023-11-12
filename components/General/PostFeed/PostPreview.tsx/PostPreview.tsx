@@ -43,16 +43,6 @@ export const PostPreview = ({
             {title}
           </h3>
           <p className="min-h-[3rem] p-2 text-sm">{description}</p>
-          {imageUrl !== null ? (
-            <Image
-              src={imageUrl}
-              alt="post image"
-              fill={true}
-              objectFit="contain"
-            />
-          ) : (
-            ""
-          )}
         </div>
 
         <div className="flex w-full justify-end items-center h-[3rem]">
