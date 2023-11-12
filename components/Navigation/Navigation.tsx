@@ -49,6 +49,7 @@ export const Navigation = ({
               src={avatar_url || "/images/defaultPFP.jpeg"}
               alt="your avatar"
               fill={true}
+              objectFit="cover"
             />
           </div>
           <NavMenu active={navMenuActive} setActive={setNavMenuActive} />

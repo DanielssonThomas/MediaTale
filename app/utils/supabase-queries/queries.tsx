@@ -209,7 +209,9 @@ export const getCommentsByPostId = async ({
   }: { data: commentData[] | null; error: PostgrestError | null } =
     await supabase
       .from("comments")
-      .select("*, profiles(username), comment_event(like_bool, dislike_bool)")
+      .select(
+        "*, profiles(username, avatar_url), comment_event(like_bool, dislike_bool)"
+      )
       .match({ post_id: post_id })
       .order("like_count", { ascending: false });
   if (error) {

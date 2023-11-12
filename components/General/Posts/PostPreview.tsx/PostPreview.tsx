@@ -28,13 +28,15 @@ export const PostPreview = ({
     <Link href={`/post/${post_id}`} className="dark:text-[#EDEDED]">
       <input type="hidden" value={post_id} name="post_id" />
       <button className="flex flex-col justify-around relative w-full h-[10rem] rounded-[2px] border-solid border-[1px] border-black dark:border-[#EDEDED] bg-[#EDEDED] dark:bg-[#232323]">
-        <div className="absolute left-[-20px] top-[-15px] w-[25px] h-[25px] rounded-full overflow-hidden border-black dark:border-[#EDEDED] border-solid">
+        <div className="absolute left-[-20px] top-[-15px] w-[40px] h-[40px] rounded-full overflow-hidden border-black dark:border-[#EDEDED] border-solid">
           <Image
             src={avatar_url || "/images/defaultPFP.jpeg"}
             alt={`${username}'s avatar`}
             fill={true}
+            objectFit="cover"
           />
         </div>
+        <p className="absolute left-6 top-[-20px] text-sm">{username}</p>
 
         {imageUrl !== "" ? (
           <div className="flex flex-col p-1 text-center w-full">

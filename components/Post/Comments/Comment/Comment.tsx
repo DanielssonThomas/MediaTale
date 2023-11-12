@@ -2,30 +2,52 @@
 import FeedbackToggle from "@/components/General/FeedbackToggle";
 import ReplyForm from "./ReplyForm";
 import { useState } from "react";
-
+import Image from "next/image";
 type CommentProps = {
-  comment: commentData;
+  username: string;
+  comment: string | null;
+  like_count: number | null;
+  disliked: boolean | undefined;
+  liked: boolean | undefined;
+  avatar_url: string | null;
+  id: number;
 };
 
-export const Comment = ({ comment }: CommentProps) => {
+export const Comment = ({
+  username,
+  comment,
+  like_count,
+  disliked,
+  liked,
+  avatar_url,
+  id,
+}: CommentProps) => {
   const [replyDropDown, setReplyDropDown] = useState<boolean>(false);
 
   return (
     <div>
       <div className="relative border-solid border-black dark:border-[#EDEDED] border-[1px] rounded-md">
+        <div className="absolute left-[-15px] top-[-10px] w-[30px] h-[30px] rounded-full overflow-hidden border-black dark:border-[#EDEDED] border-solid">
+          <Image
+            src={avatar_url ? avatar_url : "/images/defaultPFP.jpeg"}
+            alt={`${username}'s avatar`}
+            fill={true}
+            objectFit="cover"
+          />
+        </div>
         <div className="border-solid border-black dark:border-[#EDEDED] border-b-[1px] p-4">
-          <h3 className="text-sm">{comment.profiles.username} says</h3>
-          <p className="text-xs">{comment.comment}</p>
+          <h3 className="text-sm">{username}:</h3>
+          <p className="text-xs">{comment}</p>
         </div>
         <div className="flex justify-between px-2 w-full">
           <div className="flex justify-between items-center w-full">
-            <p>{comment.like_count ? comment.like_count : "0"} </p>
+            <p>{like_count ? like_count : "0"} </p>
             <div className="flex gap-2 mr-[16px]">
               <FeedbackToggle
-                id={comment.id}
+                id={id}
                 type="comments"
-                disliked={comment.comment_event.dislike}
-                liked={comment.comment_event.like}
+                disliked={disliked}
+                liked={liked}
               />
             </div>
           </div>

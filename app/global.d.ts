@@ -14,7 +14,7 @@ declare global {
     profile_id: number | null;
     sub_comment_id: number | null;
     user_id: string | null;
-    profiles: { username: string };
+    profiles: { username: string; avatar_url: string | null };
     comment_event: { like: boolean; dislike: boolean };
   };
 

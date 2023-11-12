@@ -48,6 +48,7 @@ export const UploadAvatar = () => {
                 src={URL.createObjectURL(imageUpload)}
                 alt="Uploaded image"
                 fill={true}
+                objectFit="cover"
               />
             </div>
           </div>

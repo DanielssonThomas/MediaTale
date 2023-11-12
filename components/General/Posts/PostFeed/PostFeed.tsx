@@ -23,7 +23,7 @@ export const PostFeed = ({ posts, postsStatistics }: PostFeedProps) => {
 
   return (
     <section className="flex flex-col justify-center items-center w-full">
-      <div className="flex flex-col gap-4 max-w-[100rem] min-h-screen p-6 border-x-[1px] border-solid border-black dark:border-[#EDEDED] w-full">
+      <div className="flex flex-col gap-6 max-w-[100rem] min-h-screen p-6 border-x-[1px] border-solid border-black dark:border-[#EDEDED] w-full">
         {posts.map((post) => (
           <PostPreview
             key={post.id}

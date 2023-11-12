@@ -21,6 +21,7 @@ export const Heading = ({ post, authorStatistics }: HeadingProps) => {
             src={authorStatistics?.avatar_url || "/images/defaultPFP.jpeg"}
             alt={`${authorStatistics?.username}'s avatar`}
             fill={true}
+            objectFit="cover"
           />
         </Link>
         <div className="flex flex-col">
