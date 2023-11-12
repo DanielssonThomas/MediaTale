@@ -29,20 +29,20 @@ const Login = async ({ searchParams }: { searchParams: { error: string } }) => {
               </i>
             </div>
             <form
-              className="flex-1 flex flex-col w-[20rem] justify-center items-center text-foreground gap-4 dark:text-[#EDEDED]"
+              className="flex-1 flex flex-col w-[20rem] justify-center items-center text-foreground gap-4 text-black dark:text-[#EDEDED]"
               action="/auth/sign-in"
               method="post"
             >
-              <p className="text-md ">Email</p>
+              <p className="text-md text-black dark:text-[#EDEDED]">Email</p>
               <input
-                className="rounded-md px-4 py-2 bg-inherit border-[1px] border-solid border-black dark:border-[#EDEDED] w-full text-center "
+                className="rounded-md px-4 py-2 bg-inherit border-[1px] border-solid border-black dark:border-[#EDEDED] w-full text-center text-black dark:text-[#EDEDED]"
                 name="email"
                 placeholder="you@example.com"
                 required
               />
-              <p className="text-md ">Password</p>
+              <p className="text-md text-black">Password</p>
               <input
-                className="rounded-md px-4 py-2 bg-inherit border-[1px] border-black dark:border-[#EDEDED] w-full text-center"
+                className="rounded-md px-4 py-2 bg-inherit border-[1px] border-black dark:border-[#EDEDED] w-full text-center text-black dark:text-[#EDEDED]"
                 type="password"
                 name="password"
                 placeholder="••••••••"
