@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { Toast } from "./Toast";
 
 const meta: Meta<typeof Toast> = {
-  title: "components/general/Toast",
+  title: "components/General/Toast",
   component: Toast,
   argTypes: {
     error: { control: "boolean" },

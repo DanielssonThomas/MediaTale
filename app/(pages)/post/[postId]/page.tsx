@@ -23,7 +23,6 @@ const PostPage = async ({
 }: PostProps) => {
   const currentUser = await getSignedInUser();
   const currentUserProfile = await getProfileById({ user_id: currentUser?.id });
-  console.log(await currentUserProfile);
   const post = await getPostWithEventById({ id: postId });
   const profile = await getProfileById({ user_id: post?.created_by_uuid });
   const postStatistics = await getPostStatisticsById({ post_id: postId });

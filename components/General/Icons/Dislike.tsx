@@ -1,10 +1,6 @@
 import React from "react";
 
-type DislikeIconProps = {
-  disliked?: boolean | null;
-};
-
-const DislikeIcon = ({ disliked }: DislikeIconProps) => {
+const DislikeIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -14,7 +10,7 @@ const DislikeIcon = ({ disliked }: DislikeIconProps) => {
       className="cursor-pointer"
     >
       <g
-        className={`${disliked ?? "#f10808"} dark:fill-[#EDEDED]`}
+        className={`dark:fill-[#EDEDED]`}
         strokeMiterlimit="10"
         strokeWidth="0"
       >

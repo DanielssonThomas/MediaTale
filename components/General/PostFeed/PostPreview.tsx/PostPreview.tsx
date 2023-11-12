@@ -50,7 +50,8 @@ export const PostPreview = ({
         )}
         <div className="flex w-full justify-end items-center h-[3rem]">
           <div className="flex flex-col justiy-center items-center text-center">
-            <Heart />
+            <Heart action="liked" />
+
             <p className="text-sm">{like_count}</p>
           </div>
           <div className="flex flex-col justiy-center items-center text-center">

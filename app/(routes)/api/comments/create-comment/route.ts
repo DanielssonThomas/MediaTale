@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 export const dynamic = "force-dynamic";
 
 export const POST = async (request: Request) => {
-  console.log("ENTERED POST REQUEST FOR COMMENT CREATION");
   const supabase = createRouteHandlerClient({ cookies });
   const requestUrl = new URL(request.url);
   const formData = await request.formData();
@@ -25,8 +24,10 @@ export const POST = async (request: Request) => {
   });
 
   if (error) {
+    console.log("Insert of comment error: ", error);
+    console.log("Form data: ", { post_id: post_id, profile_id: profile_id });
     return NextResponse.redirect(
-      `${requestUrl.origin}/post/${post_id}?message=Failed to post comment`,
+      `${requestUrl.origin}/post/${post_id}?message=Failed to post comment?error=true`,
       {
         status: 301,
       }

@@ -20,7 +20,7 @@ export const ChangePasswordEmail = () => {
         <div
           className={`transition-all duration-700 ${
             alertActive ? "bottom-[25vh]" : "bottom-[-25rem]"
-          } absolute flex flex-col justify-center items-center w-[20rem] h-[25rem] gap-12 z-30 bg-[#EDEDED] dark:bg-[#1C1C1C] text-center rounded-md`}
+          } absolute flex flex-col justify-center items-center w-[20rem] h-[25rem] gap-12 z-50 bg-[#EDEDED] dark:bg-[#1C1C1C] text-center rounded-md`}
         >
           <h2 className="text-2xl">We will email you!</h2>
           <p className="text-sm">

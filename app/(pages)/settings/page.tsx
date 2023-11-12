@@ -2,7 +2,6 @@ import Navigation from "@/components/Navigation";
 import IsSignedIn from "@/app/utils/auth/isSignedIn";
 import { redirect } from "next/navigation";
 import SetThemeSwitch from "@/components/General/SetThemeSwitch";
-import LogoutButton from "@/components/General/LogoutButton";
 import ChangePasswordEmail from "@/components/Auth/ChangePassword/SendEmail";
 import { cookies } from "next/headers";
 import Toast from "@/components/General/Toast";
@@ -32,7 +31,13 @@ const Settings = async ({
           </h2>
           <ChangePasswordEmail />
           <SetThemeSwitch />
-          <LogoutButton />
+          <form method="POST">
+            <Button
+              formAction="/auth/sign-out"
+              type="formAction"
+              text="Logout"
+            />
+          </form>
         </div>
       </div>
     </div>

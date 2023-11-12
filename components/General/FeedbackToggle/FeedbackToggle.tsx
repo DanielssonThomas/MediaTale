@@ -26,9 +26,12 @@ export const FeedbackToggle = ({
   disliked,
   id,
 }: FeedbackToggleProps) => {
-  const [actionTaken, setActionTaken] = useState<boolean>(
-    liked || disliked ? true : false
-  );
+  const [action, setAction] = useState<"liked" | "disliked" | null>(null);
+  useEffect(() => {
+    if (liked) setAction("liked");
+    if (disliked) setAction("disliked");
+  }, [action]);
+
   const handleEvent = async ({
     like,
     e,
@@ -48,8 +51,6 @@ export const FeedbackToggle = ({
           body: JSON.stringify({ comment_id: id }),
         }
       );
-      console.log(status);
-      setActionTaken(status === 200 ? true : false);
     }
 
     if (type === "posts") {
@@ -63,28 +64,33 @@ export const FeedbackToggle = ({
           body: JSON.stringify({ post_id: id }),
         }
       );
-      console.log(status);
-      setActionTaken(status === 200 ? true : false);
     }
   };
 
-  return actionTaken ? (
-    <div className="flex justify-center items-center">
-      <Heart />
+  return action ? (
+    <div
+      className="flex justify-center items-center cursor-pointer w-[10rem]"
+      onClick={() => {
+        setAction(null);
+      }}
+    >
+      <Heart action={action} />
     </div>
   ) : (
     <div className="flex gap-2">
       <button
-        onClick={(e: React.MouseEvent<HTMLElement>) =>
-          handleEvent({ like: true, e: e })
-        }
+        onClick={(e: React.MouseEvent<HTMLElement>) => {
+          setAction("liked");
+          handleEvent({ like: true, e: e });
+        }}
       >
         <LikeIcon />
       </button>
       <button
-        onClick={(e: React.MouseEvent<HTMLElement>) =>
-          handleEvent({ like: false, e: e })
-        }
+        onClick={(e: React.MouseEvent<HTMLElement>) => {
+          setAction("disliked");
+          handleEvent({ like: false, e: e });
+        }}
       >
         <DislikeIcon />
       </button>

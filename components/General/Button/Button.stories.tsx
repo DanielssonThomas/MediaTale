@@ -2,7 +2,7 @@ import { Meta, StoryObj } from "@storybook/react";
 import { Button } from "./Button";
 
 const meta: Meta<typeof Button> = {
-  title: "components/general/Button",
+  title: "components/General/Button",
   component: Button,
   argTypes: {
     formAction: { control: "boolean" },
@@ -18,6 +18,11 @@ const meta: Meta<typeof Button> = {
 };
 
 export const Default: StoryObj<typeof Button> = {
-  args: { type: "default", text: "Button" },
+  args: {
+    type: "default",
+    text: "Button",
+    posTopLeft: false,
+    posTopRight: false,
+  },
 };
 export default meta;

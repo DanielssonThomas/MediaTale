@@ -11,7 +11,6 @@ type NavProps = {
   avatar_url: string | null | undefined;
   showLoginButton?: boolean;
   showBackButton?: boolean;
-  profileImage?: string;
 };
 
 export const Navigation = ({
@@ -34,12 +33,7 @@ export const Navigation = ({
             </div>
           </Link>
 
-          <Link
-            href={"/create-post"}
-            className="absolute right-[90px] top-[5px] flex-col justify-center items-center mt-[5px] w-[120px] h-[40px] border-solid border-[1px] rounded-xl border-black dark:border-[#EDEDED] cursor-pointer hidden md:flex"
-          >
-            + New post
-          </Link>
+          <Button type="link" href="/create-post" text="New post" />
 
           <div
             className="absolute top-[5px] right-[20px] border-solid border-[1px] rounded-full border-black overflow-hidden w-[50px] h-[50px] z-50 cursor-pointer object-contain"

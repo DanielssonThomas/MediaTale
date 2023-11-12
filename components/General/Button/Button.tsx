@@ -42,7 +42,7 @@ export const Button = (Button: ButtonProps) => {
           href={Button ? Button.href : "/"}
           className={`${
             isAbsolute ? pos : "relative"
-          } group border-solid border-[1px] border-black dark:border-[#EDEDED] md:border-none w-40 h-[2rem] overflow-hidden z-50 text-center`}
+          } group border-solid border-[1px] border-black dark:border-[#EDEDED] md:border-none w-40 h-[2rem] overflow-hidden z-40 text-center`}
         >
           <span className="absolute w-40 h-[1px] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 left-[-10rem] top-0 group-hover:left-0"></span>
           <span className="absolute w-40 h-[1px] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 right-[-10rem] bottom-0 group-hover:right-0"></span>
@@ -91,7 +91,7 @@ export const Button = (Button: ButtonProps) => {
           formAction={Button.formAction}
           className={`${
             isAbsolute ? pos : "relative"
-          } group border-solid border-[1px] border-black dark:border-[#EDEDED] md:border-none w-40 h-[2rem] overflow-hidden z-50 text-center`}
+          } group border-solid border-[1px] border-black dark:border-[#EDEDED] md:border-none w-40 h-[2rem] overflow-hidden z-40 text-center`}
         >
           <span className="absolute w-40 h-[1px] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 left-[-10rem] top-0 group-hover:left-0"></span>
           <span className="absolute w-40 h-[1px] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 right-[-10rem] bottom-0 group-hover:right-0"></span>
@@ -139,7 +139,7 @@ export const Button = (Button: ButtonProps) => {
         <button
           className={`${
             isAbsolute ? pos : "relative"
-          } group border-solid border-[1px] border-black dark:border-[#EDEDED] md:border-none w-40 h-[2rem] overflow-hidden z-50 text-center`}
+          } group border-solid border-[1px] border-black dark:border-[#EDEDED] md:border-none w-40 h-[2rem] overflow-hidden z-40 text-center`}
         >
           <span className="absolute w-40 h-[1px] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 left-[-10rem] top-0 group-hover:left-0"></span>
           <span className="absolute w-40 h-[1px] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 right-[-10rem] bottom-0 group-hover:right-0"></span>

@@ -24,7 +24,7 @@ export const Body = ({ post, postStatistics }: BodyProps) => {
         </div>
 
         <div className="flex flex-col justify-center items-center text-center w-1/2 border-r-[1px] border-solid border-black dark:border-[#EDEDED]">
-          <Heart />
+          <Heart action="liked" />
           <p className="text-sm">{postStatistics?.like_count}</p>
         </div>
         <div className="flex flex-col justify-center items-center text-center w-1/2">

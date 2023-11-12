@@ -31,9 +31,11 @@ const Post = ({
       body: JSON.stringify({ post_id: post?.id }),
     });
   };
+
   useEffect(() => {
     incrementView();
   }, []);
+
   return (
     <div className="relative flex flex-col items-center dark:text-[#EDEDED]">
       <Button text="Back" type="link" href="/" posTopLeft={true} />
@@ -44,9 +46,9 @@ const Post = ({
           post={post}
         />
         <CreateComment
-          post={post}
+          post_id={post?.id}
           profile_id={signedInUserProfileId}
-          image={signedInUserAvatar}
+          avatar_url={signedInUserAvatar}
         />
         <Comments comments={comments} />
       </div>
