@@ -18,7 +18,7 @@ export const ProfilePosts = async ({
     user_id: user_id ? user_id : undefined,
   });
   return (
-    <div className="w-[40rem">
+    <div className="w-[40rem]">
       <PostFeed posts={posts} postsStatistics={postsStatistics} />
     </div>
   );

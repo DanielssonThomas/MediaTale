@@ -59,6 +59,9 @@ const Profile = async ({ params: { username } }: ProfileProps) => {
             first_name={profile.first_name}
             last_name={profile.last_name}
           />
+          <h2 className="flex justify-center items-center border-x-[1px] border-solid border-black dark:border-[#EDEDED] w-[40rem] h-[4rem] text-2xl text-black dark:text-[#EDEDED]">
+            {profile.username}'s posts
+          </h2>
           <ProfilePosts user_id={profile.user_id} />
         </section>
       </div>

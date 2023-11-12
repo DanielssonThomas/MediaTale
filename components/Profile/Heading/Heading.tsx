@@ -18,8 +18,8 @@ export const ProfileHeading = ({
   isCurrentUser,
 }: HeadingProps) => {
   return (
-    <div className="w-[40rem]">
-      <div className="flex justify-between items-center border-b-solid border-black dark:border-[#EDEDED] border-b-[1px] p-2 text-center relative">
+    <div className="w-[40rem] text-black dark:text-[#EDEDED]  border-x-[1px] border-solid border-black dark:border-[#EDEDED] px-6">
+      <div className="flex justify-between items-center border-b-solid border-black dark:border-[#EDEDED] border-b-[1px] p-2 text-center relative ">
         <div className="relative border-solid border-[1px] rounded-full border-black overflow-hidden w-[50px] h-[50px]">
           <Image
             src={avatar_url || "/images/defaultPFP.jpeg"}
