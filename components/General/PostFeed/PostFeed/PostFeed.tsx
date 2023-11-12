@@ -8,7 +8,7 @@ type PostFeedProps = {
 export const PostFeed = ({ posts, postsStatistics }: PostFeedProps) => {
   if (posts?.length === 0 || posts === null) {
     return (
-      <div className="flex flex-col justify-center items-center w-full text-center p-4 gap-8">
+      <div className="flex flex-col justify-center items-center w-full text-center p-4 gap-8 text-black dark:text-[#EDEDED]">
         <h2 className="text-3xl">No posts here yet!</h2>
         <p>Unfortunently there are no posts here!</p>
       </div>
@@ -23,7 +23,7 @@ export const PostFeed = ({ posts, postsStatistics }: PostFeedProps) => {
 
   return (
     <section className="flex flex-col justify-center items-center w-full">
-      <div className="flex flex-col gap-6 max-w-[100rem] min-h-screen p-6 border-x-[1px] border-solid border-black dark:border-[#EDEDED] w-full">
+      <div className="flex flex-col gap-6 max-w-[100rem] min-h-screen h-auto p-6 border-x-[1px] border-solid border-black dark:border-[#EDEDED] w-full">
         {posts.map((post) => (
           <PostPreview
             key={post.id}

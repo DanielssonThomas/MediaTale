@@ -10,6 +10,9 @@ export async function POST(request: Request) {
   const title = String(formData.get("title"));
   const description = String(formData.get("description"));
   const text_content = String(formData.get("text_content"));
+  const file: File | null = formData.get("image") as unknown as File;
+  const bytes = await file.arrayBuffer();
+  const image = Buffer.from(bytes);
 
   const supabase = createRouteHandlerClient({ cookies });
   const {
@@ -18,12 +21,13 @@ export async function POST(request: Request) {
   } = await supabase.auth.getUser();
 
   if (user) {
+    console.log("USER FOUND AND RUNNING");
     const { data: userProfile }: { data: profile | null } = await supabase
       .from("profiles")
       .select("*")
       .match({ user_id: user.id })
       .single();
-
+    console.log("USERPROFILE FOUND");
     const { data: post }: { data: post | null } = await supabase
       .from("posts")
       .insert({
@@ -37,10 +41,9 @@ export async function POST(request: Request) {
       .single();
 
     if (post === null) {
-      console.log("Error posting contents, error: ", error);
-      return NextResponse.redirect(`${requestUrl.origin}/`, { status: 301 });
+      return NextResponse.json({ error: true });
     }
-
+    console.log("POST INSERTED");
     const { data: postStatistic, error: postStatisticError } = await supabase
       .from("posts_statistics")
       .insert({
@@ -48,21 +51,34 @@ export async function POST(request: Request) {
         post_id: post.id,
         profile_id: userProfile?.id,
       });
-    return NextResponse.redirect(`${requestUrl.origin}/`, { status: 301 });
+    console.log("POSTSTATISTICS INSERTED");
+    const { data, error } = await supabase.storage
+      .from("uploads")
+      .upload(`${post.id}`, image);
+    console.log("UPLOADED IMAGE");
+    if (error) return NextResponse.json({ error: true });
+
+    const imagePath = await supabase.storage
+      .from("uploads")
+      .getPublicUrl(data.path);
+    console.log("IMAGE PATH FOUND HERE: ", imagePath);
+    const updatePost = await supabase
+      .from("posts")
+      .update({ image_url: imagePath.data.publicUrl })
+      .match({ id: post.id });
+    console.log("UPDATED POST ROW HERE: ", updatePost);
+    if (updatePost.error) {
+      console.log("ERROR UPDATING POST DATA: ", updatePost.error);
+    }
+    if (updatePost.data) {
+      console.log("DATA FROM UPDATEDPOST: ", updatePost.data);
+    }
+    return NextResponse.json({ postUrl: `/post/${post.id}` });
   }
 
   if (error) {
-    return NextResponse.redirect(
-      `/profile/setup?message=Couldn't fetch user information.`,
-      {
-        // a 301 status is required to redirect from a POST to a GET route
-        status: 301,
-      }
-    );
+    return NextResponse.json({ error: error });
   }
 
-  return NextResponse.redirect(`${requestUrl.origin}/profile/setup`, {
-    // a 301 status is required to redirect from a POST to a GET route
-    status: 301,
-  });
+  return NextResponse.json({ message: "completed" });
 }

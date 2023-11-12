@@ -203,7 +203,7 @@ export interface Database {
           created_by_uuid: string | null
           description: string | null
           id: number
-          image: string | null
+          image_url: string | null
           text_content: string | null
           title: string | null
         }
@@ -213,7 +213,7 @@ export interface Database {
           created_by_uuid?: string | null
           description?: string | null
           id?: number
-          image?: string | null
+          image_url?: string | null
           text_content?: string | null
           title?: string | null
         }
@@ -223,7 +223,7 @@ export interface Database {
           created_by_uuid?: string | null
           description?: string | null
           id?: number
-          image?: string | null
+          image_url?: string | null
           text_content?: string | null
           title?: string | null
         }

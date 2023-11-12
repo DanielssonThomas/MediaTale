@@ -38,16 +38,23 @@ export const PostPreview = ({
         </div>
         <p className="absolute left-6 top-[-20px] text-sm">{username}</p>
 
-        {imageUrl !== "" ? (
-          <div className="flex flex-col p-1 text-center w-full">
-            <h3 className="sm:text-2xl border-solid border-b-[1px] border-black dark:border-[#EDEDED]">
-              {title}
-            </h3>
-            <p className="min-h-[3rem] p-2 text-sm">{description}</p>
-          </div>
-        ) : (
-          <></>
-        )}
+        <div className="flex flex-col p-1 text-center w-full">
+          <h3 className="sm:text-2xl border-solid border-b-[1px] border-black dark:border-[#EDEDED]">
+            {title}
+          </h3>
+          <p className="min-h-[3rem] p-2 text-sm">{description}</p>
+          {imageUrl !== null ? (
+            <Image
+              src={imageUrl}
+              alt="post image"
+              fill={true}
+              objectFit="contain"
+            />
+          ) : (
+            ""
+          )}
+        </div>
+
         <div className="flex w-full justify-end items-center h-[3rem]">
           <div className="flex flex-col justiy-center items-center text-center">
             <Heart action="liked" />

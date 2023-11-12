@@ -6,9 +6,6 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-export const dynamic = "force-dynamic";
-const supabase = createRouteHandlerClient({ cookies });
-
 const updateProfileTable = async ({
   url,
   user_id,
@@ -16,6 +13,7 @@ const updateProfileTable = async ({
   url: string;
   user_id: string | undefined;
 }) => {
+  const supabase = createRouteHandlerClient({ cookies });
   const { error } = await supabase
     .from("profiles")
     .update({ avatar_url: url })
@@ -24,6 +22,7 @@ const updateProfileTable = async ({
 };
 
 export async function POST(req: Request) {
+  const supabase = createRouteHandlerClient({ cookies });
   const res = await req.formData();
   const file: File | null = res.get("avatar") as unknown as File;
   const bytes = await file.arrayBuffer();

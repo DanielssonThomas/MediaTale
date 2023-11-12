@@ -1,31 +1,38 @@
 "use client";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 import { useState, useEffect } from "react";
 
-type CreatePostFormProps = {
-  categories: category[] | undefined;
-};
-
-const CreatePostForm = ({ categories }: CreatePostFormProps) => {
-  const [imageUpload, setImageUpload] = useState<Blob>();
+const CreatePostForm = () => {
+  const [imageUpload, setImageUpload] = useState<File>();
+  const handleForm = async (e: FormData) => {
+    if (imageUpload) e.set("image", imageUpload);
+    const data = await fetch("/api/posts/create-post", {
+      method: "POST",
+      body: e,
+    });
+    const res = await data.json();
+    console.log("POST ROUTE RETURN VALUE: ", res.postUrl);
+    redirect(res.postUrl);
+  };
 
   return (
     <form
-      action={"/api/posts/create-post"}
+      action={handleForm}
       method="POST"
-      className="flex flex-col gap-6 m-[2rem] "
+      className="flex flex-col gap-6 m-[2rem]"
     >
-      <div className="flex flex-col">
+      <div className="flex flex-col text-black dark:text-[#EDEDED]">
         <div>Title:</div>
         <input
           type="text"
           name="title"
           required
-          className="border-solid border-[1px] rounded-sm border-black p-[0.5rem]"
+          className="border-solid border-[1px] rounded-sm border-black p-[0.5rem] "
           placeholder="Catching title here"
         />
       </div>
-      <div className="flex flex-col">
+      <div className="flex flex-col text-black dark:text-[#EDEDED]">
         <div>Description:</div>
         <textarea
           name="description"
@@ -36,7 +43,7 @@ const CreatePostForm = ({ categories }: CreatePostFormProps) => {
         ></textarea>
       </div>
 
-      <div className="flex flex-col">
+      <div className="flex flex-col text-black dark:text-[#EDEDED]">
         <div>Enter text contents: </div>
         <textarea
           name="text_content"
@@ -45,7 +52,7 @@ const CreatePostForm = ({ categories }: CreatePostFormProps) => {
         ></textarea>
       </div>
 
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-5 text-black dark:text-[#EDEDED]">
         <div>
           <div>Upload image:</div>
           <input
