@@ -1,7 +1,9 @@
 import Heart from "@/components/General/Icons/Heart";
 import Views from "@/components/General/Icons/Views";
 import FeedbackToggle from "@/components/General/FeedbackToggle";
+import ImagePopUp from "../../ImagePop-up";
 import Image from "next/image";
+import { useState } from "react";
 
 type BodyProps = {
   text_contents: string | null | undefined;
@@ -25,15 +27,32 @@ export const Body = ({
   liked,
 }: BodyProps) => {
   const parsedCreatedAt = createdAt.split("T")[0];
+  const [isImagePopUp, setIsImagePopUp] = useState<boolean>(false);
 
   return (
     <div className="flex flex-col justify-center items-center w-full">
+      {image_url !== undefined && image_url !== null && (
+        <ImagePopUp
+          src={image_url}
+          isActive={isImagePopUp}
+          setIsActive={setIsImagePopUp}
+        />
+      )}
+
       <article className="border-solid border-b-[1px] border-black dark:border-[#EDEDED] py-4 min-h-[8rem] w-full">
         <p className="pb-4">{text_contents}</p>
         <div className="flex justify-center items-center w-full bg-[#EDEDED] dark:bg-[#1C1C1C]">
           {image_url ? (
-            <div className=" relative w-full h-[20rem] object-contain">
-              <Image src={image_url} alt="Post image" fill={true} />
+            <div
+              className="relative w-full h-[20rem] object-contain"
+              onClick={() => setIsImagePopUp(!isImagePopUp)}
+            >
+              <Image
+                src={image_url}
+                alt="Post image"
+                fill={true}
+                className="object-cover"
+              />
             </div>
           ) : (
             ""

@@ -3,7 +3,6 @@ import IsSignedIn from "@/app/utils/auth/isSignedIn";
 import { redirect } from "next/navigation";
 import SetThemeSwitch from "@/components/General/SetThemeSwitch";
 import ChangePasswordEmail from "@/components/Auth/ChangePassword/SendEmail";
-import { cookies } from "next/headers";
 import Toast from "@/components/General/Toast";
 import Button from "@/components/General/Button";
 import { getSignedInProfilePictureUrl } from "@/app/utils/supabase-queries/queries";
@@ -16,9 +15,9 @@ const Settings = async ({
 }) => {
   (await IsSignedIn()) ?? redirect("/");
   const avatarUrl = await getSignedInProfilePictureUrl();
-  const theme = await cookies().get("theme");
+
   return (
-    <div className={theme?.value}>
+    <div>
       {searchParams.message && (
         <Toast error={false} text={searchParams.message} />
       )}

@@ -36,14 +36,14 @@ export const Navigation = ({
           <Button type="link" href="/create-post" text="New post" />
 
           <div
-            className="absolute top-[5px] right-[20px] border-solid border-[1px] rounded-full border-black overflow-hidden w-[50px] h-[50px] z-50 cursor-pointer object-contain"
+            className="absolute top-[5px] right-[20px] border-solid border-[1px] rounded-full border-black overflow-hidden w-[50px] h-[50px] z-50 cursor-pointer"
             onClick={() => setNavMenuActive(!navMenuActive)}
           >
             <Image
               src={avatar_url || "/images/defaultPFP.jpeg"}
               alt="your avatar"
-              fill={true}
-              objectFit="cover"
+              fill
+              className="object-cover"
             />
           </div>
           <NavMenu active={navMenuActive} setActive={setNavMenuActive} />

@@ -16,10 +16,9 @@ const ProfileEdit = async () => {
   const user = await getSignedInUser();
   const profile = await getProfileById({ user_id: user ? user.id : "" });
 
-  const theme = await cookies().get("theme");
   if (profile) {
     return (
-      <div className={theme?.value}>
+      <div>
         <div className="bg-[#EDEDED] dark:bg-[#1C1C1C] min-h-[100vh] w-full relative">
           <Navigation isLoggedIn={userStatus} avatar_url={profile.avatar_url} />
           <div className="flex justify-center w-full dark:text-[#EDEDED]">

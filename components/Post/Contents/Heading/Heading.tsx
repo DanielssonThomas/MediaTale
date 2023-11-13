@@ -26,7 +26,7 @@ export const Heading = ({
             src={avatar_url || "/images/defaultPFP.jpeg"}
             alt={`${username}'s avatar`}
             fill={true}
-            objectFit="cover"
+            className="object-cover"
           />
         </Link>
         <div className="flex flex-col">

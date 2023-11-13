@@ -1,14 +1,11 @@
 import Navigation from "@/components/Navigation";
-import { cookies } from "next/headers";
 import Button from "@/components/General/Button";
 import Toast from "@/components/General/Toast";
 
 export const dynamic = "force-dynamic";
 const Login = async ({ searchParams }: { searchParams: { error: string } }) => {
-  const theme = await cookies().get("theme");
-
   return (
-    <div className={theme?.value}>
+    <div>
       <div className="bg-[#EDEDED] dark:bg-[#1C1C1C] w-screen h-screen">
         {searchParams.error && <Toast error={true} text={searchParams.error} />}
 

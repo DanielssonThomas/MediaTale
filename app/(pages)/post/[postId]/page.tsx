@@ -7,7 +7,6 @@ import {
   getProfileById,
   getCommentsByPostId,
   getPostStatisticsById,
-  getSignedInProfilePictureUrl,
   getSignedInUser,
 } from "@/app/utils/supabase-queries/queries";
 
@@ -38,6 +37,7 @@ const PostPage = async ({
           isLoggedIn={true}
           avatar_url={currentUserProfile?.avatar_url}
         />
+
         <Post
           authorStatistics={profile}
           post={post}

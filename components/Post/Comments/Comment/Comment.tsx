@@ -32,7 +32,7 @@ export const Comment = ({
             src={avatar_url ? avatar_url : "/images/defaultPFP.jpeg"}
             alt={`${username}'s avatar`}
             fill={true}
-            objectFit="cover"
+            className="object-cover"
           />
         </div>
         <div className="border-solid border-black dark:border-[#EDEDED] border-b-[1px] p-4 text-black dark:text-[#EDEDED]">

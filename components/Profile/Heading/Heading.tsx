@@ -24,8 +24,8 @@ export const ProfileHeading = ({
           <Image
             src={avatar_url || "/images/defaultPFP.jpeg"}
             alt={`${username}'s avatar`}
-            fill={true}
-            objectFit="cover"
+            fill
+            className="object-cover"
           />
         </div>
         <h2 className="absolute left-1/3 text-3xl">{username}</h2>

@@ -30,8 +30,8 @@ export const TextPreview = ({
           <Image
             src={avatar_url || "/images/defaultPFP.jpeg"}
             alt={`${username}'s avatar`}
-            fill={true}
-            objectFit="cover"
+            fill
+            className="object-cover"
           />
         </div>
         <p className="absolute left-6 top-[-20px] text-sm">{username}</p>

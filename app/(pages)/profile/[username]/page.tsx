@@ -4,7 +4,6 @@ import ProfilePosts from "@/components/Profile/Posts";
 import Details from "@/components/Profile/Details";
 import Button from "@/components/General/Button";
 import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
 import IsSignedIn from "@/app/utils/auth/isSignedIn";
 import {
   getProfileByUsername,
@@ -36,9 +35,8 @@ const Profile = async ({ params: { username } }: ProfileProps) => {
     }
   }
 
-  const theme = await cookies().get("theme");
   return (
-    <div className={theme?.value}>
+    <div>
       <div className="bg-[#EDEDED] dark:bg-[#1C1C1C] min-h-[100vh]">
         <Navigation isLoggedIn={isSignedIn} avatar_url={currentUserAvatar} />
         <section className="flex flex-col justify-center items-center relative pt-8">

@@ -27,9 +27,9 @@ const MyProfile = async () => {
   if (!isSignedIn) {
     redirect("/");
   }
-  const theme = await cookies().get("theme");
+
   return (
-    <div className={`${theme?.value}`}>
+    <div>
       <Profile params={{ username: details?.username ?? "" }} />
     </div>
   );

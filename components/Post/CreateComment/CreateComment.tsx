@@ -22,7 +22,7 @@ export const CreateComment = ({
           alt="your avatar"
           src={avatar_url || "/images/defaultPFP.jpeg"}
           fill={true}
-          objectFit="cover"
+          className="object-cover"
         />
       </div>
       <input

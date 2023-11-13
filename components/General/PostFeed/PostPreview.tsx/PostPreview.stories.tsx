@@ -20,7 +20,7 @@ const meta: Meta<typeof PostPreview> = {
   },
 };
 
-export const Default: StoryObj<typeof PostPreview> = {
+export const Primary: StoryObj<typeof PostPreview> = {
   args: {
     avatar_url: null,
     description: "This is the description",
@@ -32,4 +32,18 @@ export const Default: StoryObj<typeof PostPreview> = {
     view_count: 0,
   },
 };
+
+export const ImagePreview: StoryObj<typeof PostPreview> = {
+  args: {
+    avatar_url: null,
+    description: "This is the description",
+    title: "This is the title",
+    imageUrl: "/images/placeholder.svg",
+    like_count: 0,
+    post_id: 0,
+    username: "Your username",
+    view_count: 0,
+  },
+};
+
 export default meta;
