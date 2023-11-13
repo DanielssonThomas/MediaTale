@@ -5,7 +5,7 @@ type PostFeedProps = {
   posts: post[] | null;
 };
 
-export const PostFeed = ({ posts, postsStatistics }: PostFeedProps) => {
+export const PostFeed = async ({ posts, postsStatistics }: PostFeedProps) => {
   if (posts?.length === 0 || posts === null) {
     return (
       <div className="flex flex-col justify-center items-center w-full text-center p-4 gap-8 text-black dark:text-[#EDEDED]">
@@ -23,7 +23,7 @@ export const PostFeed = ({ posts, postsStatistics }: PostFeedProps) => {
 
   return (
     <section className="flex flex-col justify-center items-center w-full">
-      <div className="flex flex-col gap-6 max-w-[100rem] min-h-screen h-auto p-6 border-x-[1px] border-solid border-black dark:border-[#EDEDED] w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full sm:w-[40rem] lg:w-[60rem] p-6 ">
         {posts.map((post) => (
           <PostPreview
             key={post.id}

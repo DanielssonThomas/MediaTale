@@ -23,9 +23,12 @@ export const TextPreview = ({
   view_count,
 }: PostPreviewProps) => {
   return (
-    <Link href={`/post/${post_id}`} className="dark:text-[#EDEDED]">
+    <Link
+      href={`/post/${post_id}`}
+      className="dark:text-[#EDEDED] min-w-[18rem]"
+    >
       <input type="hidden" value={post_id} name="post_id" />
-      <button className="flex flex-col justify-around relative w-full h-[10rem] rounded-[2px] border-solid border-[1px] border-black dark:border-[#EDEDED] bg-[#EDEDED] dark:bg-[#232323]">
+      <div className="flex flex-col justify-around relative w-full h-[10rem] rounded-[2px] border-solid border-[1px] border-black dark:border-[#EDEDED] bg-[#EDEDED] dark:bg-[#232323]">
         <div className="absolute left-[-20px] top-[-15px] w-[40px] h-[40px] rounded-full overflow-hidden border-black dark:border-[#EDEDED] border-solid">
           <Image
             src={avatar_url || "/images/defaultPFP.jpeg"}
@@ -35,7 +38,6 @@ export const TextPreview = ({
           />
         </div>
         <p className="absolute left-6 top-[-20px] text-sm">{username}</p>
-
         <div className="flex flex-col p-1 text-center w-full">
           <h3 className="sm:text-2xl border-solid border-b-[1px] border-black dark:border-[#EDEDED]">
             {title}
@@ -54,7 +56,7 @@ export const TextPreview = ({
             <p className="text-sm">{view_count}</p>
           </div>
         </div>
-      </button>
+      </div>
     </Link>
   );
 };
