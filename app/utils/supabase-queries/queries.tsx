@@ -1,5 +1,6 @@
 import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { PostgrestError } from "@supabase/supabase-js";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
 export const dynamic = "force-dynamic";
@@ -42,6 +43,7 @@ export const getSignedInProfilePictureUrl = async () => {
     .select("avatar_url")
     .match({ user_id: user?.id })
     .single();
+  revalidatePath("/home-feed");
   return data?.avatar_url;
 };
 
@@ -55,6 +57,7 @@ export const getProfileById = async ({ user_id }: getProfileByIdProps) => {
     .select("*")
     .match({ user_id: user_id })
     .single();
+  revalidatePath("/home-feed");
   if (error) {
     console.log("getProfileById error: ", error);
   }
@@ -73,6 +76,7 @@ export const getProfileByUsername = async ({
     .select("*")
     .match({ username: username })
     .single();
+  revalidatePath("/home-feed");
   if (error) {
     console.log("getProfileByUsername error: ", error);
   }
@@ -167,6 +171,7 @@ export const getPostsWithEvents = async ({ limit, user_id }: getPostProps) => {
     console.log("getPostsWithEvents error: ", error);
     return null;
   }
+  revalidatePath("/home-feed");
   return posts;
 };
 

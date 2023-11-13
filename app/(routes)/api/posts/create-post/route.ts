@@ -1,3 +1,4 @@
+import UploadAvatar from "@/components/EditProfile/UploadAvatar";
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
 import { PostgrestError } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
@@ -21,13 +22,12 @@ export async function POST(request: Request) {
   } = await supabase.auth.getUser();
 
   if (user) {
-    console.log("USER FOUND AND RUNNING");
     const { data: userProfile }: { data: profile | null } = await supabase
       .from("profiles")
       .select("*")
       .match({ user_id: user.id })
       .single();
-    console.log("USERPROFILE FOUND");
+
     const { data: post }: { data: post | null } = await supabase
       .from("posts")
       .insert({
@@ -43,7 +43,7 @@ export async function POST(request: Request) {
     if (post === null) {
       return NextResponse.json({ error: true });
     }
-    console.log("POST INSERTED");
+
     const { data: postStatistic, error: postStatisticError } = await supabase
       .from("posts_statistics")
       .insert({
@@ -51,28 +51,24 @@ export async function POST(request: Request) {
         post_id: post.id,
         profile_id: userProfile?.id,
       });
-    console.log("POSTSTATISTICS INSERTED");
-    const { data, error } = await supabase.storage
-      .from("uploads")
-      .upload(`${post.id}`, image);
-    console.log("UPLOADED IMAGE");
-    if (error) return NextResponse.json({ error: true });
 
-    const imagePath = await supabase.storage
-      .from("uploads")
-      .getPublicUrl(data.path);
-    console.log("IMAGE PATH FOUND HERE: ", imagePath);
-    const updatePost = await supabase
-      .from("posts")
-      .update({ image_url: imagePath.data.publicUrl })
-      .match({ id: post.id });
-    console.log("UPDATED POST ROW HERE: ", updatePost);
-    if (updatePost.error) {
-      console.log("ERROR UPDATING POST DATA: ", updatePost.error);
+    if (file.size !== 0) {
+      const { data, error } = await supabase.storage
+        .from("uploads")
+        .upload(`${post.id}`, image);
+
+      if (error) return NextResponse.json({ error: true });
+
+      const imagePath = await supabase.storage
+        .from("uploads")
+        .getPublicUrl(data.path);
+
+      const updatePost = await supabase
+        .from("posts")
+        .update({ image_url: imagePath.data.publicUrl })
+        .match({ id: post.id });
     }
-    if (updatePost.data) {
-      console.log("DATA FROM UPDATEDPOST: ", updatePost.data);
-    }
+
     return NextResponse.json({ postUrl: `/post/${post.id}` });
   }
 

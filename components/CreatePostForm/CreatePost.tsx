@@ -38,7 +38,6 @@ const CreatePostForm = () => {
           placeholder="Quickly describe your posts contents"
           className="p-[0.5rem] border-solid border-[1px] rounded-sm border-black bg-[#EDEDED] dark:bg-[#1C1C1C] dark:border-[#EDEDED]"
           maxLength={200}
-          required
         ></textarea>
       </div>
 

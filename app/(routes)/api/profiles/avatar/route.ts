@@ -1,5 +1,6 @@
 import { getSignedInUser } from "@/app/utils/supabase-queries/queries";
 import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
