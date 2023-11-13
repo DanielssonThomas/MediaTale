@@ -10,9 +10,8 @@ const SetupProfile = async () => {
   if (!signedIn) {
     redirect("/profile/not-found");
   }
-  const theme = await cookies().get("theme");
   return (
-    <div className={theme?.value}>
+    <div>
       <div className="bg-[#EDEDED] dark:bg-[#1C1C1C] w-screen h-screen">
         <div className="flex flex-col justify-center items-center h-[10vh]">
           <h1 className="text-2xl">MediaTale - Setup process</h1>

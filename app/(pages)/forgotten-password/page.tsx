@@ -10,9 +10,8 @@ const ForgottenPassword = async ({
 }: {
   searchParams: { message: string };
 }) => {
-  const theme = await cookies().get("theme");
   return (
-    <div className={theme?.value}>
+    <div>
       <div className="flex flex-col items-center bg-[#EDEDED] dark:bg-[#1C1C1C] text-black dark:text-[#EDEDED] min-h-screen w-screen gap-6">
         <Navigation isLoggedIn={false} avatar_url={null} />
         <Button type="link" text="Back" href="/" posTopLeft={true} />

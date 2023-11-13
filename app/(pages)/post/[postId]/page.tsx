@@ -27,9 +27,8 @@ const PostPage = async ({
   const comments = await getCommentsByPostId({ post_id: postId });
   const showToast = message ? true : false;
 
-  const theme = await cookies().get("theme");
   return (
-    <div className={`${theme?.value}`}>
+    <div>
       <div className="bg-[#EDEDED] dark:bg-[#1C1C1C] min-h-[100vh]">
         {showToast === error && <Toast error={true} text={message} />}
         {showToast && message !== "" && <Toast error={false} text={message} />}
