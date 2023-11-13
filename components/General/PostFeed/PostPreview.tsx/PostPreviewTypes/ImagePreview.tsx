@@ -40,27 +40,26 @@ export const ImagePreview = ({
           />
         </div>
         <p className="absolute left-6 top-[-20px] text-sm">{username}</p>
-        <div className="absolute top-0 left-0">
-          <Image src={imageUrl} alt="post image" fill className="" />
-        </div>
-        <div>
-          <div className="flex flex-col p-1 text-center w-full">
-            <h3 className="sm:text-sm md:text-xl mx-4 border-solid border-b-[1px] border-black dark:border-[#EDEDED] p-2">
-              {title}
-            </h3>
+
+        <div className="flex flex-col p-1 text-center w-full">
+          <h3 className="sm:text-sm md:text-xl mx-4 border-solid border-b-[1px] border-black dark:border-[#EDEDED] p-2">
+            {title}
+          </h3>
+          {description === null ? (
+            <div className="min-h-[3rem] p-2" content=" " />
+          ) : (
             <p className="min-h-[3rem] p-2 text-sm">{description}</p>
+          )}
+        </div>
+
+        <div className="flex w-full justify-between items-center max-h-[1rem] p-2">
+          <div className="flex justiy-center items-center text-center h-[1rem] w-full border-r-[1px] border-solid border-black dark:border-white">
+            <Heart action="liked" />
+            <p className="text-[12px] ml-2">{like_count}</p>
           </div>
-
-          <div className="flex w-full justify-end items-center h-[3rem]">
-            <div className="flex flex-col justiy-center items-center text-center">
-              <Heart action="liked" />
-
-              <p className="text-sm">{like_count}</p>
-            </div>
-            <div className="flex flex-col justiy-center items-center text-center">
-              <Views />
-              <p className="text-sm">{view_count}</p>
-            </div>
+          <div className="flex justiy-center items-center text-center h-[1rem] w-full ml-2">
+            <Views />
+            <p className="text-sm ml-2">{view_count}</p>
           </div>
         </div>
       </div>

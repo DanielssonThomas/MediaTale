@@ -33,7 +33,7 @@ export const Primary: StoryObj<typeof PostPreview> = {
   },
 };
 
-export const ImagePreview: StoryObj<typeof PostPreview> = {
+export const Image: StoryObj<typeof PostPreview> = {
   args: {
     avatar_url: null,
     description: "This is the description",

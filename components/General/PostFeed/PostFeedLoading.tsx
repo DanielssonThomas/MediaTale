@@ -2,7 +2,15 @@ import { LoadingPreview } from "./PostPreview.tsx/PostPreviewTypes/LoadingPrevie
 const PostFeedLoading = () => {
   return (
     <section className="flex flex-col justify-center items-center w-full">
-      <div className="flex flex-col gap-6 max-w-[100rem] min-h-screen h-auto p-6 border-x-[1px] border-solid border-black dark:border-[#EDEDED] w-full">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full sm:w-[40rem] lg:w-[60rem] p-6">
+        <LoadingPreview />
+        <LoadingPreview />
+        <LoadingPreview />
+        <LoadingPreview />
+        <LoadingPreview />
+        <LoadingPreview />
+        <LoadingPreview />
+        <LoadingPreview />
         <LoadingPreview />
         <LoadingPreview />
         <LoadingPreview />

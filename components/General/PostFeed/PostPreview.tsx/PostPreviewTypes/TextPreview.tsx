@@ -42,18 +42,21 @@ export const TextPreview = ({
           <h3 className="sm:text-sm md:text-xl mx-4 border-solid border-b-[1px] border-black dark:border-[#EDEDED]">
             {title}
           </h3>
-          <p className="min-h-[3rem] p-2 text-sm">{description}</p>
+          {description === null ? (
+            <div className="min-h-[3rem] p-2" />
+          ) : (
+            <p className="min-h-[3rem] p-2 text-sm">{description}</p>
+          )}
         </div>
 
-        <div className="flex w-full justify-end items-center h-[3rem]">
-          <div className="flex flex-col justiy-center items-center text-center">
+        <div className="flex w-full justify-between items-center max-h-[1rem] p-2">
+          <div className="flex justiy-center items-center text-center h-[1rem] w-full border-r-[1px] border-solid border-black dark:border-white">
             <Heart action="liked" />
-
-            <p className="text-sm">{like_count}</p>
+            <p className="text-[12px] ml-2">{like_count}</p>
           </div>
-          <div className="flex flex-col justiy-center items-center text-center">
+          <div className="flex justiy-center items-center text-center h-[1rem] w-full ml-2">
             <Views />
-            <p className="text-sm">{view_count}</p>
+            <p className="text-sm ml-2">{view_count}</p>
           </div>
         </div>
       </div>

@@ -11,6 +11,7 @@ type NavProps = {
   avatar_url: string | null | undefined;
   showLoginButton?: boolean;
   showBackButton?: boolean;
+  showUploadPost?: boolean;
 };
 
 export const Navigation = ({
@@ -18,6 +19,7 @@ export const Navigation = ({
   avatar_url,
   showLoginButton,
   showBackButton,
+  showUploadPost,
 }: NavProps) => {
   const [navMenuActive, setNavMenuActive] = useState<boolean>(false);
   return (
@@ -32,8 +34,9 @@ export const Navigation = ({
               <MTLogo />
             </div>
           </Link>
-
-          <Button type="link" href="/create-post" text="New post" />
+          {showUploadPost && (
+            <Button type="link" href="/create-post" text="New post" />
+          )}
 
           <div
             className="absolute top-[5px] right-[20px] border-solid border-[1px] rounded-full border-black overflow-hidden w-[50px] h-[50px] z-50 cursor-pointer"
