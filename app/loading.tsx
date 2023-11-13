@@ -1,5 +1,3 @@
-import { cookies } from "next/headers";
-
 const Loading = async () => {
   return (
     <div className="flex flex-col justify-center items-center w-screen h-screen bg-[#EDEDED] dark:bg-[#1C1C1C]">

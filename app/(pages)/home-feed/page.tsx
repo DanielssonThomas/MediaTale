@@ -7,16 +7,17 @@ import {
   getPostsStatistics,
   getSignedInUser,
 } from "@/app/utils/supabase-queries/queries";
+export const dynamic = "force-dynamic";
 
 const Home = async () => {
   const posts = await getPostsWithEvents({ limit: 10 });
+  const postsStatistics = await getPostsStatistics({ limit: 10 });
   const user = await getSignedInUser();
 
   const profile = await getProfileById({
     user_id: user !== null ? user.id : "",
   });
 
-  const postsStatistics = await getPostsStatistics({ limit: 10 });
   if (profile === null) {
     redirect("/profile/setup");
   }
