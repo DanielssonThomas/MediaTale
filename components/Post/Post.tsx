@@ -39,7 +39,7 @@ const Post = ({
   return (
     <div className="relative flex flex-col items-center dark:text-[#EDEDED]">
       <Button text="Back" type="link" href="/" posTopLeft={true} />
-      <div className="max-w-[40rem]">
+      <div className="w-[20rem] sm:w-[35rem] md:w-[45rem]">
         <Contents
           authorStatistics={authorStatistics}
           postStatistics={postStatistics}

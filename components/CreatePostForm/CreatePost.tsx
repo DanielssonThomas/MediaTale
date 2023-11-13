@@ -12,7 +12,6 @@ const CreatePostForm = () => {
       body: e,
     });
     const res = await data.json();
-    console.log("POST ROUTE RETURN VALUE: ", res.postUrl);
     redirect(res.postUrl);
   };
 
@@ -28,7 +27,7 @@ const CreatePostForm = () => {
           type="text"
           name="title"
           required
-          className="border-solid border-[1px] rounded-sm border-black p-[0.5rem] "
+          className="border-solid border-[1px] rounded-sm border-black p-[0.5rem] bg-[#EDEDED] dark:bg-[#1C1C1C] dark:border-[#EDEDED]"
           placeholder="Catching title here"
         />
       </div>
@@ -37,7 +36,7 @@ const CreatePostForm = () => {
         <textarea
           name="description"
           placeholder="Quickly describe your posts contents"
-          className="p-[0.5rem] border-solid border-[1px] rounded-sm border-black"
+          className="p-[0.5rem] border-solid border-[1px] rounded-sm border-black bg-[#EDEDED] dark:bg-[#1C1C1C] dark:border-[#EDEDED]"
           maxLength={200}
           required
         ></textarea>
@@ -48,7 +47,7 @@ const CreatePostForm = () => {
         <textarea
           name="text_content"
           placeholder="Write away as you please!"
-          className="p-[0.5rem] border-solid border-[1px] rounded-sm border-black resize-y min-h-[30vh]"
+          className="p-[0.5rem] border-solid border-[1px] rounded-sm border-black resize-y min-h-[30vh] bg-[#EDEDED] dark:bg-[#1C1C1C] dark:border-[#EDEDED]"
         ></textarea>
       </div>
 

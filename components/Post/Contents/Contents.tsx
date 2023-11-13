@@ -21,6 +21,7 @@ const Contents = ({
       />
       <Body
         text_contents={post?.text_content}
+        image_url={post?.image_url}
         createdAt={
           postStatistics?.created_at ? postStatistics.created_at : "No dateT"
         }
