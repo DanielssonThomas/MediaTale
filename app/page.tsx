@@ -5,5 +5,5 @@ export const dynamic = "force-dynamic";
 export default async function Index() {
   const isLoggedIn = await IsSignedIn();
 
-  return isLoggedIn ? redirect("/home-feed") : redirect("/ladningpage");
+  return isLoggedIn ? redirect("/home-feed") : redirect("/landingpage");
 }
