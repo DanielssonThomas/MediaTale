@@ -128,6 +128,7 @@ export const getPostsWithEvents = async ({ limit, user_id }: getPostProps) => {
 
     if (error) {
       console.log("getPostsWithEvents error: ", error);
+      return null;
     }
     return posts;
   }
@@ -142,6 +143,7 @@ export const getPostsWithEvents = async ({ limit, user_id }: getPostProps) => {
 
   if (error) {
     console.log("getPostsWithEvents error: ", error);
+    return null;
   }
   return posts;
 };
