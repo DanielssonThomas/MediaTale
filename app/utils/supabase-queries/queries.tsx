@@ -97,20 +97,44 @@ export const getPostById = async ({ post_id }: { post_id: number }) => {
 
 export const getPostWithEventById = async ({ id }: { id: number }) => {
   const supabase = createServerActionClient({ cookies });
+  const user = await getSignedInUser();
+  const userProfile = await getProfileById({ user_id: user?.id });
   const {
     data: post,
     error,
   }: { data: postWithEvent | null; error: PostgrestError | null } =
-    await supabase
-      .from("posts")
-      .select("*, post_event(dislike_bool, like_bool)")
-      .match({ id: id })
-      .single();
+    await supabase.from("posts").select("*").match({ id: id }).single();
 
-  if (error) {
+  const {
+    data: post_event,
+  }: {
+    data: postEvent | null;
+  } = await supabase
+    .from("post_event")
+    .select("*")
+    .match({ post_id: id, profile_id: userProfile?.id })
+    .single();
+
+  if (error || post === null) {
     console.log("getPostWithEvent error: ", error);
+    return null;
   }
-  return post;
+
+  const result: postWithEvent | null = {
+    title: post.title,
+    created_at: post.created_at,
+    created_by_username: post.created_by_username,
+    created_by_uuid: post.created_by_uuid,
+    description: post.description,
+    id: post.id,
+    image_url: post.image_url,
+    text_content: post.text_content,
+    post_event: {
+      like_bool: post_event?.like_bool,
+      dislike_bool: post_event?.dislike_bool,
+    },
+  };
+  return result;
 };
 
 export const getPostsWithEvents = async ({ limit, user_id }: getPostProps) => {
@@ -119,12 +143,11 @@ export const getPostsWithEvents = async ({ limit, user_id }: getPostProps) => {
     const {
       data: posts,
       error,
-    }: { data: postWithEvent[] | null; error: PostgrestError | null } =
-      await supabase
-        .from("posts")
-        .select("*, post_event(dislike_bool, like_bool)")
-        .match({ created_by_uuid: user_id })
-        .limit(limit);
+    }: { data: post[] | null; error: PostgrestError | null } = await supabase
+      .from("posts")
+      .select("*")
+      .match({ created_by_uuid: user_id })
+      .limit(limit);
 
     if (error) {
       console.log("getPostsWithEvents error: ", error);
@@ -135,11 +158,10 @@ export const getPostsWithEvents = async ({ limit, user_id }: getPostProps) => {
   const {
     data: posts,
     error,
-  }: { data: postWithEvent[] | null; error: PostgrestError | null } =
-    await supabase
-      .from("posts")
-      .select("*, post_event(dislike_bool, like_bool)")
-      .limit(limit);
+  }: { data: post[] | null; error: PostgrestError | null } = await supabase
+    .from("posts")
+    .select("*")
+    .limit(limit);
 
   if (error) {
     console.log("getPostsWithEvents error: ", error);

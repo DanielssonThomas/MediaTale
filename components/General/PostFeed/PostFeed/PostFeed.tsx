@@ -2,7 +2,7 @@ import PostPreview from "../PostPreview.tsx";
 
 type PostFeedProps = {
   postsStatistics: postStatistic[] | null;
-  posts: postWithEvent[] | null;
+  posts: post[] | null;
 };
 
 export const PostFeed = ({ posts, postsStatistics }: PostFeedProps) => {
@@ -33,7 +33,7 @@ export const PostFeed = ({ posts, postsStatistics }: PostFeedProps) => {
             title={post.title}
             username={post.created_by_username}
             post_id={post.id}
-            imageUrl={post.image}
+            imageUrl={post.image_url}
             view_count={getStatistic(post.id)?.view_count ?? 0}
           />
         ))}

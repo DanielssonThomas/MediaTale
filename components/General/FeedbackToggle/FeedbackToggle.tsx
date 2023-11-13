@@ -27,50 +27,75 @@ export const FeedbackToggle = ({
   id,
 }: FeedbackToggleProps) => {
   const [action, setAction] = useState<"liked" | "disliked" | null>(null);
+
   useEffect(() => {
-    if (liked) setAction("liked");
-    if (disliked) setAction("disliked");
-  }, [action]);
+    if (liked) {
+      setAction("liked");
+    }
+
+    if (disliked) {
+      setAction("disliked");
+    }
+  }, []);
 
   const handleEvent = async ({
     like,
+    removeAction,
     e,
   }: {
-    like: boolean;
+    like?: boolean;
+    removeAction?: boolean;
     e: React.MouseEvent<HTMLElement>;
   }) => {
     e.preventDefault();
     if (type === "comments") {
-      const { status } = await fetch(
-        `/api/comments/${like ? "like-" : "dislike-"}comment`,
-        {
+      if (!removeAction) {
+        const status = await fetch(
+          `/api/comments/${like ? "like-" : "dislike-"}comment`,
+          {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({ comment_id: id }),
+          }
+        );
+      } else {
+        const status = await fetch(`/api/comments/remove-comment-event`, {
           method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
+          headers: { "Content-type": "application/json" },
           body: JSON.stringify({ comment_id: id }),
-        }
-      );
+        });
+      }
     }
 
     if (type === "posts") {
-      const { status } = await fetch(
-        `/api/posts/${like ? "like-" : "dislike-"}post`,
-        {
+      if (!removeAction) {
+        const status = await fetch(
+          `/api/posts/${like ? "like-" : "dislike-"}post`,
+          {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({ post_id: id }),
+          }
+        );
+      } else {
+        const status = await fetch(`/api/posts/remove-post-event`, {
           method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
+          headers: { "Content-type": "application/json" },
           body: JSON.stringify({ post_id: id }),
-        }
-      );
+        });
+      }
     }
   };
 
-  return action ? (
+  return action === "liked" || action === "disliked" ? (
     <div
-      className="flex justify-center items-center cursor-pointer w-[10rem]"
-      onClick={() => {
+      className="flex justify-end items-center cursor-pointer w-[10rem]"
+      onClick={(e: React.MouseEvent<HTMLElement>) => {
+        handleEvent({ e: e, removeAction: true });
         setAction(null);
       }}
     >

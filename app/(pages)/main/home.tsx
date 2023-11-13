@@ -11,6 +11,7 @@ import {
 const Home = async () => {
   const posts = await getPostsWithEvents({ limit: 10 });
   const user = await getSignedInUser();
+
   const profile = await getProfileById({
     user_id: user !== null ? user.id : "",
   });

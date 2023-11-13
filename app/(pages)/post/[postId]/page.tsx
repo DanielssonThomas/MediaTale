@@ -1,6 +1,5 @@
 import Navigation from "@/components/Navigation";
 import Post from "@/components/Post/Post";
-import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import Toast from "@/components/General/Toast";
 import { cookies } from "next/headers";
 import {

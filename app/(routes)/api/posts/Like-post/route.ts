@@ -21,7 +21,6 @@ export const POST = async (req: Request) => {
   });
 
   if (error) {
-    console.log(error);
     return NextResponse.json({ status: 301 });
   }
 

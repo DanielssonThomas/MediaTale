@@ -19,7 +19,21 @@ const Contents = ({
         follower_count={authorStatistics?.followers}
         username={authorStatistics?.username}
       />
-      <Body post={post} postStatistics={postStatistics} />
+      <Body
+        text_contents={post?.text_content}
+        createdAt={
+          postStatistics?.created_at ? postStatistics.created_at : "No dateT"
+        }
+        disliked={
+          post?.post_event.dislike_bool ? post.post_event.dislike_bool : null
+        }
+        like_count={postStatistics?.like_count ? postStatistics.like_count : 0}
+        liked={post?.post_event.like_bool ? post.post_event.like_bool : null}
+        post_id={post?.id ? post.id : 0}
+        view_count={
+          postStatistics?.view_count ? postStatistics.view_count : null
+        }
+      />
     </div>
   );
 };

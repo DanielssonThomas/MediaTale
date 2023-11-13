@@ -31,19 +31,23 @@ declare global {
     likeCount: number;
   };
 
+  type postEvent = {
+    like_bool: boolean | null;
+    dislike_bool: boolean | null;
+  };
+
   type postWithEvent = {
     created_at: string;
     created_by_username: string | null;
     created_by_uuid: string | null;
     description: string | null;
     id: number;
-    image: string | null;
+    image_url: string | null;
     text_content: string | null;
     title: string | null;
-    video: string | null;
     post_event: {
-      dislike_bool: boolean | null;
-      like_bool: boolean | null;
+      like_bool: boolean | null | undefined;
+      dislike_bool: boolean | null | undefined;
     };
   };
 
