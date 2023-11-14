@@ -41,9 +41,19 @@ const Post = ({
       <Button text="Back" type="link" href="/" posTopLeft={true} />
       <div className="w-[20rem] sm:w-[35rem] md:w-[45rem]">
         <Contents
-          authorStatistics={authorStatistics}
-          postStatistics={postStatistics}
-          post={post}
+          avatar_url={postStatistics?.profiles.avatar_url}
+          created_at={postStatistics?.created_at}
+          disliked={
+            post?.post_event.dislike_bool ? post.post_event.dislike_bool : null
+          }
+          follower_count={authorStatistics?.followers}
+          image_url={post?.image_url}
+          like_count={postStatistics?.like_count ?? 0}
+          liked={post?.post_event.like_bool ?? null}
+          post_id={post?.id ?? 0}
+          text_contents={post?.text_content}
+          username={authorStatistics?.username}
+          view_count={postStatistics?.view_count ?? 0}
         />
         <CreateComment
           post_id={post?.id}

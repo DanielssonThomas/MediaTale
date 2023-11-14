@@ -1,6 +1,3 @@
-import DislikeIcon from "@/components/General/Icons/Dislike";
-import LikeIcon from "@/components/General/Icons/Like";
-
 import Image from "next/image";
 import Link from "next/link";
 
