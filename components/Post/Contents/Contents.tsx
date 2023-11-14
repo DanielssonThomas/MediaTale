@@ -13,6 +13,7 @@ type ContentsProps = {
   liked: boolean | null;
   like_count: number | null;
   view_count: number | null;
+  postOwner: boolean | null;
 };
 
 const Contents = ({
@@ -27,6 +28,7 @@ const Contents = ({
   liked,
   like_count,
   view_count,
+  postOwner,
 }: ContentsProps) => {
   return (
     <div>
@@ -34,6 +36,7 @@ const Contents = ({
         avatar_url={avatar_url}
         follower_count={follower_count}
         username={username}
+        postOwner={postOwner}
       />
       <Body
         text_contents={text_contents}

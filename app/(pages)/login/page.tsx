@@ -36,7 +36,7 @@ const Login = async ({ searchParams }: { searchParams: { error: string } }) => {
               placeholder="you@example.com"
               required
             />
-            <p className="text-md text-black">Password</p>
+            <p className="text-md text-black dark:text-white">Password</p>
             <input
               className="rounded-md px-4 py-2 bg-inherit border-[1px] border-black dark:border-[#EDEDED] w-full text-center text-black dark:text-[#EDEDED]"
               type="password"

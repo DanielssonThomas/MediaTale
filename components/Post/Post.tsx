@@ -12,6 +12,7 @@ type PostProps = {
   signedInUserProfileId: number | undefined;
   signedInUserAvatar: string | null | undefined;
   comments: commentData[] | null;
+  postOwner: boolean | null;
 };
 
 const Post = ({
@@ -21,6 +22,7 @@ const Post = ({
   signedInUserProfileId,
   signedInUserAvatar,
   comments,
+  postOwner,
 }: PostProps) => {
   const incrementView = async () => {
     await fetch("/api/posts/increment-view", {
@@ -38,10 +40,10 @@ const Post = ({
 
   return (
     <div className="relative flex flex-col items-center dark:text-[#EDEDED]">
-      <Button text="Back" type="link" href="/" posTopLeft={true} />
+      <Button text="Back" type="link" href="/home-feed" posTopLeft={true} />
       <div className="w-[20rem] sm:w-[35rem] md:w-[45rem]">
         <Contents
-          avatar_url={postStatistics?.profiles.avatar_url}
+          avatar_url={authorStatistics?.avatar_url}
           created_at={postStatistics?.created_at}
           disliked={
             post?.post_event.dislike_bool ? post.post_event.dislike_bool : null
@@ -54,6 +56,7 @@ const Post = ({
           text_contents={post?.text_content}
           username={authorStatistics?.username}
           view_count={postStatistics?.view_count ?? 0}
+          postOwner={postOwner}
         />
         <CreateComment
           post_id={post?.id}

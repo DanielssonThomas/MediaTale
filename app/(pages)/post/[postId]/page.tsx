@@ -26,6 +26,8 @@ const PostPage = async ({
   const postStatistics = await getPostStatisticsById({ post_id: postId });
   const comments = await getCommentsByPostId({ post_id: postId });
   const showToast = message ? true : false;
+  let postOwner: boolean | null = null;
+  if (currentUserProfile?.id == profile?.id) postOwner = true;
 
   return (
     <div>
@@ -44,6 +46,7 @@ const PostPage = async ({
           comments={comments}
           signedInUserProfileId={currentUserProfile?.id}
           signedInUserAvatar={currentUserProfile?.avatar_url}
+          postOwner={postOwner}
         />
       </div>
     </div>

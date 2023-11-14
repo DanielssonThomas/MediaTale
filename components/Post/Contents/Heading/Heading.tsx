@@ -1,3 +1,4 @@
+import Button from "@/components/General/Button";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -5,12 +6,14 @@ type HeadingProps = {
   username: string | null | undefined;
   avatar_url: string | null | undefined;
   follower_count: number | null | undefined;
+  postOwner: boolean | null;
 };
 
 export const Heading = ({
   username,
   avatar_url,
   follower_count,
+  postOwner,
 }: HeadingProps) => {
   return (
     <div className="relative flex justify-between w-full p-4 border-solid border-b-[1px] border-black dark:border-[#EDEDED]">
@@ -32,9 +35,11 @@ export const Heading = ({
         </div>
       </div>
       <div className="flex justify-center items-center mt-10">
-        <button className="border-solid border-black dark:border-[#EDEDED] border-[1px] p-2 rounded-md">
-          Follow!
-        </button>
+        {postOwner ? (
+          <Button type="default" text="Remove" />
+        ) : (
+          <Button type="default" text="Follow" />
+        )}
       </div>
     </div>
   );

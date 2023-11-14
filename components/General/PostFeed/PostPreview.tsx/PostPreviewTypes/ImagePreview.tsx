@@ -85,6 +85,7 @@ export const ImagePreview = ({
             href={`/post/${post_id}`}
             className="flex flex-col p-1 text-center w-full z-30"
           >
+            <input type="hidden" value={post_id} name="post_id" />
             <h3
               className={`${
                 description === "" && "border-none"

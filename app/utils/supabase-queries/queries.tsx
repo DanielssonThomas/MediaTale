@@ -43,7 +43,6 @@ export const getSignedInProfilePictureUrl = async () => {
     .select("avatar_url")
     .match({ user_id: user?.id })
     .single();
-  revalidatePath("/home-feed");
   return data?.avatar_url;
 };
 
@@ -57,10 +56,11 @@ export const getProfileById = async ({ user_id }: getProfileByIdProps) => {
     .select("*")
     .match({ user_id: user_id })
     .single();
-  revalidatePath("/home-feed");
+
   if (error) {
     console.log("getProfileById error: ", error);
   }
+
   return profile;
 };
 
@@ -76,7 +76,6 @@ export const getProfileByUsername = async ({
     .select("*")
     .match({ username: username })
     .single();
-  revalidatePath("/home-feed");
   if (error) {
     console.log("getProfileByUsername error: ", error);
   }
