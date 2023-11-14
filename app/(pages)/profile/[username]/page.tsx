@@ -39,28 +39,30 @@ const Profile = async ({ params: { username } }: ProfileProps) => {
     <div>
       <div className="bg-[#EDEDED] dark:bg-[#1C1C1C] min-h-[100vh]">
         <Navigation isLoggedIn={isSignedIn} avatar_url={currentUserAvatar} />
-        <section className="flex flex-col justify-center items-center relative pt-8">
+        <section className="flex flex-col justify-center items-center relative pt-8 w-full">
           <Button type="link" text="Back" href="/" posTopLeft={true} />
-          <ProfileHeading
-            followers={profile.followers}
-            following={profile.following}
-            username={profile.username}
-            user_id={profile.user_id}
-            isCurrentUser={isCurrentUser}
-            avatar_url={profile.avatar_url}
-          />
-          <Details
-            about={profile.about}
-            contact_email={profile.contact_email}
-            country={profile.country}
-            created_at={profile.created_at}
-            first_name={profile.first_name}
-            last_name={profile.last_name}
-          />
-          <h2 className="flex justify-center items-center border-x-[1px] border-solid border-black dark:border-[#EDEDED] w-[40rem] h-[4rem] text-2xl text-black dark:text-[#EDEDED]">
-            {profile.username}'s posts
-          </h2>
-          <ProfilePosts user_id={profile.user_id} />
+          <div className="flex flex-col justify-center items-center w-[20rem] sm:w-[35rem] lg:w-[60rem]">
+            <ProfileHeading
+              followers={profile.followers}
+              following={profile.following}
+              username={profile.username}
+              user_id={profile.user_id}
+              isCurrentUser={isCurrentUser}
+              avatar_url={profile.avatar_url}
+            />
+            <Details
+              about={profile.about}
+              contact_email={profile.contact_email}
+              country={profile.country}
+              created_at={profile.created_at}
+              first_name={profile.first_name}
+              last_name={profile.last_name}
+            />
+            <h2 className="flex justify-center items-center w-[40rem] h-[4rem] text-2xl text-black dark:text-[#EDEDED]">
+              {isCurrentUser ? "Your posts" : `${profile.username}'s posts`}
+            </h2>
+            <ProfilePosts user_id={profile.user_id} />
+          </div>
         </section>
       </div>
     </div>

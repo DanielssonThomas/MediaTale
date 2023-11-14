@@ -15,31 +15,26 @@ export const ProfileDetails = ({
   last_name,
   created_at,
 }: DetailsProps) => {
+  const parsedCreatedAt = created_at?.split("T")[0];
   return (
-    <div className="flex flex-col gap-4 px-6 w-[40rem] text-black dark:text-[#EDEDED]  border-x-[1px] border-solid border-black dark:border-[#EDEDED]">
-      <div className="border-solid border-black dark:border-[#EDEDED] border-b-[1px] pb-2">
-        <h2 className="text-xl">About:</h2>
-        <section className="text-base min-h-[5rem]">{about}</section>
+    <div className="flex flex-col gap-4 px-6 w-full text-black dark:text-[#EDEDED]">
+      <div className="border-b-[1px] border-solid border-black dark:border-white pb-4">
+        <h2 className="text-sm">About:</h2>
+        <p className="p-1">{about}</p>
       </div>
-      <div className="border-solid border-black dark:border-[#EDEDED] border-b-[1px] pb-2">
-        <h3 className="text-xl">Name:</h3>
-        <section>
-          {first_name} {last_name}
-        </section>
-      </div>
-      <div className="border-solid border-black dark:border-[#EDEDED] border-b-[1px] pb-2">
-        <h3 className="text-xl">Country:</h3>
-        <section>{country}</section>
-      </div>
-      <div className="border-solid border-black dark:border-[#EDEDED] border-b-[1px] pb-2">
-        <h3 className="text-xl">Buisness email:</h3>
-        <section>
-          {contact_email ? contact_email : <i>No email entered</i>}
-        </section>
-      </div>
-      <div className="border-solid border-black dark:border-[#EDEDED] border-b-[1px] pb-2">
-        <h3 className="text-xl">Created at:</h3>
-        <section>{created_at}</section>
+      <div className="flex flex-col sm:flex-row text-sm gap-4 w-full">
+        <div className="flex gap-4 border-none sm:border-solid sm:border-r-[1px] sm:border-black sm:dark:border-white pr-4 w-full">
+          <h2>Joined MediaTale: </h2>
+          <p>{parsedCreatedAt}</p>
+        </div>
+        <div className="flex gap-4 border-none sm:border-solid sm:border-r-[1px] sm:border-black sm:dark:border-white pr-4 w-full">
+          <h2>Located at:</h2>
+          <p>{country}</p>
+        </div>
+        <div className="w-full">
+          <h2>Contact:</h2>
+          <p>{contact_email}</p>
+        </div>
       </div>
     </div>
   );
