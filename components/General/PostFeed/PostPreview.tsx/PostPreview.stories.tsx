@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { PostPreview } from "./PostPreview";
-
+import CardCentering from "../../Storybook/CardDecorator";
 const meta: Meta<typeof PostPreview> = {
   title: "components/General/PostFeed/PostPreview",
   component: PostPreview,
@@ -15,9 +15,7 @@ const meta: Meta<typeof PostPreview> = {
     view_count: { control: "number" },
   },
   tags: ["autodocs"],
-  parameters: {
-    layout: "centered",
-  },
+  decorators: [(story) => <CardCentering story={story()} />],
 };
 
 export const Primary: StoryObj<typeof PostPreview> = {

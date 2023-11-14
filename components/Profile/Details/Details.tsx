@@ -2,8 +2,6 @@ type DetailsProps = {
   about: string | null | undefined;
   country: string | null | undefined;
   contact_email: string | null | undefined;
-  first_name: string | null | undefined;
-  last_name: string | null | undefined;
   created_at: string | null | undefined;
 };
 
@@ -11,8 +9,6 @@ export const ProfileDetails = ({
   about,
   country,
   contact_email,
-  first_name,
-  last_name,
   created_at,
 }: DetailsProps) => {
   const parsedCreatedAt = created_at?.split("T")[0];

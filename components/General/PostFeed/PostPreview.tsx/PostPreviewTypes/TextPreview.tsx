@@ -23,10 +23,7 @@ export const TextPreview = ({
   view_count,
 }: PostPreviewProps) => {
   return (
-    <Link
-      href={`/post/${post_id}`}
-      className="dark:text-[#EDEDED] min-w-[18rem]"
-    >
+    <Link href={`/post/${post_id}`} className="dark:text-[#EDEDED]">
       <input type="hidden" value={post_id} name="post_id" />
       <div className="flex flex-col justify-around relative w-full h-[10rem] rounded-[2px] border-solid border-[1px] border-black dark:border-[#EDEDED] bg-[#EDEDED] dark:bg-[#232323]">
         <div className="absolute left-[-20px] top-[-15px] w-[40px] h-[40px] rounded-full overflow-hidden border-black dark:border-[#EDEDED] border-solid">

@@ -55,8 +55,6 @@ const Profile = async ({ params: { username } }: ProfileProps) => {
               contact_email={profile.contact_email}
               country={profile.country}
               created_at={profile.created_at}
-              first_name={profile.first_name}
-              last_name={profile.last_name}
             />
             <h2 className="flex justify-center items-center w-[40rem] h-[4rem] text-2xl text-black dark:text-[#EDEDED]">
               {isCurrentUser ? "Your posts" : `${profile.username}'s posts`}
