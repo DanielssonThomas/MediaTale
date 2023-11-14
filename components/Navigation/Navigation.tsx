@@ -24,6 +24,14 @@ export const Navigation = ({
   const [navMenuActive, setNavMenuActive] = useState<boolean>(false);
   return (
     <div className="flex flex-col border-solid border-b-2 border-black dark:border-[#EDEDED] w-screen bg-[#EDEDED] dark:bg-[#1C1C1C] h-[60px] relative text-black dark:text-[#EDEDED]">
+      <div
+        className={`absolute transition-all ${
+          navMenuActive ? "right-0" : "-right-[100vw]"
+        } z-40 w-screen h-screen`}
+        onClick={() => {
+          setNavMenuActive(!navMenuActive);
+        }}
+      />
       {isLoggedIn ? (
         <div className="flex justify-center items-center w-screen h-full relative">
           <Link
@@ -39,7 +47,7 @@ export const Navigation = ({
           )}
 
           <div
-            className="absolute top-[5px] right-[20px] border-solid border-[1px] rounded-full border-black overflow-hidden w-[50px] h-[50px] z-50 cursor-pointer"
+            className="absolute top-[5px] right-[20px] border-solid border-[1px] rounded-full border-black overflow-hidden w-[50px] h-[50px] z-[99999] cursor-pointer"
             onClick={() => setNavMenuActive(!navMenuActive)}
           >
             <Image

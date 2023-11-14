@@ -36,17 +36,19 @@ export const TextPreview = ({
         </div>
         <p className="absolute left-6 top-[-20px] text-sm">{username}</p>
         <div className="flex flex-col p-1 text-center w-full">
-          <h3 className="sm:text-sm md:text-xl mx-4 border-solid border-b-[1px] border-black dark:border-[#EDEDED]">
+          <h3
+            className={`${
+              description === "" && "border-none"
+            } sm:text-sm md:text-xl mx-4 border-solid border-b-[1px] border-black dark:border-[#EDEDED] p-2`}
+          >
             {title}
           </h3>
-          {description === null ? (
-            <div className="min-h-[3rem] p-2" />
-          ) : (
+          {description !== "" && (
             <p className="min-h-[3rem] p-2 text-sm">{description}</p>
           )}
         </div>
 
-        <div className="flex w-full justify-between items-center max-h-[1rem] p-2">
+        <div className="flex w-full justify-between items-center max-h-[1rem] p-2 absolute bottom-2">
           <div className="flex justiy-center items-center text-center h-[1rem] w-full border-r-[1px] border-solid border-black dark:border-white">
             <Heart action="liked" />
             <p className="text-[12px] ml-2">{like_count}</p>
