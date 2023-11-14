@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Comment } from "./Comment";
+import { Comment } from "../components/Post/Comments/Comment/Comment";
+import CardCentering from "./storybook-decorators/CardDecorator";
 
 const meta: Meta<typeof Comment> = {
   title: "components/Comments/Comment",
@@ -12,9 +13,7 @@ const meta: Meta<typeof Comment> = {
     liked: { control: "boolean" },
     like_count: { control: "number" },
   },
-  parameters: {
-    layout: "centered",
-  },
+  decorators: [(story) => <CardCentering story={story()} />],
 };
 
 export const Primary: StoryObj<typeof Comment> = {

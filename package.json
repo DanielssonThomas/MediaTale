@@ -8,6 +8,7 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@storybook/addon-jest": "^7.5.3",
     "@supabase/auth-helpers-nextjs": "latest",
     "@supabase/supabase-js": "latest",
     "autoprefixer": "10.4.15",
