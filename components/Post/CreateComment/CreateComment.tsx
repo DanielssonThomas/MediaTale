@@ -34,7 +34,7 @@ export const CreateComment = ({
       <input
         type="text"
         name="comment"
-        className="w-1/2 p-1 dark:bg-[#1C1C1C] dark:border-[#EDEDED] border-solid border-[1px]"
+        className="w-1/2 p-1 dark:bg-[#1C1C1C] dark:border-white border-solid border-[1px] border-black bg-[#EDEDED] text-black dark:text-white"
         placeholder="Write a comment for this post here"
       />
       <button
