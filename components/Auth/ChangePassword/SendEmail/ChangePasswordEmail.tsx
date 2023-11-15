@@ -12,15 +12,15 @@ export const ChangePasswordEmail = () => {
         } transition-all duration-300 absolute top-0 left-0 flex flex-col justify-center items-center w-full min-h-screen overflow-hidden`}
       >
         <div
-          className={`transition-all duration-300 w-full min-h-screen z-20 bg-[#EDEDED]] dark:bg-[#EDEDED] ${
+          className={`transition-all duration-300 w-screen min-h-screen z-20 bg-[#EDEDED]] dark:bg-[#EDEDED] ${
             alertActive ? "opacity-30" : "opacity-0"
           }`}
           onClick={() => setAlertActive(false)}
         ></div>
         <div
           className={`transition-all duration-700 ${
-            alertActive ? "bottom-[25vh]" : "bottom-[-25rem]"
-          } absolute flex flex-col justify-center items-center w-[20rem] h-[25rem] gap-12 z-50 bg-[#EDEDED] dark:bg-[#1C1C1C] text-center rounded-md`}
+            alertActive ? "bottom-[12rem]" : "bottom-[-25rem]"
+          } absolute flex flex-col justify-center items-center w-[20rem] h-[25rem] gap-12 z-[9999] bg-[#EDEDED] dark:bg-[#1C1C1C] text-center rounded-md`}
         >
           <h2 className="text-2xl">We will email you!</h2>
           <p className="text-sm">
@@ -28,7 +28,11 @@ export const ChangePasswordEmail = () => {
             change your password once.
           </p>
           <div className="flex justify-around">
-            <form action="/auth/send-PW-reset-user" method="POST">
+            <form
+              action="/auth/send-PW-reset-user"
+              method="POST"
+              className="text-red"
+            >
               <Button text="Send email" type="default" />
             </form>
           </div>

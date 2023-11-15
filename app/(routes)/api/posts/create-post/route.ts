@@ -55,7 +55,7 @@ export async function POST(request: Request) {
     if (file.size !== 0) {
       const { data, error } = await supabase.storage
         .from("uploads")
-        .upload(`${post.id}`, image);
+        .upload(`${user.id}/${post.id}`, image);
 
       if (error) return NextResponse.json({ error: true });
 

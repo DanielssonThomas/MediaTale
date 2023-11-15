@@ -23,7 +23,18 @@ type ButtonLinkProps = {
   posTopRight?: boolean;
 };
 
-type ButtonProps = ButtonDefaultProps | ButtonFormActionProps | ButtonLinkProps;
+type ButtonStatic = {
+  text: string;
+  type: "static";
+  posTopLeft?: boolean;
+  posTopRight?: boolean;
+};
+
+type ButtonProps =
+  | ButtonDefaultProps
+  | ButtonFormActionProps
+  | ButtonLinkProps
+  | ButtonStatic;
 
 export const Button = (Button: ButtonProps) => {
   const topLeft = "absolute left-[15px] top-[15px]";
@@ -181,6 +192,50 @@ export const Button = (Button: ButtonProps) => {
             </div>
           </div>
         </button>
+      );
+    case "static":
+      return (
+        <div
+          className={`${
+            isAbsolute ? pos : "relative"
+          } group border-solid border-[1px] border-black dark:border-[#EDEDED] md:border-none w-40 h-[2rem] overflow-hidden z-40 text-center cursor-pointer`}
+        >
+          <div className="flex justify-center items-center h-full text-black dark:text-[#EDEDED]">
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="mr-1 h-4 w-4 transition-transform group-hover:-translate-x-1"
+              >
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </div>
+            <div className="text-sm text-[#d0d0d0]">{Button.text}</div>
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="ml-1 h-4 w-4 rotate-180 transition-transform group-hover:translate-x-1 "
+              >
+                <polyline points="15 18 9 12 15 6" />
+              </svg>
+            </div>
+          </div>
+        </div>
       );
   }
 };

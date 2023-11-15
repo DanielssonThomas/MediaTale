@@ -41,7 +41,7 @@ export const Body = ({
 
       <article className="border-solid border-b-[1px] border-black dark:border-[#EDEDED] py-4 min-h-[8rem] w-full">
         <p className="pb-4">{text_contents}</p>
-        <div className="flex justify-center items-center w-full bg-[#EDEDED] dark:bg-[#1C1C1C]">
+        <div className="flex justify-center items-center w-full bg-[#EDEDED] dark:bg-[#1C1C1C] overflow-hidden">
           {image_url !== undefined && image_url !== null ? (
             <div
               className="relative w-full h-[20rem] object-contain"
