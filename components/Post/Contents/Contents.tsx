@@ -36,6 +36,7 @@ const Contents = ({
         avatar_url={avatar_url}
         follower_count={follower_count}
         username={username}
+        post_id={post_id}
         postOwner={postOwner}
       />
       <Body
