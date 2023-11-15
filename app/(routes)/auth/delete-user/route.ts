@@ -4,7 +4,8 @@ import { createClient } from "@supabase/supabase-js";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-export const POST = async () => {
+export const POST = async (request: Request) => {
+  const requestUrl = new URL(request.url);
   const supabaseAdminClient = createClient(
     String(process.env.NEXT_PUBLIC_SUPABASE_URL),
     String(process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY),
@@ -47,11 +48,11 @@ export const POST = async () => {
   }
 
   if (user?.id !== undefined) {
-    const { data, error } = await supabaseAdminClient.auth.admin.deleteUser(4);
+    const { data, error } = await supabaseAdminClient.auth.admin.deleteUser(
+      user.id
+    );
     if (error) {
-      console.log("user delete error: ", error);
-      console.log("user delete data: ", data);
-      return NextResponse.json({ status: "error" });
+      return NextResponse.redirect(`${requestUrl.origin}/`);
     }
   }
 
