@@ -36,7 +36,7 @@ export const UploadAvatar = () => {
         <input
           name="avatar"
           type="file"
-          accept="image/jpg, image/jpeg, image/png"
+          accept="image/jpg, image/jpeg, image/png, image/webp"
           onChange={(e: any) => setImageUpload(e.target.files[0])}
         />
       </div>
