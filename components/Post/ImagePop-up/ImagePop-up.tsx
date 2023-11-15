@@ -9,16 +9,16 @@ type ImagePopUpProps = {
 export const ImagePopUp = ({ src, isActive, setIsActive }: ImagePopUpProps) => {
   return (
     <div
-      className="absolute top-0 left-0"
+      className="absolute top-0 left-0 overflow-hidden"
       onClick={() => setIsActive(!isActive)}
     >
       <div
-        className={`absolute w-screen h-[120vh] bg-white dark:bg-black transition-opacity duration-300 ${
+        className={`fixed top-0 w-screen h-[120vh] bg-white dark:bg-black transition-opacity duration-300 ${
           isActive ? "opacity-30 z-20" : "opacity-0 -z-10"
         }`}
       />
       <div
-        className={`relative transition-all duration-500 ${
+        className={`fixed transition-all duration-500 ${
           isActive
             ? "bottom-0 left-0 top-10 right-0 scale-1"
             : "bottom-[-100vh] scale-[0.5]"

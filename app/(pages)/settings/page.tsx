@@ -6,6 +6,7 @@ import ChangePasswordEmail from "@/components/Auth/ChangePassword/SendEmail";
 import Toast from "@/components/General/Toast";
 import Button from "@/components/General/Button";
 import { getSignedInProfilePictureUrl } from "@/app/utils/supabase-queries/queries";
+import DeleteUser from "@/components/Auth/DeleteUser";
 export const dynamic = "force-dynamic";
 
 const Settings = async ({
@@ -23,12 +24,12 @@ const Settings = async ({
       )}
       <div className="w-screen min-h-screen bg-[#EDEDED] dark:bg-[#1C1C1C] dark:text-[#EDEDED] transition-all duration-500 ease-out">
         <Navigation isLoggedIn={true} avatar_url={avatarUrl} />
-        <div className="flex flex-col justify-center items-center gap-4 pt-8 relative">
-          <Button text="Back" type="link" href="/" posTopLeft={true} />
+        <div className="flex flex-col justify-center items-center gap-4 pt-8">
           <h2 className="text-2xl border-b-[1px] border-solid border-black w-[15rem] dark:border-[#EDEDED] text-center p-4">
             Settings
           </h2>
           <ChangePasswordEmail />
+          <DeleteUser />
           <SetThemeSwitch />
           <form method="POST">
             <Button
