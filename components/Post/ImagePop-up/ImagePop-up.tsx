@@ -20,7 +20,7 @@ export const ImagePopUp = ({ src, isActive, setIsActive }: ImagePopUpProps) => {
       <div
         className={`fixed transition-all duration-500 ${
           isActive
-            ? "bottom-0 left-0 top-10 right-0 scale-1"
+            ? "bottom-0 left-0 top-14 right-0 scale-1"
             : "bottom-[-100vh] scale-[0.5]"
         } left-[16.5vw] w-[66vw] h-[66vh] z-[9999]`}
       >

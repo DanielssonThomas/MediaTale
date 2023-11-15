@@ -2,9 +2,12 @@
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import { useState, useEffect } from "react";
+import AddIcon from "../General/Icons/Add";
+import Button from "../General/Button";
 
-const CreatePostForm = () => {
+export const CreatePostForm = () => {
   const [imageUpload, setImageUpload] = useState<File>();
+
   const handleForm = async (e: FormData) => {
     if (imageUpload) e.set("image", imageUpload);
     const data = await fetch("/api/posts/create-post", {
@@ -19,7 +22,7 @@ const CreatePostForm = () => {
     <form
       action={handleForm}
       method="POST"
-      className="flex flex-col gap-6 m-[2rem]"
+      className="flex flex-col gap-6 m-[2rem] w-[20rem] sm:w-[35rem] md:w-[45rem]"
     >
       <div className="flex flex-col text-black dark:text-[#EDEDED]">
         <div>Title:</div>
@@ -56,33 +59,40 @@ const CreatePostForm = () => {
           <input
             type="file"
             name="image"
-            accept="image/jpg, image/png"
+            accept="image/*"
             onChange={(e: any) => setImageUpload(e.target.files[0])}
+            id="image-input"
+            hidden
           />
         </div>
         <div>
-          {imageUpload && (
-            <div>
-              Preview:
+          {imageUpload ? (
+            <div className="flex flex-col justify-center items-center w-full h-[30rem] border-solid border-[1px] border-black dark:border-white relative">
+              Preview
               <Image
                 src={URL.createObjectURL(imageUpload)}
                 alt="Uploaded image"
-                width={600}
-                height={600}
+                fill
+                className="object-cover"
               />
+            </div>
+          ) : (
+            <div
+              className="flex flex-col justify-center items-center w-full h-[30rem] border-solid border-[1px] border-black dark:border-white"
+              onClick={() => document.getElementById("image-input")?.click()}
+            >
+              <AddIcon />
             </div>
           )}
 
           <i className="text-xs">
-            *Image uploaded will act as the thumbnail and banner of your post*
+            *Image uploaded will act as the thumbnail of your post*
           </i>
         </div>
       </div>
-      <button className="border-solid border-black dark:border-[#EDEDED] border-[1px] bg-green-700 text-[#EDEDED] rounded">
-        Post
-      </button>
+      <div className="flex justify-center w-full">
+        <Button type="default" text="Post!" />
+      </div>
     </form>
   );
 };
-
-export default CreatePostForm;
