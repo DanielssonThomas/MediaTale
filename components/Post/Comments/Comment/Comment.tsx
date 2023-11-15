@@ -93,7 +93,6 @@ export const Comment = ({
           </div>
         </div>
       </div>
-      <div></div>
     </div>
   );
 };

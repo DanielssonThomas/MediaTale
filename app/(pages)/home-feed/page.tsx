@@ -10,8 +10,8 @@ import {
 export const dynamic = "force-dynamic";
 
 const Home = async () => {
-  const posts = await getPostsWithEvents({ limit: 10 });
-  const postsStatistics = await getPostsStatistics({ limit: 10 });
+  const posts = await getPostsWithEvents({ limit: 20 });
+  const postsStatistics = await getPostsStatistics({ limit: 20 });
   const user = await getSignedInUser();
 
   const profile = await getProfileById({
