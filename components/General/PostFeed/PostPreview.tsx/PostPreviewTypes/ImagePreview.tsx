@@ -37,6 +37,9 @@ export const ImagePreview = ({
           className="object-cover z-50"
         />
       </div>
+      <p className="absolute left-6 top-[-20px] text-sm text-black dark:text-white">
+        {username}
+      </p>
       <div className="flex flex-col justify-around relative w-full h-[10rem] rounded-[2px] border-solid border-[1px] border-black dark:border-[#EDEDED] bg-[#EDEDED] dark:bg-[#232323] overflow-hidden">
         <Image
           src={imageUrl}
@@ -45,14 +48,14 @@ export const ImagePreview = ({
           className="object-cover"
           onClick={() => setActive(!active)}
         />
-        <p className="absolute left-6 top-[-20px] text-sm">{username}</p>
+
         <div
           className={`flex flex-col justify-end items-center absolute transition-all ${
             active ? "top-0" : "top-[8.5rem]"
           }  w-full h-6 border-b-[1px] border-solid border-white cursor-pointer z-40`}
           onClick={() => setActive(!active)}
         >
-          <div className="w-full h-6 bg-[#232323] opacity-80" />
+          <div className="w-full h-6 bg-[#EDEDED] dark:bg-[#232323] opacity-80" />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

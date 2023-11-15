@@ -231,21 +231,57 @@ export const getCommentsByPostId = async ({
   post_id,
 }: getCommentsByPostIdProps) => {
   const supabase = createServerActionClient({ cookies });
+  const user = await getSignedInUser();
+  const profile = await getProfileById({ user_id: user?.id });
+
   const {
     data: comments,
     error,
-  }: { data: commentData[] | null; error: PostgrestError | null } =
+  }: { data: commentWithProfile[] | null; error: PostgrestError | null } =
     await supabase
       .from("comments")
-      .select(
-        "*, profiles(username, avatar_url), comment_event(like_bool, dislike_bool)"
-      )
+      .select("*, profiles(username, avatar_url)")
       .match({ post_id: post_id })
       .order("like_count", { ascending: false });
+
+  const commentsId = comments?.map((comment) => comment.id);
+
+  const { data: comment_events }: { data: commentEvent[] | null } =
+    await supabase
+      .from("comment_event")
+      .select("*")
+      .match({ comment_id: commentsId, profile_id: profile?.id });
+
+  console.log(comment_events);
+
   if (error) {
     console.log("getCommentsById error: ", error);
   }
-  return comments;
+
+  const result: commentData[] | undefined = comments?.map((comment) => {
+    const event = comment_events?.find(
+      (comment_event) => comment_event.comment_id === comment.id
+    );
+    const commentWithProfile: commentData = {
+      comment: comment.comment,
+      created_at: comment.created_at,
+      dislike_count: comment.dislike_count,
+      like_count: comment.like_count,
+      id: comment.id,
+      post_id: comment.post_id,
+      profile_id: comment.profile_id,
+      profiles: comment.profiles,
+      sub_comment_id: comment.sub_comment_id,
+      user_id: comment.user_id,
+      comment_event: {
+        like_bool: event?.like_bool,
+        dislike_bool: event?.dislike_bool,
+      },
+    };
+    return commentWithProfile;
+  });
+  console.log(result);
+  return result;
 };
 
 export const sendPWChangeToCurrentUser = async ({ path }: { path: string }) => {

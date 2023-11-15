@@ -11,7 +11,7 @@ type PostProps = {
   postStatistics: postStatistic | null;
   signedInUserProfileId: number | undefined;
   signedInUserAvatar: string | null | undefined;
-  comments: commentData[] | null;
+  comments: commentData[] | undefined;
   postOwner: boolean | null;
 };
 
@@ -63,7 +63,10 @@ const Post = ({
           profile_id={signedInUserProfileId}
           avatar_url={signedInUserAvatar}
         />
-        <Comments comments={comments} />
+        <Comments
+          comments={comments}
+          signedInUserProfileId={signedInUserProfileId}
+        />
       </div>
     </div>
   );

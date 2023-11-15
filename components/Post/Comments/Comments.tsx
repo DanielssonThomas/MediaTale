@@ -1,10 +1,11 @@
 import { Comment } from "./Comment/Comment";
 
 type CommentsProps = {
-  comments: commentData[] | null;
+  comments: commentData[] | undefined;
+  signedInUserProfileId: number | undefined;
 };
 
-const Comments = ({ comments }: CommentsProps) => {
+const Comments = ({ comments, signedInUserProfileId }: CommentsProps) => {
   if (comments?.length === 0) {
     return (
       <div className="flex justify-center items-center w-full">
@@ -14,16 +15,17 @@ const Comments = ({ comments }: CommentsProps) => {
   }
 
   return (
-    <div className="flex flex-col gap-6 p-4">
+    <div className="flex flex-col gap-6 p-4 w-full">
       {comments?.map((comment) => (
         <Comment
           avatar_url={comment.profiles.avatar_url}
           comment={comment.comment}
-          disliked={comment.comment_event.dislike}
+          disliked={comment.comment_event.dislike_bool}
           id={comment.id}
           like_count={comment.like_count}
-          liked
+          liked={comment.comment_event.like_bool}
           username={comment.profiles.username}
+          isOwner={signedInUserProfileId === comment.profile_id ? true : false}
           key={comment.id}
         />
       ))}

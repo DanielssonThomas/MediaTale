@@ -14,7 +14,7 @@ export const POST = async (req: Request) => {
   const { error } = await supabase
     .from("comment_event")
     .delete()
-    .match({ id: comment_id, profile_id: profile?.id });
+    .match({ comment_id: comment_id, profile_id: profile?.id });
   if (error) {
     console.log("Error on delete: ", error);
     return NextResponse.json({ error: true, errorMessage: error });

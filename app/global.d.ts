@@ -4,6 +4,19 @@ declare global {
   type comment = Database["public"]["Tables"]["comments"]["Row"];
   type commentInsert = Database["public"]["Tables"]["comments"]["Insert"];
   type commentUpdate = Database["public"]["Tables"]["comments"]["Update"];
+  type commentWithProfile = {
+    comment: string | null;
+    created_at: string;
+    dislike_count: number | null;
+    id: number;
+    like_count: number | null;
+    post_id: number | null;
+    profile_id: number | null;
+    sub_comment_id: number | null;
+    user_id: string | null;
+    profiles: { username: string; avatar_url: string | null };
+  };
+
   type commentData = {
     comment: string | null;
     created_at: string;
@@ -15,7 +28,10 @@ declare global {
     sub_comment_id: number | null;
     user_id: string | null;
     profiles: { username: string; avatar_url: string | null };
-    comment_event: { like: boolean; dislike: boolean };
+    comment_event: {
+      like_bool: boolean | null | undefined;
+      dislike_bool: boolean | null | undefined;
+    };
   };
 
   type commentEvent = Database["public"]["Tables"]["comment_event"]["Row"];
