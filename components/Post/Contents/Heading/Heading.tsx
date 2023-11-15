@@ -20,7 +20,7 @@ export const Heading = ({
       <div className="flex gap-4 mt-10">
         <Link
           href={`/profile/${username}`}
-          className="relative border-solid border-[1px] border-black dark:border-[#EDEDED] w-[50px] h-[50px] rounded-full overflow-hidden"
+          className="relative border-solid border-[1px] border-black dark:border-white w-[50px] h-[50px] rounded-full overflow-hidden"
         >
           <Image
             src={avatar_url || "/images/defaultPFP.jpeg"}
