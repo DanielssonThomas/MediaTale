@@ -22,7 +22,7 @@ export const ImagePopUp = ({ src, isActive, setIsActive }: ImagePopUpProps) => {
           isActive
             ? "bottom-0 left-0 top-10 right-0 scale-1"
             : "bottom-[-100vh] scale-[0.5]"
-        } left-[16.5vw] w-[66vw] h-[66vh] z-30`}
+        } left-[16.5vw] w-[66vw] h-[66vh] z-[9999]`}
       >
         <Image src={src} alt="Image preview" fill className="object-contain" />
       </div>
