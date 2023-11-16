@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Toast } from "../components/General/Toast/Toast";
+import Toast from "@/components/General/Toast";
+import PopUpCentering from "../storybook-decorators/PopUpCentering";
 
 const meta: Meta<typeof Toast> = {
   title: "components/General/Toast",
@@ -9,6 +10,7 @@ const meta: Meta<typeof Toast> = {
     text: { control: "text" },
   },
   tags: ["autodocs"],
+  decorators: [(story) => <PopUpCentering story={story()} />],
 };
 
 export const Default: StoryObj<typeof Toast> = {

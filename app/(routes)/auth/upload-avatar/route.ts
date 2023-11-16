@@ -35,11 +35,11 @@ export async function POST(req: Request) {
   if (profile?.avatar_url !== null) {
     const { error } = await supabase.storage
       .from("avatars")
-      .remove([`${user?.id}`]);
+      .remove([`${user?.id}/avatar`]);
     if (error === null) {
       const { data, error } = await supabase.storage
         .from("avatars")
-        .upload(`${user?.id}`, avatar);
+        .upload(`${user?.id}/avatar`, avatar);
 
       if (error) {
         console.log("Profile update error: ", error);

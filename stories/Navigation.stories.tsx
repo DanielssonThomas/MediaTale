@@ -10,8 +10,16 @@ const meta: Meta<typeof Navigation> = {
     showLoginButton: { control: "boolean" },
     showBackButton: { control: "boolean" },
     avatar_url: { control: "string" },
+    showUploadPost: { control: "boolean" },
   },
   tags: ["autodocs"],
+  decorators: [
+    (story) => (
+      <div className="w-screen min-h-screen bg-[#EDEDED] dark:bg-[#1C1C1C] dark:text-[#EDEDED] transition-all duration-500 ease-out overflow-hidden">
+        {story()}
+      </div>
+    ),
+  ],
 };
 
 export const Primary: StoryObj<typeof Navigation> = {
@@ -20,6 +28,7 @@ export const Primary: StoryObj<typeof Navigation> = {
     avatar_url: null,
     showBackButton: false,
     showLoginButton: false,
+    showUploadPost: false,
   },
 };
 

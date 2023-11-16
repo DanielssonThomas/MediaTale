@@ -25,7 +25,9 @@ const ProfileEdit = async () => {
             <div className="w-full absolute">
               <Button text="Back" type="link" href="/" posTopLeft={true} />
             </div>
-            <EditProfile profile={profile} />
+            <div className="w-[20rem] sm:w-[35rem] lg:w-[60rem]">
+              <EditProfile profile={profile} />
+            </div>
           </div>
         </div>
       </div>

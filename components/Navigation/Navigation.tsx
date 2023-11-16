@@ -55,6 +55,8 @@ export const Navigation = ({
               alt="your avatar"
               fill
               className="object-cover"
+              sizes="width: 50px height: 50px"
+              quality={100}
             />
           </div>
           <NavMenu active={navMenuActive} setActive={setNavMenuActive} />

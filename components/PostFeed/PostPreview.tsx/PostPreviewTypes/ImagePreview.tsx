@@ -35,6 +35,7 @@ export const ImagePreview = ({
           alt={`${username}'s avatar`}
           fill
           className="object-cover z-50"
+          sizes="width: 40px"
         />
       </div>
       <p className="absolute left-6 top-[-20px] text-sm text-black dark:text-white">
@@ -46,6 +47,7 @@ export const ImagePreview = ({
           alt="Post preview"
           fill
           className="object-cover"
+          sizes="width: 230px"
           onClick={() => setActive(!active)}
         />
 

@@ -1,5 +1,5 @@
 import type { StorybookConfig } from "@storybook/nextjs";
-import { themes } from "@storybook/theming";
+
 const path = require("path");
 
 const config: StorybookConfig = {
@@ -30,6 +30,7 @@ const config: StorybookConfig = {
     config.resolve.alias = {
       ...config.resolve.alias,
       "@/components": path.resolve(__dirname, "../components"),
+      "@/stories": path.resolve(__dirname, "../stories/"),
     };
 
     return config;

@@ -1,7 +1,7 @@
 import { Meta, StoryObj } from "@storybook/react";
-import PostPreview from "@/components/General/PostFeed/PostPreview.tsx";
-import PostFeedLoading from "@/components/General/PostFeed/PostFeedLoading";
-import CardCentering from "./storybook-decorators/CardDecorator";
+import PostPreview from "@/components/PostFeed/PostPreview.tsx";
+import PostPreviewCard from "@/stories/storybook-decorators/PostPreviewCard";
+
 const meta: Meta<typeof PostPreview> = {
   title: "components/General/PostFeed/PostPreview",
   component: PostPreview,
@@ -16,7 +16,7 @@ const meta: Meta<typeof PostPreview> = {
     view_count: { control: "number" },
   },
   tags: ["autodocs"],
-  decorators: [(story) => <CardCentering story={story()} />],
+  decorators: [(story) => <PostPreviewCard story={story()} />],
 };
 
 export const Primary: StoryObj<typeof PostPreview> = {

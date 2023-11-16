@@ -1,4 +1,4 @@
-import PostFeed from "@/components/General/PostFeed";
+import PostFeed from "@/components/PostFeed";
 import {
   getPostsWithEvents,
   getPostsStatistics,

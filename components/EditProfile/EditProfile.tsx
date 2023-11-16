@@ -14,7 +14,7 @@ const EditProfile = ({ profile }: EditProfileProps) => {
       <div className="full p-8">
         <UploadAvatar />
       </div>
-      <form action={"/auth/edit-profile"} method="POST" className="full p-8">
+      <form action={"/auth/edit-profile"} method="POST" className="w-full p-8">
         <EditProfileHeading username={profile?.username} />
         <EditProfileDetails
           about={profile?.about}

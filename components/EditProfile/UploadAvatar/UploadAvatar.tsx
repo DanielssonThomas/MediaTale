@@ -3,6 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Button from "@/components/General/Button";
 import Toast from "@/components/General/Toast";
+import AddIcon from "@/components/General/Icons/Add";
 
 export const UploadAvatar = () => {
   const [imageUpload, setImageUpload] = useState<File>();
@@ -38,18 +39,32 @@ export const UploadAvatar = () => {
           type="file"
           accept="image/jpg, image/jpeg, image/png, image/webp"
           onChange={(e: any) => setImageUpload(e.target.files[0])}
+          id="image-input"
+          hidden
         />
       </div>
       <div className="flex justify-center items-center">
-        {imageUpload && (
+        {imageUpload ? (
           <div>
-            <div className="relative flex flex-col justify-center items-center border-solid border-[1px] rounded-full border-black overflow-hidden w-[200px] h-[200px]">
+            <div
+              className="relative flex flex-col justify-center items-center border-solid border-[1px] rounded-full border-black overflow-hidden w-[200px] h-[200px]"
+              onClick={() => document.getElementById("image-input")?.click()}
+            >
               <Image
                 src={URL.createObjectURL(imageUpload)}
                 alt="Uploaded image"
-                fill={true}
+                fill
                 className="object-cover"
               />
+            </div>
+          </div>
+        ) : (
+          <div>
+            <div
+              className="relative flex flex-col justify-center items-center border-solid border-[1px] rounded-full border-black dark:border-white overflow-hidden w-[200px] h-[200px]"
+              onClick={() => document.getElementById("image-input")?.click()}
+            >
+              <AddIcon />
             </div>
           </div>
         )}

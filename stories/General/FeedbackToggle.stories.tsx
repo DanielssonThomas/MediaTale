@@ -1,14 +1,12 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { FeedbackToggle } from "./FeedbackToggle";
+import FeedbackToggle from "@/components/General/FeedbackToggle";
+import DefaultCentering from "../storybook-decorators/DefaultCentering";
 
 const meta: Meta<typeof FeedbackToggle> = {
   title: "components/General/FeedbackToggle",
   component: FeedbackToggle,
   argTypes: {},
-  parameters: {
-    layout: "centered",
-  },
-  tags: ["autodocs"],
+  decorators: [(story) => <DefaultCentering story={story()} />],
 };
 
 export const Primary: StoryObj<typeof FeedbackToggle> = {};

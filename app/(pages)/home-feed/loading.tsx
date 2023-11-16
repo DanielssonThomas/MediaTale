@@ -1,4 +1,4 @@
-import PostFeedLoading from "@/components/General/PostFeed/PostFeedLoading";
+import PostFeedLoading from "@/components/PostFeed/PostFeedLoading";
 import Navigation from "@/components/Navigation";
 const Loading = () => {
   return (

@@ -1,5 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import { Button } from "./Button";
+import Button from "@/components/General/Button";
+import DefaultCentering from "../storybook-decorators/DefaultCentering";
 
 const meta: Meta<typeof Button> = {
   title: "components/General/Button",
@@ -9,12 +10,13 @@ const meta: Meta<typeof Button> = {
     href: { control: "text" },
     posTopLeft: { control: "boolean" },
     text: { control: "text" },
-    type: { control: "select", options: ["link", "formAction", "default"] },
+    type: {
+      control: "select",
+      options: ["link", "formAction", "default", "static"],
+    },
   },
   tags: ["autodocs"],
-  parameters: {
-    layout: "centered",
-  },
+  decorators: [(story) => <DefaultCentering story={story()} />],
 };
 
 export const Default: StoryObj<typeof Button> = {
