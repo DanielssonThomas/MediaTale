@@ -38,7 +38,7 @@ export const Navigation = ({
             href={"/"}
             className="absolute flex flex-col justify-center items-center left-[20px] top-[5px] w-[50px] h-[50px] border-black z-50"
           >
-            <div className="border-[1px] dark:border-[#EDEDED] border-black border-solid rounded-full">
+            <div className="border-[1px] dark:border-[#EDEDED] border-black border-solid rounded-full object-cover">
               <MTLogo />
             </div>
           </Link>
