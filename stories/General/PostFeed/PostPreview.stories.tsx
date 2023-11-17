@@ -19,7 +19,7 @@ const meta: Meta<typeof PostPreview> = {
   decorators: [(story) => <PostPreviewCard story={story()} />],
 };
 
-export const Primary: StoryObj<typeof PostPreview> = {
+export const PostPreviewStory: StoryObj<typeof PostPreview> = {
   args: {
     avatar_url: null,
     description: "This is the description",

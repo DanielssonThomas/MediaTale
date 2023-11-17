@@ -33,7 +33,7 @@ const EditProfileDetails = ({
   );
 
   return (
-    <div className="flex flex-col gap-4 p-2">
+    <div className="flex flex-col gap-4 p-2 text-black dark:text-white">
       <div className="flex flex-col border-solid border-black dark:border-[#EDEDED] border-b-[1px]">
         <div className="text-sm">About:</div>
         <textarea

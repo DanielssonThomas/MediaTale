@@ -28,7 +28,7 @@ export const UploadAvatar = () => {
   return (
     <form
       onSubmit={onSubmit}
-      className="flex flex-col justify-center items-center w-full gap-2"
+      className="flex flex-col justify-center items-center w-full gap-2 text-black dark:text-white"
     >
       {status !== null && <Toast error={status} text={message} />}
 

@@ -9,9 +9,8 @@ type HeadingProps = {
 
 const EditProfileHeading = ({ username }: HeadingProps) => {
   const [name, setName] = useState<string | null | undefined>(username);
-  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {};
   return (
-    <div>
+    <div className="text-black dark:text-white">
       <div className="relative flex flex-col border-b-solid border-black dark:border-[#EDEDED] border-b-[1px] p-2 gap-[2rem]">
         <div className="flex flex-col">
           <div className="text-sm">Username:</div>
