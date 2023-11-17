@@ -26,7 +26,15 @@ const ProfileEdit = async () => {
               <Button text="Back" type="link" href="/" posTopLeft={true} />
             </div>
             <div className="w-[20rem] sm:w-[35rem] lg:w-[60rem]">
-              <EditProfile profile={profile} />
+              <EditProfile
+                username={profile.username ?? ""}
+                first_name={profile.first_name ?? ""}
+                last_name={profile.last_name ?? ""}
+                about={profile.about ?? ""}
+                contact_email={profile.contact_email ?? ""}
+                country={profile.country ?? ""}
+                created_at={profile.created_at}
+              />
             </div>
           </div>
         </div>
