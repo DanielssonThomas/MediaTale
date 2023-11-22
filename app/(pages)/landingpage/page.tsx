@@ -4,7 +4,9 @@ const LandingPage = () => {
   return (
     <div className="flex flex-col w-full bg-[#EDEDED] dark:bg-[#1C1C1C]">
       <Navigation isLoggedIn={false} avatar_url={null} showLoginButton={true} />
-      <Hero />
+      <div className="relative">
+        <Hero />
+      </div>
     </div>
   );
 };
