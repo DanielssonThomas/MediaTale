@@ -55,7 +55,7 @@ export const Button = (Button: ButtonProps) => {
     isAbsolute ? pos : "relative"
   } group border-solid border-[1px] border-black dark:border-[#EDEDED] md:border-none ${
     Button.width === "" || Button.width === undefined ? "w-40" : Button.width
-  }  h-[2rem] overflow-hidden z-40 text-center`;
+  } h-[2rem] overflow-hidden z-40 text-center`;
 
   const SpanTopStyle = `absolute ${
     Button.width === "" || Button.width === undefined ? "w-40" : Button.width
