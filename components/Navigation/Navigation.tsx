@@ -62,7 +62,7 @@ export const Navigation = ({
           <NavMenu active={navMenuActive} setActive={setNavMenuActive} />
         </div>
       ) : (
-        <div className="relative flex justify-center items-center w-screen h-full">
+        <div className="relative flex justify-between md:justify-center items-center w-screen h-full p-2 md:p-0">
           {showBackButton && (
             <Button text="Back" type="link" href="/" posTopLeft={true} />
           )}
