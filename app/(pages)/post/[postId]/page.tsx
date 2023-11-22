@@ -8,6 +8,7 @@ import {
   getCommentsByPostId,
   getPostStatisticsById,
   getSignedInUser,
+  isUserFollowing,
 } from "@/app/utils/supabase-queries/queries";
 
 type PostProps = {
@@ -25,6 +26,8 @@ const PostPage = async ({
   const profile = await getProfileById({ user_id: post?.created_by_uuid });
   const postStatistics = await getPostStatisticsById({ post_id: postId });
   const comments = await getCommentsByPostId({ post_id: postId });
+  const isFollowingJson = await isUserFollowing({ profile_id: profile?.id });
+  const { isFollowing } = await isFollowingJson.json();
   const showToast = message ? true : false;
   let postOwner: boolean | null = null;
   if (currentUserProfile?.id == profile?.id) postOwner = true;
@@ -47,6 +50,7 @@ const PostPage = async ({
           signedInUserProfileId={currentUserProfile?.id}
           signedInUserAvatar={currentUserProfile?.avatar_url}
           postOwner={postOwner}
+          isFollowing={isFollowing}
         />
       </div>
     </div>

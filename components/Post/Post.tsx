@@ -11,6 +11,7 @@ type PostProps = {
   postStatistics: postStatistic | null;
   signedInUserProfileId: number | undefined;
   signedInUserAvatar: string | null | undefined;
+  isFollowing: boolean;
   comments: commentData[] | undefined;
   postOwner: boolean | null;
 };
@@ -21,6 +22,7 @@ const Post = ({
   postStatistics,
   signedInUserProfileId,
   signedInUserAvatar,
+  isFollowing,
   comments,
   postOwner,
 }: PostProps) => {
@@ -57,6 +59,8 @@ const Post = ({
           username={authorStatistics?.username}
           view_count={postStatistics?.view_count ?? 0}
           postOwner={postOwner}
+          isFollowing={isFollowing}
+          authorProfileId={authorStatistics?.id}
         />
         <CreateComment
           post_id={post?.id}

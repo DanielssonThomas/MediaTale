@@ -2,6 +2,7 @@ import { createServerActionClient } from "@supabase/auth-helpers-nextjs";
 import { PostgrestError } from "@supabase/supabase-js";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
+import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
@@ -312,4 +313,23 @@ export const sendPWResetByEmail = async ({
   const { data, error } = await supabase.auth.resetPasswordForEmail(email, {
     redirectTo: `${path}/update-password`,
   });
+};
+
+export const isUserFollowing = async ({
+  profile_id,
+}: {
+  profile_id: number | undefined;
+}) => {
+  const supabase = createServerActionClient({ cookies });
+  const user = await getSignedInUser();
+  const { count, error } = await supabase
+    .from("profile_follower")
+    .select("*", { count: "exact" })
+    .match({ user_id: user?.id, follower_profile_id: profile_id });
+
+  if (count === 0) {
+    return NextResponse.json({ isFollowing: false });
+  }
+
+  return NextResponse.json({ isFollowing: true });
 };

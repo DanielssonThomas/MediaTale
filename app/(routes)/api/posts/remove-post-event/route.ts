@@ -6,7 +6,6 @@ import {
   getProfileById,
 } from "@/app/utils/supabase-queries/queries";
 export const POST = async (req: Request) => {
-  console.log("REMOVING POST EVENT");
   const supabase = createRouteHandlerClient({ cookies });
   const reqData = await req.json();
   const { post_id } = reqData;
@@ -14,7 +13,6 @@ export const POST = async (req: Request) => {
   const user = await getSignedInUser();
   const profile = await getProfileById({ user_id: user?.id });
 
-  console.log("ID OF POST TO BE DELETED: ", post_id);
   const { error } = await supabase
     .from("post_event")
     .delete()
