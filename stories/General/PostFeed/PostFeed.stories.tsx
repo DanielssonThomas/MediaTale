@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
-import PostPreview from "@/components/PostFeed/PostPreview.tsx";
-import { LoadingPreview } from "@/components/PostFeed/PostPreview.tsx/PostPreviewTypes/LoadingPreview";
+import PostPreview from "@/components/PostFeed/PostPreview";
+import { LoadingPreview } from "@/components/PostFeed/PostPreview/PostPreviewTypes/LoadingPreview";
 const meta: Meta = {
   title: "components/General/PostFeed/PostFeed",
 };

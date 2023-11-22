@@ -30,7 +30,7 @@ const Home = async () => {
         showUploadPost={true}
       />
       <div className="flex justify-center items-center w-full">
-        <div className="max-w-[40rem]">
+        <div className="md:max-w-[40rem]">
           <PostFeed posts={posts} postsStatistics={postsStatistics} />
         </div>
       </div>

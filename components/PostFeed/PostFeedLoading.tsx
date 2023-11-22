@@ -1,4 +1,4 @@
-import { LoadingPreview } from "./PostPreview.tsx/PostPreviewTypes/LoadingPreview";
+import { LoadingPreview } from "./PostPreview/PostPreviewTypes/LoadingPreview";
 const PostFeedLoading = () => {
   return (
     <section className="flex flex-col justify-center items-center w-full">

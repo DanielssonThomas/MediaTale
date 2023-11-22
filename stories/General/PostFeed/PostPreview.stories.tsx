@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
-import PostPreview from "@/components/PostFeed/PostPreview.tsx";
+import PostPreview from "@/components/PostFeed/PostPreview";
 import PostPreviewCard from "@/stories/storybook-decorators/PostPreviewCard";
 
 const meta: Meta<typeof PostPreview> = {

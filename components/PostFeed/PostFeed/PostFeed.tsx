@@ -1,4 +1,4 @@
-import PostPreview from "../PostPreview.tsx";
+import PostPreview from "../PostPreview";
 
 type PostFeedProps = {
   postsStatistics: postStatistic[] | null;

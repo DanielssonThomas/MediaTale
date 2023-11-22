@@ -1,6 +1,6 @@
 import { Meta, StoryObj } from "@storybook/react";
 import Navigation from "@/components/Navigation";
-import PostPreview from "@/components/PostFeed/PostPreview.tsx";
+import PostPreview from "@/components/PostFeed/PostPreview";
 
 const meta: Meta = {
   title: "Pages/home",

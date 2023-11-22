@@ -47,7 +47,7 @@ export const Heading = ({
   };
 
   return (
-    <div className="relative flex justify-between w-full p-4 border-solid border-b-[1px] border-black dark:border-[#EDEDED]">
+    <div className="relative flex flex-col md:flex-row justify-between items-center w-full p-4 border-solid border-b-[1px] border-black dark:border-[#EDEDED]">
       <DeletePostPopUp
         isDeletePostActive={isDeletePostActive}
         setDeletePostActive={setDeletePostActive}

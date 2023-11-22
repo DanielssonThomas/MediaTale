@@ -28,7 +28,7 @@ export const ImagePreview = ({
 }: PostPreviewProps) => {
   const [active, setActive] = useState<boolean>(false);
   return (
-    <div className="dark:text-[#EDEDED] relative">
+    <div className="dark:text-[#EDEDED] relative min-w-[20rem] sm:min-w-[15rem]">
       <div className="absolute left-[-20px] top-[-15px] w-[40px] h-[40px] rounded-full overflow-hidden border-solid border-[1px] border-black dark:border-white">
         <Image
           src={avatar_url || "/images/defaultPFP.jpeg"}
