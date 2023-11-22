@@ -12,6 +12,7 @@ type CommentProps = {
   avatar_url: string | null;
   isOwner: boolean;
   id: number;
+  post_id: number | undefined;
 };
 
 export const Comment = ({
@@ -23,6 +24,7 @@ export const Comment = ({
   avatar_url,
   isOwner,
   id,
+  post_id,
 }: CommentProps) => {
   const [deletePopUp, setDeletePopUp] = useState<boolean>(false);
   return (
@@ -51,6 +53,7 @@ export const Comment = ({
             <h2>Are you sure you want to delete this comment?</h2>
             <form action="/api/comments/delete-comment" method="POST">
               <input type="hidden" name="comment_id" value={id} />
+              <input type="hidden" name="post_id" value={post_id} />
               <Button type="default" text="Delete" />
             </form>
           </div>

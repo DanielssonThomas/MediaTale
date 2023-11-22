@@ -8,9 +8,9 @@ const LikeIcon = ({ Liked }: LikeIconProps) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width={32}
-      height={32}
-      viewBox="0 0 90 90"
+      width={20}
+      height={20}
+      viewBox="0 0 100 100"
       className="cursor-pointer"
     >
       <g

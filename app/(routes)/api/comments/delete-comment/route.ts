@@ -7,6 +7,7 @@ export const POST = async (req: Request) => {
   const supabase = createRouteHandlerClient({ cookies });
   const formData = await req.formData();
   const comment_id = String(formData.get("comment_id"));
+  const post_id = Number(formData.get("post_id"));
 
   const { error } = await supabase
     .from("comments")
@@ -14,7 +15,11 @@ export const POST = async (req: Request) => {
     .match({ id: comment_id });
   if (error) {
     console.log(error);
-    return NextResponse.redirect(`${requestUrl}`, { status: 301 });
+    return NextResponse.redirect(`${requestUrl.origin}/post/${post_id}`, {
+      status: 301,
+    });
   }
-  return NextResponse.redirect(`${requestUrl}`, { status: 301 });
+  return NextResponse.redirect(`${requestUrl.origin}/post/${post_id}`, {
+    status: 301,
+  });
 };

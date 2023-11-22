@@ -3,9 +3,14 @@ import { Comment } from "./Comment/Comment";
 type CommentsProps = {
   comments: commentData[] | undefined;
   signedInUserProfileId: number | undefined;
+  post_id: number | undefined;
 };
 
-const Comments = ({ comments, signedInUserProfileId }: CommentsProps) => {
+const Comments = ({
+  comments,
+  signedInUserProfileId,
+  post_id,
+}: CommentsProps) => {
   if (comments?.length === 0) {
     return (
       <div className="flex justify-center items-center w-full">
@@ -27,6 +32,7 @@ const Comments = ({ comments, signedInUserProfileId }: CommentsProps) => {
           username={comment.profiles.username}
           isOwner={signedInUserProfileId === comment.profile_id ? true : false}
           key={comment.id}
+          post_id={post_id}
         />
       ))}
     </div>

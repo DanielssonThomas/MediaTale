@@ -70,6 +70,7 @@ const Post = ({
         <Comments
           comments={comments}
           signedInUserProfileId={signedInUserProfileId}
+          post_id={post?.id}
         />
       </div>
     </div>
