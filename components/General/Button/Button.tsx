@@ -5,6 +5,7 @@ type ButtonDefaultProps = {
   type: "default";
   posTopLeft?: boolean;
   posTopRight?: boolean;
+  width?: string;
 };
 
 type ButtonFormActionProps = {
@@ -13,6 +14,7 @@ type ButtonFormActionProps = {
   formAction: string;
   posTopLeft?: boolean;
   posTopRight?: boolean;
+  width?: string;
 };
 
 type ButtonLinkProps = {
@@ -21,6 +23,7 @@ type ButtonLinkProps = {
   href: string;
   posTopLeft?: boolean;
   posTopRight?: boolean;
+  width?: string;
 };
 
 type ButtonStatic = {
@@ -28,6 +31,7 @@ type ButtonStatic = {
   type: "static";
   posTopLeft?: boolean;
   posTopRight?: boolean;
+  width?: string;
 };
 
 type ButtonProps =
@@ -46,19 +50,33 @@ export const Button = (Button: ButtonProps) => {
     if (Button.posTopLeft) pos = topLeft;
     if (Button.posTopRight) pos = topRight;
   }
+
+  const WrapperStyle = `${
+    isAbsolute ? pos : "relative"
+  } group border-solid border-[1px] border-black dark:border-[#EDEDED] md:border-none ${
+    Button.width === "" || Button.width === undefined ? "w-40" : Button.width
+  }  h-[2rem] overflow-hidden z-40 text-center`;
+
+  const SpanTopStyle = `absolute ${
+    Button.width === "" || Button.width === undefined ? "w-40" : Button.width
+  }  h-[1px] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 left-[-10rem] top-0 group-hover:left-0`;
+
+  const SpanBottomStyle = `absolute ${
+    Button.width === "" || Button.width === undefined ? "w-40" : Button.width
+  }  h-[1px] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 right-[-10rem] bottom-0 group-hover:right-0`;
+  const SpanLeftStyle =
+    "absolute w-[1px] h-[2rem] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 left-0 top-[-2rem] group-hover:top-0";
+  const SpanRightStyle =
+    "absolute w-[1px] h-[2rem] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 right-0 bottom-[-2rem] group-hover:bottom-0";
+
   switch (Button.type) {
     case "link":
       return (
-        <Link
-          href={Button ? Button.href : "/"}
-          className={`${
-            isAbsolute ? pos : "relative"
-          } group border-solid border-[1px] border-black dark:border-[#EDEDED] md:border-none w-40 h-[2rem] overflow-hidden z-40 text-center`}
-        >
-          <span className="absolute w-40 h-[1px] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 left-[-10rem] top-0 group-hover:left-0"></span>
-          <span className="absolute w-40 h-[1px] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 right-[-10rem] bottom-0 group-hover:right-0"></span>
-          <span className="absolute w-[1px] h-[2rem] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 left-0 top-[-2rem] group-hover:top-0"></span>
-          <span className="absolute w-[1px] h-[2rem] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 right-0 bottom-[-2rem] group-hover:bottom-0"></span>
+        <Link href={Button ? Button.href : "/"} className={WrapperStyle}>
+          <span className={SpanTopStyle}></span>
+          <span className={SpanBottomStyle}></span>
+          <span className={SpanLeftStyle}></span>
+          <span className={SpanRightStyle}></span>
           <div className="flex justify-center items-center h-full text-black dark:text-[#EDEDED]">
             <div>
               <svg
@@ -98,16 +116,11 @@ export const Button = (Button: ButtonProps) => {
       );
     case "formAction":
       return (
-        <button
-          formAction={Button.formAction}
-          className={`${
-            isAbsolute ? pos : "relative"
-          } group border-solid border-[1px] border-black dark:border-[#EDEDED] md:border-none w-40 h-[2rem] overflow-hidden z-40 text-center`}
-        >
-          <span className="absolute w-40 h-[1px] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 left-[-10rem] top-0 group-hover:left-0"></span>
-          <span className="absolute w-40 h-[1px] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 right-[-10rem] bottom-0 group-hover:right-0"></span>
-          <span className="absolute w-[1px] h-[2rem] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 left-0 top-[-2rem] group-hover:top-0"></span>
-          <span className="absolute w-[1px] h-[2rem] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 right-0 bottom-[-2rem] group-hover:bottom-0"></span>
+        <button formAction={Button.formAction} className={WrapperStyle}>
+          <span className={SpanTopStyle}></span>
+          <span className={SpanBottomStyle}></span>
+          <span className={SpanLeftStyle}></span>
+          <span className={SpanRightStyle}></span>
           <div className="flex justify-center items-center h-full text-black dark:text-[#EDEDED]">
             <div>
               <svg
@@ -147,15 +160,11 @@ export const Button = (Button: ButtonProps) => {
       );
     case "default":
       return (
-        <button
-          className={`${
-            isAbsolute ? pos : "relative"
-          } group border-solid border-[1px] border-black dark:border-[#EDEDED] md:border-none w-40 h-[2rem] overflow-hidden z-40 text-center`}
-        >
-          <span className="absolute w-40 h-[1px] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 left-[-10rem] top-0 group-hover:left-0"></span>
-          <span className="absolute w-40 h-[1px] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 right-[-10rem] bottom-0 group-hover:right-0"></span>
-          <span className="absolute w-[1px] h-[2rem] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 left-0 top-[-2rem] group-hover:top-0"></span>
-          <span className="absolute w-[1px] h-[2rem] bg-[#1C1C1C] dark:bg-[#EDEDED] transition-all duration-500 right-0 bottom-[-2rem] group-hover:bottom-0"></span>
+        <button className={WrapperStyle}>
+          <span className={SpanTopStyle}></span>
+          <span className={SpanBottomStyle}></span>
+          <span className={SpanLeftStyle}></span>
+          <span className={SpanRightStyle}></span>
           <div className="flex justify-center items-center h-full text-black dark:text-[#EDEDED]">
             <div>
               <svg
@@ -195,11 +204,7 @@ export const Button = (Button: ButtonProps) => {
       );
     case "static":
       return (
-        <div
-          className={`${
-            isAbsolute ? pos : "relative"
-          } group border-solid border-[1px] border-black dark:border-[#EDEDED] md:border-none w-40 h-[2rem] overflow-hidden z-40 text-center cursor-pointer`}
-        >
+        <div className={WrapperStyle}>
           <div className="flex justify-center items-center h-full text-black dark:text-[#EDEDED]">
             <div>
               <svg
