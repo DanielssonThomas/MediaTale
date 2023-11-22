@@ -22,7 +22,7 @@ export const DeleteUser = () => {
         <div
           className={`transition-all duration-700 ${
             alertActive ? "bottom-[12rem]" : "bottom-[-25rem]"
-          } absolute flex flex-col justify-center items-center w-[25rem] h-[35rem] gap-12 z-[9999] bg-[#EDEDED] dark:bg-[#1C1C1C] text-center rounded-md`}
+          } absolute flex flex-col justify-center items-center w-[25rem] h-[35rem] gap-12 z-[9999] border-[1px] border-solid border-black dark:border-white bg-[#EDEDED] dark:bg-[#1C1C1C] text-center rounded-md p-2`}
         >
           <h2 className="text-2xl">
             This will <i className="text-red-600">permanentaly</i> remove your

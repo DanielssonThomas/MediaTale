@@ -18,7 +18,7 @@ export const Toast = ({ error, text }: ToastProps) => {
           show === true ? "top-[1rem]" : "top-[-4rem]"
         } ${
           error ? "bg-red-500 " : "bg-green-500"
-        } text-[#EDEDED] transition-all z-50`}
+        } text-[#EDEDED] transition-all z-[9999]`}
       >
         <p
           className="absolute flex justify-center items-center top-[-0.5rem] right-[-0.5rem] border-[1px] border-solid border-black dark:border-white bg-[#EDEDED] dark:bg-[#1C1C1C] rounded-full p-3 cursor-pointer w-4 h-4 text-xs"
